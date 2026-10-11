@@ -6,29 +6,30 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.7.32</title>
-            <pubDate>Sun, 11 Oct 2026 03:51:51 +0000</pubDate>
+            <title>0.7.33</title>
+            <pubDate>Sun, 11 Oct 2026 16:11:01 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1223</sparkle:version>
-            <sparkle:shortVersionString>0.7.32</sparkle:shortVersionString>
+            <sparkle:version>1225</sparkle:version>
+            <sparkle:shortVersionString>0.7.33</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
 ### Fixed
 
-- Search engine and assistant logos in Settings keep their proportions instead of looking stretched.
+- Switching Spaces no longer makes Crest quit unexpectedly on macOS 26.
+- Settings opens in your browser window instead of a new window while a Quick Window is in front.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/c3e712f200fb1fc90935c09eec48e1f41ae1c330...d27a88c5bcb7bc48cf160e295d0dc7e8f6006f5e) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.32-2026-10-11-1223-r223.1/Installer-Crest-0.7.32-development-2026-10-11-d27a88c-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/d27a88c5bcb7bc48cf160e295d0dc7e8f6006f5e...cbccb7452444c53026004e2457d2bc09f2ca360d) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.33-2026-10-11-1225-r225.1/Installer-Crest-0.7.33-development-2026-10-11-cbccb74-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.32-2026-10-11-1223-r223.1/Installer-Crest-0.7.32-development-2026-10-11-d27a88c-arm64.dmg" length="216659076" type="application/octet-stream" sparkle:edSignature="EhVU7naYwssdemNRbopbuZbyzpff77LhQo2UmMZqpiz5N631no3bDGMknDx36FSl/3y+UYUwOVLaBhB58dPWDQ=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.33-2026-10-11-1225-r225.1/Installer-Crest-0.7.33-development-2026-10-11-cbccb74-arm64.dmg" length="216693893" type="application/octet-stream" sparkle:edSignature="D2xtmUhIRwu/AhpBbvWtvFNdJSJQ/xYZ4+Vn7KhTUOs7Kkwdb/WrYLHN6MZ520N95voxlO2EDXHNLJwqf5C/Dw=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +61,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: uLqDWmGxdzQC+qfndEGhz1KxYURFJc6tR7OqNJy8+Clwsml3ZYoCUBI65QPf0HtnspP/1xn7DDsfFNdWURr0Cg==
-length: 3991
+edSignature: 3DbJuIjyHw1A3ftznE/V4ZAi628t9pa96YcFqbO+Q9T62gHY1wLBOIXYUm/RE7nxBvKc661HeT7NrmOOQqf+AA==
+length: 4060
 -->

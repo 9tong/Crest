@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "window-focus-bridge-release-format",
-    "development": "search-logos-keep-proportions",
+    "development": "settings-opens-in-browser-window",
     "nightly": "search-logos-keep-proportions"
   }
 }
