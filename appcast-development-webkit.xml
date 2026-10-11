@@ -6,29 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.7.31</title>
-            <pubDate>Sat, 10 Oct 2026 12:13:12 +0000</pubDate>
+            <title>0.7.32</title>
+            <pubDate>Sun, 11 Oct 2026 03:51:51 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1220</sparkle:version>
-            <sparkle:shortVersionString>0.7.31</sparkle:shortVersionString>
+            <sparkle:version>1223</sparkle:version>
+            <sparkle:shortVersionString>0.7.32</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
+### Fixed
 
-- The command palette puts the best match first, ranks the pages and tabs you use most and most recently, and learns which result you choose for what you type. It fills in sites you visit, including those that start with www, and Return opens what it filled in. Before you type it lists your recent tabs, so Return takes you back to the one you were on. Start typing a provider’s name or shortcut, such as yt for YouTube or claude, to see it under the field, and press Tab to search that site or ask that assistant directly. Hold Command, Shift or Option with Return to open a result in the background, in Split View or in a Quick Window. The new Search section in Settings sets one default search for every Space and one for private windows, turns search engines, AI assistants and websites on or off with options of their own, such as hiding Google’s AI Overviews, adds your own, and chooses what the palette shows, how many of each, and in what order.
+- Search engine and assistant logos in Settings keep their proportions instead of looking stretched.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/3eace036f68386fa482bf8a02e218adde4fa21e1...c3e712f200fb1fc90935c09eec48e1f41ae1c330) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.31-2026-10-10-1220-r220.1/Installer-Crest-0.7.31-development-2026-10-10-c3e712f-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/c3e712f200fb1fc90935c09eec48e1f41ae1c330...d27a88c5bcb7bc48cf160e295d0dc7e8f6006f5e) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.32-2026-10-11-1223-r223.1/Installer-Crest-0.7.32-development-2026-10-11-d27a88c-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.31-2026-10-10-1220-r220.1/Installer-Crest-0.7.31-development-2026-10-10-c3e712f-arm64.dmg" length="216624772" type="application/octet-stream" sparkle:edSignature="NQFOAOpDKuzF+7HqfIP1wOWjI5DTw89mDQGYY4lPCnf0nTZ59lAXSdh/s6ZLk7TByxNpPYCuWGY2EqPJfZQvDA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.32-2026-10-11-1223-r223.1/Installer-Crest-0.7.32-development-2026-10-11-d27a88c-arm64.dmg" length="216659076" type="application/octet-stream" sparkle:edSignature="EhVU7naYwssdemNRbopbuZbyzpff77LhQo2UmMZqpiz5N631no3bDGMknDx36FSl/3y+UYUwOVLaBhB58dPWDQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: x6dwiZojtD3t/uvNs4+yejaBF2fG0gDL80xGgJ0veA6kSih5CIyj2njEDT1fOL0NlFVU5m6HIaZyGg28aiAMCA==
-length: 4847
+edSignature: uLqDWmGxdzQC+qfndEGhz1KxYURFJc6tR7OqNJy8+Clwsml3ZYoCUBI65QPf0HtnspP/1xn7DDsfFNdWURr0Cg==
+length: 3991
 -->

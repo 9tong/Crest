@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "window-focus-bridge-release-format",
-    "development": "command-palette-ranks-and-searches-sites",
+    "development": "search-logos-keep-proportions",
     "nightly": "command-palette-ranks-and-searches-sites"
   }
 }
