@@ -6,42 +6,30 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.7.34</title>
-            <pubDate>Sun, 11 Oct 2026 18:19:36 +0000</pubDate>
+            <title>0.7.35</title>
+            <pubDate>Sun, 11 Oct 2026 19:25:00 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1226</sparkle:version>
-            <sparkle:shortVersionString>0.7.34</sparkle:shortVersionString>
+            <sparkle:version>1227</sparkle:version>
+            <sparkle:shortVersionString>0.7.35</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
-
-- On iPhone and iPad, Start on new tab in General settings opens Crest on a new tab in your default Space, ready to search.
-
-### Improved
-
-- On iPhone the sidebar stays full screen. Turn on Allow floating sidebar in General settings to float it over the page instead.
-- A Space’s Search with menu shows each provider’s icon, like the default search menu.
-- Each section in Settings has its own color, drawn from the Space templates.
-
 ### Fixed
 
-- Buttons in the floating sidebar respond to taps, and its Settings button opens Settings.
-- Settings on iPhone and iPad shows Crest’s real app icon, including the one you chose, in light and dark.
-- On iPhone and iPad, General settings shows whether Crest is your default browser instead of Unavailable when iOS limits how often Crest can check.
-- Edit Shortcuts and Add Provider in Search settings open right away on iPhone and iPad.
+- On iPhone, Show Full History in a page’s Back and Forward menus opens History.
+- On iPhone, Crest asks before downloading a risky file from the page you’re viewing, instead of leaving the download waiting for approval.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/cbccb7452444c53026004e2457d2bc09f2ca360d...6365c5264b199a3523dd179eebe1432830cf4d69) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.34-2026-10-11-1226-r226.1/Installer-Crest-0.7.34-development-2026-10-11-6365c52-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/6365c5264b199a3523dd179eebe1432830cf4d69...3cf913e78b8a82417a71b6a46889712c2b326495) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.35-2026-10-11-1227-r227.1/Installer-Crest-0.7.35-development-2026-10-11-3cf913e-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.34-2026-10-11-1226-r226.1/Installer-Crest-0.7.34-development-2026-10-11-6365c52-arm64.dmg" length="216182404" type="application/octet-stream" sparkle:edSignature="OB8SCnNLgWYiDJZhZPZ5Msl7fQeAj+EqdP5rrH9QFwnDtmQS6OjGd6luB1X35Y7dwZ/Xsu3vm/sktRyM8XUJDg=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.35-2026-10-11-1227-r227.1/Installer-Crest-0.7.35-development-2026-10-11-3cf913e-arm64.dmg" length="216213636" type="application/octet-stream" sparkle:edSignature="tSrhlPhOP4wtcI2iKYQErrkxGcnIJtb0VOGFITFjmk6T8TGxA1IW+dXFxQ1cpxP8wfJfcmaeCHhhlnTN/v7TBA=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -73,6 +61,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: JZ1zbTQU5E+eWhzyuggfPIITGY3Df4qZWWHohAW0RQsmvzSNnrg1wVWGskRrY5EuBMf+cGMCvyVrxwLu8Z4FCQ==
-length: 4775
+edSignature: FNEMzecNR0i+JLYD7JXu7s9vL4AvJxVPrOOZ5csQW/IkYR5VCn4SOH4yuI39WRZEDqhOmZpf+/G8zK3Wvp3qBQ==
+length: 4115
 -->

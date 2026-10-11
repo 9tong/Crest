@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "window-focus-bridge-release-format",
-    "development": "settings-section-colors",
+    "development": "download-prompt-over-page",
     "nightly": "search-logos-keep-proportions"
   }
 }
