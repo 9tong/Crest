@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "window-focus-bridge-release-format",
-    "development": "download-prompt-over-page",
+    "development": "tab-audio-indicator",
     "nightly": "search-logos-keep-proportions"
   }
 }

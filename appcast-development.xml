@@ -6,30 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.7.35</title>
-            <pubDate>Sun, 11 Oct 2026 19:25:00 +0000</pubDate>
+            <title>0.7.36</title>
+            <pubDate>Sun, 11 Oct 2026 22:35:04 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1227</sparkle:version>
-            <sparkle:shortVersionString>0.7.35</sparkle:shortVersionString>
+            <sparkle:version>1228</sparkle:version>
+            <sparkle:shortVersionString>0.7.36</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### Fixed
+### New
 
-- On iPhone, Show Full History in a page’s Back and Forward menus opens History.
-- On iPhone, Crest asks before downloading a risky file from the page you’re viewing, instead of leaving the download waiting for approval.
+- A tab playing sound shows a speaker badge on its icon, which mutes or unmutes it, and bars behind its title that follow its sound on Chromium pages. Tabs taking part in tab sharing show a badge that goes to the other tab or stops sharing. Look and Feel can show the status in place of the tab’s icon, or turn the bars off.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/6365c5264b199a3523dd179eebe1432830cf4d69...3cf913e78b8a82417a71b6a46889712c2b326495) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.35-2026-10-11-1227-r227.1/Installer-Crest-0.7.35-development-2026-10-11-3cf913e-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/3cf913e78b8a82417a71b6a46889712c2b326495...7db3ba234d21f5e566ab07680d19ab525692f132) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.36-2026-10-11-1228-r228.1/Installer-Crest-0.7.36-development-2026-10-11-7db3ba2-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.35-2026-10-11-1227-r227.1/Installer-Crest-0.7.35-development-2026-10-11-3cf913e-arm64.dmg" length="216213636" type="application/octet-stream" sparkle:edSignature="tSrhlPhOP4wtcI2iKYQErrkxGcnIJtb0VOGFITFjmk6T8TGxA1IW+dXFxQ1cpxP8wfJfcmaeCHhhlnTN/v7TBA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.36-2026-10-11-1228-r228.1/Installer-Crest-0.7.36-development-2026-10-11-7db3ba2-arm64.dmg" length="216282757" type="application/octet-stream" sparkle:edSignature="T5SucchWS/omMukgQPsdLv596jZedpZyH5fesLyQqOM7+aiIRuqQaPwO1Rygiz0qUvY6Wagfj4SR/JhpI73SDQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -61,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: FNEMzecNR0i+JLYD7JXu7s9vL4AvJxVPrOOZ5csQW/IkYR5VCn4SOH4yuI39WRZEDqhOmZpf+/G8zK3Wvp3qBQ==
-length: 4115
+edSignature: NrEPsxmnA/3xqwA0cfZO2xYf7offf0Em9DP4Kh4wYTY6RHlHVbszooagGuBH/5+pgqdInnO/pnVuDXPd5nSsDQ==
+length: 4215
 -->
