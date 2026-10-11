@@ -3,6 +3,6 @@
   "channels": {
     "stable": "window-focus-bridge-release-format",
     "development": "search-logos-keep-proportions",
-    "nightly": "command-palette-ranks-and-searches-sites"
+    "nightly": "search-logos-keep-proportions"
   }
 }
