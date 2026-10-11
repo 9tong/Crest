@@ -6,30 +6,42 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.7.33</title>
-            <pubDate>Sun, 11 Oct 2026 16:11:01 +0000</pubDate>
+            <title>0.7.34</title>
+            <pubDate>Sun, 11 Oct 2026 18:19:40 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1225</sparkle:version>
-            <sparkle:shortVersionString>0.7.33</sparkle:shortVersionString>
+            <sparkle:version>1226</sparkle:version>
+            <sparkle:shortVersionString>0.7.34</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
+### New
+
+- On iPhone and iPad, Start on new tab in General settings opens Crest on a new tab in your default Space, ready to search.
+
+### Improved
+
+- On iPhone the sidebar stays full screen. Turn on Allow floating sidebar in General settings to float it over the page instead.
+- A Space’s Search with menu shows each provider’s icon, like the default search menu.
+- Each section in Settings has its own color, drawn from the Space templates.
+
 ### Fixed
 
-- Switching Spaces no longer makes Crest quit unexpectedly on macOS 26.
-- Settings opens in your browser window instead of a new window while a Quick Window is in front.
+- Buttons in the floating sidebar respond to taps, and its Settings button opens Settings.
+- Settings on iPhone and iPad shows Crest’s real app icon, including the one you chose, in light and dark.
+- On iPhone and iPad, General settings shows whether Crest is your default browser instead of Unavailable when iOS limits how often Crest can check.
+- Edit Shortcuts and Add Provider in Search settings open right away on iPhone and iPad.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/d27a88c5bcb7bc48cf160e295d0dc7e8f6006f5e...cbccb7452444c53026004e2457d2bc09f2ca360d) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.33-2026-10-11-1225-r225.1/Installer-Crest-0.7.33-development-2026-10-11-cbccb74-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/cbccb7452444c53026004e2457d2bc09f2ca360d...6365c5264b199a3523dd179eebe1432830cf4d69) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.34-2026-10-11-1226-r226.1/Installer-Crest-0.7.34-development-2026-10-11-6365c52-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.33-2026-10-11-1225-r225.1/Installer-Crest-0.7.33-development-2026-10-11-cbccb74-arm64.dmg" length="216693893" type="application/octet-stream" sparkle:edSignature="D2xtmUhIRwu/AhpBbvWtvFNdJSJQ/xYZ4+Vn7KhTUOs7Kkwdb/WrYLHN6MZ520N95voxlO2EDXHNLJwqf5C/Dw=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.34-2026-10-11-1226-r226.1/Installer-Crest-0.7.34-development-2026-10-11-6365c52-arm64.dmg" length="216182404" type="application/octet-stream" sparkle:edSignature="OB8SCnNLgWYiDJZhZPZ5Msl7fQeAj+EqdP5rrH9QFwnDtmQS6OjGd6luB1X35Y7dwZ/Xsu3vm/sktRyM8XUJDg=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -61,6 +73,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 3DbJuIjyHw1A3ftznE/V4ZAi628t9pa96YcFqbO+Q9T62gHY1wLBOIXYUm/RE7nxBvKc661HeT7NrmOOQqf+AA==
-length: 4060
+edSignature: og1n2M00sTfJW+bLyJU/0sCzK+JeYKoZPV/kqSkoYkZheG9SvFSABFPv7vayq4I328Omd1xyKw6NY8TeKLxTAQ==
+length: 4775
 -->
