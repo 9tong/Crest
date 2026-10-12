@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "channels": {
-    "stable": "window-focus-bridge-release-format",
+    "stable": "crest-08-agents-palette-settings",
     "development": "2026-10-12-extension-files-own-one-type",
     "nightly": "agents-use-crest"
   }

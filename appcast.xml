@@ -6,6 +6,49 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
+            <title>0.8.0</title>
+            <pubDate>Mon, 12 Oct 2026 22:04:02 +0000</pubDate>
+            <link>https://crestbrowser.com/</link>
+            <sparkle:version>1236</sparkle:version>
+            <sparkle:shortVersionString>0.8.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[## Highlights
+
+Showing the 12 most recent highlights from 75 user-facing changes.
+
+### New
+
+- A tab playing sound shows a speaker badge on its icon, which mutes or unmutes it, and bars behind its title that follow its sound on Chromium pages. Tabs taking part in tab sharing show a badge that goes to the other tab or stops sharing. Look and Feel can show the status in place of the tab’s icon, or turn the bars off.
+- On Mac, coding agents such as Claude Code and Codex can use Crest as their browser in the Spaces you choose: open and read tabs, click and type, take screenshots, and read a page’s console and network requests. Turn it on in Settings › Agents. Crest asks before each new agent connects, and every tab an agent uses shows its badge.
+- Crest 0.8 lets coding agents use Crest as their browser on Mac, brings a rebuilt command palette and Settings, imports from many more browsers, and makes the sidebar quicker and more consistent.
+
+### Improved
+
+- Choose how much the sidebar’s tabs, folders and bars let the background show through, from Ultra Thin to Ultra Thick, in Look and Feel settings. Pinned tabs now sit closer under the address bar.
+- Tabs, folders, Split Views, pinned tabs and the address bar now share one shape and spacing that follows your corner setting.
+- Site Controls, Peek, notices and other floating panels use the same material as the sidebar.
+- With Capsule corners, single tabs are capsules, and Split Views and open folders round their corners to match.
+
+### Fixed
+
+- While a Peek is open, Copy Link, Share, Find, Zoom, Reload, Back, Forward, Print, Export as PDF and Save Web Archive act on the page in the Peek instead of the tab behind it, and Close Tab closes the Peek.
+- Command-G and Command-Shift-G move to the next and previous find-in-page match, and reopen the find bar with your last search.
+- The welcome card on iPhone lines up with the rest of the welcome page.
+- Crest no longer quits when it can’t make an edit, such as one on a tab that just closed or a change only a Space’s owner may make.
+- A page reporting something Crest can’t use no longer closes the app.
+
+---
+
+Stable releases are signed, notarized, and ready for everyday use.
+
+[View all changes](https://github.com/pauljoda/Crest/compare/c1af6dc1bcc9f43eb86fa8be18e557d0e7733247...8fe8b18063068746780c8848697a4bdf41113da2) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/v0.8.0/Installer-Crest-0.8.0-arm64.dmg)
+
+[Browse Stable releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Afalse)
+]]></description>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/v0.8.0/Installer-Crest-0.8.0-arm64.dmg" length="217319514" type="application/octet-stream" sparkle:edSignature="KHRTxKxcVi0wQ1xpKVo4l3bxmcq22Dath3n9sTEW5hPTzkXTiEbVhM3sp4mCRFZSXUL3T6bAKWSTRY38JmNaBg=="/>
+        </item>
+        <item>
             <title>0.7.39</title>
             <pubDate>Mon, 12 Oct 2026 18:27:16 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
@@ -114,6 +157,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: wsDpTs+A5fopBRwLIjAFasIXlC36Ix5bLEGjzBh82M1poiBfV7Yt0TCtrsYfLczWRtL9E0SVGfXYA4FY4m09Cg==
-length: 8290
+edSignature: JD6iHIyBTqMIuQDBFfl3BJdsZDFBAFS4qvVAyswvlp8IMFEpJ4bC4tHQhNHTABtR762KZhXVfPRfEtpPYD66Dg==
+length: 11681
 -->
