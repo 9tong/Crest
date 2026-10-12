@@ -6,29 +6,48 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.7.32</title>
-            <pubDate>Sun, 11 Oct 2026 15:30:13 +0000</pubDate>
+            <title>0.7.39</title>
+            <pubDate>Mon, 12 Oct 2026 18:27:16 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1224</sparkle:version>
-            <sparkle:shortVersionString>0.7.32</sparkle:shortVersionString>
+            <sparkle:version>1234</sparkle:version>
+            <sparkle:shortVersionString>0.7.39</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
+Showing the 12 most recent highlights from 16 user-facing changes.
+
+### New
+
+- A tab playing sound shows a speaker badge on its icon, which mutes or unmutes it, and bars behind its title that follow its sound on Chromium pages. Tabs taking part in tab sharing show a badge that goes to the other tab or stops sharing. Look and Feel can show the status in place of the tab’s icon, or turn the bars off.
+- On Mac, coding agents such as Claude Code and Codex can use Crest as their browser in the Spaces you choose: open and read tabs, click and type, take screenshots, and read a page’s console and network requests. Turn it on in Settings › Agents. Crest asks before each new agent connects, and every tab an agent uses shows its badge.
+
+### Improved
+
+- A Space’s Search with menu shows each provider’s icon, like the default search menu.
+- Each section in Settings has its own color, drawn from the Space templates.
+
 ### Fixed
 
-- Search engine and assistant logos in Settings keep their proportions instead of looking stretched.
+- Buttons in the floating sidebar respond to taps, and its Settings button opens Settings.
+- Settings on iPhone and iPad shows Crest’s real app icon, including the one you chose, in light and dark.
+- On iPhone and iPad, General settings shows whether Crest is your default browser instead of Unavailable when iOS limits how often Crest can check.
+- Edit Shortcuts and Add Provider in Search settings open right away on iPhone and iPad.
+- On iPhone, Show Full History in a page’s Back and Forward menus opens History.
+- On iPhone, Crest asks before downloading a risky file from the page you’re viewing, instead of leaving the download waiting for approval.
+- While a Peek is open, Copy Link, Share, Find, Zoom, Reload, Back, Forward, Print, Export as PDF and Save Web Archive act on the page in the Peek instead of the tab behind it, and Close Tab closes the Peek.
+- Command-G and Command-Shift-G move to the next and previous find-in-page match, and reopen the find bar with your last search.
 
 ---
 
 Nightly builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/c3e712f200fb1fc90935c09eec48e1f41ae1c330...d27a88c5bcb7bc48cf160e295d0dc7e8f6006f5e) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.7.32-2026-10-11-1224-r224.1/Installer-Crest-0.7.32-nightly-2026-10-11-d27a88c-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/d27a88c5bcb7bc48cf160e295d0dc7e8f6006f5e...6260c989e98e71662984116937a77eaf7492f73f) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.7.39-2026-10-12-1234-r234.1/Installer-Crest-0.7.39-nightly-2026-10-12-6260c98-arm64.dmg)
 
 [Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.7.32-2026-10-11-1224-r224.1/Installer-Crest-0.7.32-nightly-2026-10-11-d27a88c-arm64.dmg" length="216733309" type="application/octet-stream" sparkle:edSignature="GL+Lo9IiRex34LXHF+3I+rffW1x1IhlZaTR1G2EVIIDcRcZdJ/B1G6ktoE9fzzdqFs2VTxww323CP681iEwdDg=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.7.39-2026-10-12-1234-r234.1/Installer-Crest-0.7.39-nightly-2026-10-12-6260c98-arm64.dmg" length="217088658" type="application/octet-stream" sparkle:edSignature="ZcvFHSETcuoTngNSQ4Gfma1ULX5IRO3hcO2bwzs6NQwoEl6GZEC+fyytW8LNWeqBEtjViEZe8AMqF0NuStnKAg=="/>
         </item>
         <item>
             <title>0.7.2</title>
@@ -95,6 +114,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: ++me5OeVLD74JebAxIl0Duwq29JlDwYyy3OGkcLYXn91SLt6Y/BaF3nQdTBiCCyV0Sqz72FV3vWzjLn1w8TUCg==
-length: 6464
+edSignature: wsDpTs+A5fopBRwLIjAFasIXlC36Ix5bLEGjzBh82M1poiBfV7Yt0TCtrsYfLczWRtL9E0SVGfXYA4FY4m09Cg==
+length: 8290
 -->
