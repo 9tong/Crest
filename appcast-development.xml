@@ -6,31 +6,36 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.7.83</title>
-            <pubDate>Mon, 12 Oct 2026 20:27:19 +0000</pubDate>
+            <title>0.8.0</title>
+            <pubDate>Mon, 12 Oct 2026 22:46:01 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1235</sparkle:version>
-            <sparkle:shortVersionString>0.7.83</sparkle:shortVersionString>
+            <sparkle:version>1237</sparkle:version>
+            <sparkle:shortVersionString>0.8.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### Fixed
+### New
 
-- Line up the welcome card with the rest of the iPhone welcome page
-- Refuse an edit Crest cannot make, such as one on a tab that just closed or a change only a Space's owner may make, instead of quitting.
-- Keep a page's report that Crest can't use from closing the app
+- Crest 0.8 lets coding agents use Crest as their browser on Mac, brings a rebuilt command palette and Settings, imports from many more browsers, and makes the sidebar quicker and more consistent.
+
+### Improved
+
+- Choose how much the sidebar’s tabs, folders and bars let the background show through, from Ultra Thin to Ultra Thick, in Look and Feel settings. Pinned tabs now sit closer under the address bar.
+- Tabs, folders, Split Views, pinned tabs and the address bar now share one shape and spacing that follows your corner setting.
+- Site Controls, Peek, notices and other floating panels use the same material as the sidebar.
+- With Capsule corners, single tabs are capsules, and Split Views and open folders round their corners to match.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/6260c989e98e71662984116937a77eaf7492f73f...56df0266b741e99aee96981b2058e35d9aca20a1) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.83-2026-10-12-1235-r235.1/Installer-Crest-0.7.83-development-2026-10-12-56df026-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/56df0266b741e99aee96981b2058e35d9aca20a1...8fe8b18063068746780c8848697a4bdf41113da2) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.0-2026-10-12-1237-r237.1/Installer-Crest-0.8.0-development-2026-10-12-8fe8b18-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.83-2026-10-12-1235-r235.1/Installer-Crest-0.7.83-development-2026-10-12-56df026-arm64.dmg" length="217306777" type="application/octet-stream" sparkle:edSignature="ZA4ctCukL+xBy9P0ESip305jTvKrIifd5TchutOlXMpdB80UzIxzIeoZxXP+a6WxvcmKht2eN4HRNQPFG3+oAQ=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.0-2026-10-12-1237-r237.1/Installer-Crest-0.8.0-development-2026-10-12-8fe8b18-arm64.dmg" length="217345176" type="application/octet-stream" sparkle:edSignature="XGX/tF5EocxZZe6/8YKjNahH1lcbG83YM2q+FO4QaS0gT/BR4L0hH08sRp4tRtoeQsmw7hAVH03Vi9aSOWwnAg=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -62,6 +67,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: XC4DsjScOIWSOEwwvJjtlk4zTmv5fsf0y35NT/Z9KT+JnJ2mUFNNvRjBPN/wBS9qxEXau3YKylb540p/f/HuDg==
-length: 4161
+edSignature: y9lkgg/88vo5mG//o78jSz+lc6VV6qxDwIXoJiX6P3MUhpG9eW3ptY99vB050QO2xnIQ3kNPp44LYbr4b0v5CQ==
+length: 4629
 -->
