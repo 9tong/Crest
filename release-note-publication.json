@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "window-focus-bridge-release-format",
-    "development": "agents-use-crest",
+    "development": "2026-10-12-extension-files-own-one-type",
     "nightly": "agents-use-crest"
   }
 }

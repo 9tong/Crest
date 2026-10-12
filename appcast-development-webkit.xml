@@ -6,29 +6,31 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.7.39</title>
-            <pubDate>Mon, 12 Oct 2026 14:53:12 +0000</pubDate>
+            <title>0.7.83</title>
+            <pubDate>Mon, 12 Oct 2026 20:27:26 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1233</sparkle:version>
-            <sparkle:shortVersionString>0.7.39</sparkle:shortVersionString>
+            <sparkle:version>1235</sparkle:version>
+            <sparkle:shortVersionString>0.7.83</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
+### Fixed
 
-- On Mac, coding agents such as Claude Code and Codex can use Crest as their browser in the Spaces you choose: open and read tabs, click and type, take screenshots, and read a page’s console and network requests. Turn it on in Settings › Agents. Crest asks before each new agent connects, and every tab an agent uses shows its badge.
+- Line up the welcome card with the rest of the iPhone welcome page
+- Refuse an edit Crest cannot make, such as one on a tab that just closed or a change only a Space's owner may make, instead of quitting.
+- Keep a page's report that Crest can't use from closing the app
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/d8b6e5f4b3edea518ef1099fcafa30278edbbdf5...6260c989e98e71662984116937a77eaf7492f73f) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.39-2026-10-12-1233-r233.1/Installer-Crest-0.7.39-development-2026-10-12-6260c98-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/6260c989e98e71662984116937a77eaf7492f73f...56df0266b741e99aee96981b2058e35d9aca20a1) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.7.83-2026-10-12-1235-r235.1/Installer-Crest-0.7.83-development-2026-10-12-56df026-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.39-2026-10-12-1233-r233.1/Installer-Crest-0.7.39-development-2026-10-12-6260c98-arm64.dmg" length="216996506" type="application/octet-stream" sparkle:edSignature="IjDRu8KLgjmDvB5k/haHx9yothOpB/OIyxVGBNcAYW9IS2lFZvLmS4Z2YRBAjZTMelmbC5BnzveAPaybu6+NDw=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.7.83-2026-10-12-1235-r235.1/Installer-Crest-0.7.83-development-2026-10-12-56df026-arm64.dmg" length="217306777" type="application/octet-stream" sparkle:edSignature="ZA4ctCukL+xBy9P0ESip305jTvKrIifd5TchutOlXMpdB80UzIxzIeoZxXP+a6WxvcmKht2eN4HRNQPFG3+oAQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +62,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: EDZpLp4142UhBwQNzDQeEPkMRvU4UsJFyY1GDyrqj0uu2F9PRQi9YvuHJnMAeSqK1VKu8Bc2pV/BP+rQZT3PBQ==
-length: 4226
+edSignature: n/gl0gHGbyX0NM7p7smWTWF2tohrFb6Jh5KxPjc1UqLX9K/kS8dWVLxsuP5hZkNQDjtUEbqCBMntu64lzX38BA==
+length: 4161
 -->
