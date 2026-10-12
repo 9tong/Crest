@@ -6,6 +6,30 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
+            <title>0.8.1</title>
+            <pubDate>Mon, 12 Oct 2026 23:35:12 +0000</pubDate>
+            <link>https://crestbrowser.com/</link>
+            <sparkle:version>1238</sparkle:version>
+            <sparkle:shortVersionString>0.8.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[## Highlights
+
+### Fixed
+
+- On pinned tabs, the sound and sharing badge sits in the tile’s bottom corner instead of over the site icon, so the icon is easy to click.
+
+---
+
+Stable releases are signed, notarized, and ready for everyday use.
+
+[View all changes](https://github.com/pauljoda/Crest/compare/8fe8b18063068746780c8848697a4bdf41113da2...36b7a5830e7bd5d949ebf55724087a119eaeffa6) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/v0.8.1/Installer-Crest-0.8.1-arm64.dmg)
+
+[Browse Stable releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Afalse)
+]]></description>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/v0.8.1/Installer-Crest-0.8.1-arm64.dmg" length="217328730" type="application/octet-stream" sparkle:edSignature="z7BNx5ORoV+ghpUuZxM67VYi00frlOyJkD+aH0dGBLqOWAYWoKdIWZbu0ChhVK+bqSwdQ4AHlCCO1P2uGVIsAg=="/>
+        </item>
+        <item>
             <title>0.8.0</title>
             <pubDate>Mon, 12 Oct 2026 22:04:07 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
@@ -157,6 +181,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: wiFvI1zxnndVYKtvELSGTNJe0ynC8aUtClZ8RA8hgV1ys5so8UATU6L0EfCQLhBT+disFOzV90YnM+YHv/LyBw==
-length: 11681
+edSignature: 6uCdiFM0kPHuTD4RBUm1qxeZG+nBnI6fb72eIpaC7MNF/tXpFNFuh9BcixA1310O67IoDiTejysYbK9B+zahBA==
+length: 13104
 -->

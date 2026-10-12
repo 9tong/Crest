@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "channels": {
-    "stable": "crest-08-agents-palette-settings",
+    "stable": "pinned-tab-status-badge-corner",
     "development": "crest-08-agents-palette-settings",
     "nightly": "agents-use-crest"
   }
