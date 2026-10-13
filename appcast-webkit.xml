@@ -7,6 +7,45 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>Crest</title>
         <item>
             <title>0.8.1</title>
+            <pubDate>Tue, 13 Oct 2026 16:38:54 +0000</pubDate>
+            <link>https://crestbrowser.com/</link>
+            <sparkle:channel>nightly</sparkle:channel>
+            <sparkle:version>1243</sparkle:version>
+            <sparkle:shortVersionString>0.8.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[## Highlights
+
+### New
+
+- Crest 0.8 lets coding agents use Crest as their browser on Mac, brings a rebuilt command palette and Settings, imports from many more browsers, and makes the sidebar quicker and more consistent.
+
+### Improved
+
+- Choose how much the sidebar’s tabs, folders and bars let the background show through, from Ultra Thin to Ultra Thick, in Look and Feel settings. Pinned tabs now sit closer under the address bar.
+- Tabs, folders, Split Views, pinned tabs and the address bar now share one shape and spacing that follows your corner setting.
+- Site Controls, Peek, notices and other floating panels use the same material as the sidebar.
+- With Capsule corners, single tabs are capsules, and Split Views and open folders round their corners to match.
+
+### Fixed
+
+- The welcome card on iPhone lines up with the rest of the welcome page.
+- Crest no longer quits when it can’t make an edit, such as one on a tab that just closed or a change only a Space’s owner may make.
+- A page reporting something Crest can’t use no longer closes the app.
+- On pinned tabs, the sound and sharing badge sits in the tile’s bottom corner instead of over the site icon, so the icon is easy to click.
+
+---
+
+Nightly builds contain the newest changes and may be less reliable than stable releases.
+
+[View all changes](https://github.com/pauljoda/Crest/compare/6260c989e98e71662984116937a77eaf7492f73f...55f266c0cbaf9e683cce5a59a991bed23f504421) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.1-2026-10-13-1243-r243.1/Installer-Crest-0.8.1-nightly-2026-10-13-55f266c-arm64.dmg)
+
+[Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
+]]></description>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.1-2026-10-13-1243-r243.1/Installer-Crest-0.8.1-nightly-2026-10-13-55f266c-arm64.dmg" length="217362577" type="application/octet-stream" sparkle:edSignature="mI1QLNM0XWs45+zpnUGiKcM8iBPcJbK0+HJQaz0iTcdldE+IXadQz6sA6PvSzYkf3Ji+vR+W6ASWb79YNjleBw=="/>
+        </item>
+        <item>
+            <title>0.8.1</title>
             <pubDate>Mon, 12 Oct 2026 23:35:12 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:version>1238</sparkle:version>
@@ -28,117 +67,6 @@ Stable releases are signed, notarized, and ready for everyday use.
 [Browse Stable releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Afalse)
 ]]></description>
             <enclosure url="https://github.com/pauljoda/Crest/releases/download/v0.8.1/Installer-Crest-0.8.1-arm64.dmg" length="217328730" type="application/octet-stream" sparkle:edSignature="z7BNx5ORoV+ghpUuZxM67VYi00frlOyJkD+aH0dGBLqOWAYWoKdIWZbu0ChhVK+bqSwdQ4AHlCCO1P2uGVIsAg=="/>
-        </item>
-        <item>
-            <title>0.8.0</title>
-            <pubDate>Mon, 12 Oct 2026 22:04:07 +0000</pubDate>
-            <link>https://crestbrowser.com/</link>
-            <sparkle:version>1236</sparkle:version>
-            <sparkle:shortVersionString>0.8.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Highlights
-
-Showing the 12 most recent highlights from 75 user-facing changes.
-
-### New
-
-- A tab playing sound shows a speaker badge on its icon, which mutes or unmutes it, and bars behind its title that follow its sound on Chromium pages. Tabs taking part in tab sharing show a badge that goes to the other tab or stops sharing. Look and Feel can show the status in place of the tab’s icon, or turn the bars off.
-- On Mac, coding agents such as Claude Code and Codex can use Crest as their browser in the Spaces you choose: open and read tabs, click and type, take screenshots, and read a page’s console and network requests. Turn it on in Settings › Agents. Crest asks before each new agent connects, and every tab an agent uses shows its badge.
-- Crest 0.8 lets coding agents use Crest as their browser on Mac, brings a rebuilt command palette and Settings, imports from many more browsers, and makes the sidebar quicker and more consistent.
-
-### Improved
-
-- Choose how much the sidebar’s tabs, folders and bars let the background show through, from Ultra Thin to Ultra Thick, in Look and Feel settings. Pinned tabs now sit closer under the address bar.
-- Tabs, folders, Split Views, pinned tabs and the address bar now share one shape and spacing that follows your corner setting.
-- Site Controls, Peek, notices and other floating panels use the same material as the sidebar.
-- With Capsule corners, single tabs are capsules, and Split Views and open folders round their corners to match.
-
-### Fixed
-
-- While a Peek is open, Copy Link, Share, Find, Zoom, Reload, Back, Forward, Print, Export as PDF and Save Web Archive act on the page in the Peek instead of the tab behind it, and Close Tab closes the Peek.
-- Command-G and Command-Shift-G move to the next and previous find-in-page match, and reopen the find bar with your last search.
-- The welcome card on iPhone lines up with the rest of the welcome page.
-- Crest no longer quits when it can’t make an edit, such as one on a tab that just closed or a change only a Space’s owner may make.
-- A page reporting something Crest can’t use no longer closes the app.
-
----
-
-Stable releases are signed, notarized, and ready for everyday use.
-
-[View all changes](https://github.com/pauljoda/Crest/compare/c1af6dc1bcc9f43eb86fa8be18e557d0e7733247...8fe8b18063068746780c8848697a4bdf41113da2) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/v0.8.0/Installer-Crest-0.8.0-arm64.dmg)
-
-[Browse Stable releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Afalse)
-]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/v0.8.0/Installer-Crest-0.8.0-arm64.dmg" length="217319514" type="application/octet-stream" sparkle:edSignature="KHRTxKxcVi0wQ1xpKVo4l3bxmcq22Dath3n9sTEW5hPTzkXTiEbVhM3sp4mCRFZSXUL3T6bAKWSTRY38JmNaBg=="/>
-        </item>
-        <item>
-            <title>0.7.39</title>
-            <pubDate>Mon, 12 Oct 2026 18:27:21 +0000</pubDate>
-            <link>https://crestbrowser.com/</link>
-            <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1234</sparkle:version>
-            <sparkle:shortVersionString>0.7.39</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Highlights
-
-Showing the 12 most recent highlights from 16 user-facing changes.
-
-### New
-
-- A tab playing sound shows a speaker badge on its icon, which mutes or unmutes it, and bars behind its title that follow its sound on Chromium pages. Tabs taking part in tab sharing show a badge that goes to the other tab or stops sharing. Look and Feel can show the status in place of the tab’s icon, or turn the bars off.
-- On Mac, coding agents such as Claude Code and Codex can use Crest as their browser in the Spaces you choose: open and read tabs, click and type, take screenshots, and read a page’s console and network requests. Turn it on in Settings › Agents. Crest asks before each new agent connects, and every tab an agent uses shows its badge.
-
-### Improved
-
-- A Space’s Search with menu shows each provider’s icon, like the default search menu.
-- Each section in Settings has its own color, drawn from the Space templates.
-
-### Fixed
-
-- Buttons in the floating sidebar respond to taps, and its Settings button opens Settings.
-- Settings on iPhone and iPad shows Crest’s real app icon, including the one you chose, in light and dark.
-- On iPhone and iPad, General settings shows whether Crest is your default browser instead of Unavailable when iOS limits how often Crest can check.
-- Edit Shortcuts and Add Provider in Search settings open right away on iPhone and iPad.
-- On iPhone, Show Full History in a page’s Back and Forward menus opens History.
-- On iPhone, Crest asks before downloading a risky file from the page you’re viewing, instead of leaving the download waiting for approval.
-- While a Peek is open, Copy Link, Share, Find, Zoom, Reload, Back, Forward, Print, Export as PDF and Save Web Archive act on the page in the Peek instead of the tab behind it, and Close Tab closes the Peek.
-- Command-G and Command-Shift-G move to the next and previous find-in-page match, and reopen the find bar with your last search.
-
----
-
-Nightly builds contain the newest changes and may be less reliable than stable releases.
-
-[View all changes](https://github.com/pauljoda/Crest/compare/d27a88c5bcb7bc48cf160e295d0dc7e8f6006f5e...6260c989e98e71662984116937a77eaf7492f73f) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.7.39-2026-10-12-1234-r234.1/Installer-Crest-0.7.39-nightly-2026-10-12-6260c98-arm64.dmg)
-
-[Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
-]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.7.39-2026-10-12-1234-r234.1/Installer-Crest-0.7.39-nightly-2026-10-12-6260c98-arm64.dmg" length="217088658" type="application/octet-stream" sparkle:edSignature="ZcvFHSETcuoTngNSQ4Gfma1ULX5IRO3hcO2bwzs6NQwoEl6GZEC+fyytW8LNWeqBEtjViEZe8AMqF0NuStnKAg=="/>
-        </item>
-        <item>
-            <title>0.7.2</title>
-            <pubDate>Sat, 03 Oct 2026 15:25:03 +0000</pubDate>
-            <link>https://crestbrowser.com/</link>
-            <sparkle:version>1173</sparkle:version>
-            <sparkle:shortVersionString>0.7.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Highlights
-
-### Fixed
-
-- Crest windows on Mac no longer keep the system's WindowServer busy, which could use a lot of CPU on large or high-refresh external displays. The focused-window transparency setting has been removed.
-
----
-
-Stable releases are signed, notarized, and ready for everyday use.
-
-[View all changes](https://github.com/pauljoda/Crest/compare/0fde8b599818e0cf03ca2513a40227818650bf0e...c1af6dc1bcc9f43eb86fa8be18e557d0e7733247) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/v0.7.2/Installer-Crest-0.7.2-arm64.dmg)
-
-[Browse Stable releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Afalse)
-]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/v0.7.2/Installer-Crest-0.7.2-arm64.dmg" length="215313989" type="application/octet-stream" sparkle:edSignature="EWBi40WcFJdLLt4/JQRPUg+z5GH8e2ZdNdlYmCFWV3B7ut0XFd+w/FZ9ylckZCDyl6lSafIlyJsrQwWOl39YCA=="/>
         </item>
         <item>
             <title>0.6.481</title>
@@ -181,6 +109,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 6uCdiFM0kPHuTD4RBUm1qxeZG+nBnI6fb72eIpaC7MNF/tXpFNFuh9BcixA1310O67IoDiTejysYbK9B+zahBA==
-length: 13104
+edSignature: mkmsd7rlEGG3GJUGAOud6XDJk9dIdJcfZ/ogx5F5NSLB8snU6/Sy5rUJN9AYxNgbj1b+DZhZuMqWnffaUOfVBA==
+length: 7480
 -->
