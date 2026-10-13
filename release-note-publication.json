@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "site-controls-extension-menu-stays-open",
+    "development": "pin-layout-honors-chosen-columns",
     "nightly": "pinned-tab-status-badge-corner"
   }
 }
