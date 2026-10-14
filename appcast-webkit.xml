@@ -6,43 +6,32 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.1</title>
-            <pubDate>Tue, 13 Oct 2026 16:38:54 +0000</pubDate>
+            <title>0.8.5</title>
+            <pubDate>Wed, 14 Oct 2026 14:22:37 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1243</sparkle:version>
-            <sparkle:shortVersionString>0.8.1</sparkle:shortVersionString>
+            <sparkle:version>1250</sparkle:version>
+            <sparkle:shortVersionString>0.8.5</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
-
-- Crest 0.8 lets coding agents use Crest as their browser on Mac, brings a rebuilt command palette and Settings, imports from many more browsers, and makes the sidebar quicker and more consistent.
-
-### Improved
-
-- Choose how much the sidebar’s tabs, folders and bars let the background show through, from Ultra Thin to Ultra Thick, in Look and Feel settings. Pinned tabs now sit closer under the address bar.
-- Tabs, folders, Split Views, pinned tabs and the address bar now share one shape and spacing that follows your corner setting.
-- Site Controls, Peek, notices and other floating panels use the same material as the sidebar.
-- With Capsule corners, single tabs are capsules, and Split Views and open folders round their corners to match.
-
 ### Fixed
 
-- The welcome card on iPhone lines up with the rest of the welcome page.
-- Crest no longer quits when it can’t make an edit, such as one on a tab that just closed or a change only a Space’s owner may make.
-- A page reporting something Crest can’t use no longer closes the app.
-- On pinned tabs, the sound and sharing badge sits in the tile’s bottom corner instead of over the site icon, so the icon is easy to click.
+- Right-clicking an extension in Site Controls shows its menu without closing Site Controls.
+- Pins fill each row to the number chosen in Settings, as far as the sidebar width allows, instead of evening out the rows.
+- Pressing Option-Command-I again closes the Web Inspector or Chromium DevTools instead of leaving it open.
+- Closing find in page returns the keyboard to the page, including a page in Peek, so arrow keys and Space scroll right away.
 
 ---
 
 Nightly builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/6260c989e98e71662984116937a77eaf7492f73f...55f266c0cbaf9e683cce5a59a991bed23f504421) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.1-2026-10-13-1243-r243.1/Installer-Crest-0.8.1-nightly-2026-10-13-55f266c-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/55f266c0cbaf9e683cce5a59a991bed23f504421...fdee1e3d41566ba4cf245d528d325b438b8be48b) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.5-2026-10-14-1250-r250.1/Installer-Crest-0.8.5-nightly-2026-10-14-fdee1e3-arm64.dmg)
 
 [Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.1-2026-10-13-1243-r243.1/Installer-Crest-0.8.1-nightly-2026-10-13-55f266c-arm64.dmg" length="217362577" type="application/octet-stream" sparkle:edSignature="mI1QLNM0XWs45+zpnUGiKcM8iBPcJbK0+HJQaz0iTcdldE+IXadQz6sA6PvSzYkf3Ji+vR+W6ASWb79YNjleBw=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.5-2026-10-14-1250-r250.1/Installer-Crest-0.8.5-nightly-2026-10-14-fdee1e3-arm64.dmg" length="217349265" type="application/octet-stream" sparkle:edSignature="SpzCs4jK+AtkLggMzVXQDgyGPgIhAwjnJ7g3tEAKr3XqWX4VboPIuZSVmP2KE7xPBKeEuwkteqbx7uMEZdhmBA=="/>
         </item>
         <item>
             <title>0.8.1</title>
@@ -109,6 +98,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: mkmsd7rlEGG3GJUGAOud6XDJk9dIdJcfZ/ogx5F5NSLB8snU6/Sy5rUJN9AYxNgbj1b+DZhZuMqWnffaUOfVBA==
-length: 7480
+edSignature: C9gokhGrP2vEwEEu5YxlsbG8x4i5jBDzUVMxtxanmJjkW2e0t0RWhiSPou7a69pwaOhRPLy83/8HplmOdT1JCg==
+length: 6749
 -->

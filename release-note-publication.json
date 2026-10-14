@@ -3,6 +3,6 @@
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
     "development": "pin-layout-honors-chosen-columns",
-    "nightly": "pinned-tab-status-badge-corner"
+    "nightly": "find-close-returns-page-focus"
   }
 }
