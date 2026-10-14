@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "pin-layout-honors-chosen-columns",
+    "development": "sidebar-hides-when-pointer-leaves-window",
     "nightly": "find-close-returns-page-focus"
   }
 }
