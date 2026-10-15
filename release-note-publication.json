@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "translation-download-languages-no-crash",
+    "development": "chromium-whole-page-translation",
     "nightly": "find-close-returns-page-focus"
   }
 }

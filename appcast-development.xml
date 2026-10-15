@@ -6,29 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.10</title>
-            <pubDate>Thu, 15 Oct 2026 15:38:06 +0000</pubDate>
+            <title>0.8.11</title>
+            <pubDate>Thu, 15 Oct 2026 16:13:18 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1256</sparkle:version>
-            <sparkle:shortVersionString>0.8.10</sparkle:shortVersionString>
+            <sparkle:version>1257</sparkle:version>
+            <sparkle:shortVersionString>0.8.11</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### Fixed
+### New
 
-- Download Languages in Page Translation settings opens language downloads without Crest quitting.
+- Translate whole pages on device in Chromium too, with the same translation toolbar, automatic translation and Show Original as WebKit pages.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/0b278df26f4509ff5d3eef83e11c64f170c9541b...bddae51d878abcd9ab08b4748b7e567a7f360d60) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.10-2026-10-15-1256-r256.1/Installer-Crest-0.8.10-development-2026-10-15-bddae51-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/bddae51d878abcd9ab08b4748b7e567a7f360d60...bd3a7fa8dd217628ed68cbe47798cafe26044f9d) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.11-2026-10-15-1257-r257.1/Installer-Crest-0.8.11-development-2026-10-15-bd3a7fa-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.10-2026-10-15-1256-r256.1/Installer-Crest-0.8.10-development-2026-10-15-bddae51-arm64.dmg" length="217397401" type="application/octet-stream" sparkle:edSignature="rhakm+uNMRcDga9RTgKsy2ICleyWQzdhZFbCqVPYcGV71/t9NhLJOXSyZoOoxrgW+ox22Mv3cyYqD4rsCnDdDA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.11-2026-10-15-1257-r257.1/Installer-Crest-0.8.11-development-2026-10-15-bd3a7fa-arm64.dmg" length="217429145" type="application/octet-stream" sparkle:edSignature="qAes+zOHieERMZrUiYibp7vxv42gPJpVPR5G2XV8PS9C72HCYUtqeagDjOcRx/Fi9v83KE5nuVrgRjR5UMyyDQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: glOHeBi8VTR4G/KhJiQ0DtmMDQ9vkB0QGtYwkMPKN0ikQ306cJoiwmA7jQq1d8JjTbk6sd5decrsPJ1RnW4VCA==
-length: 3989
+edSignature: zuGFvswUpj2vglbZsTpowLHWAQoQdIH2mSzoaXNZlpOYxeDFeJPSIWgPU5Mo5WIKtK0D2LDn9ytvDvC2Td6KDA==
+length: 4031
 -->
