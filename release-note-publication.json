@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "sidebar-offscreen-page-resizing",
+    "development": "smoother-live-resize",
     "nightly": "find-close-returns-page-focus"
   }
 }
