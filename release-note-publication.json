@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "cross-space-link-tab-activation",
+    "development": "sidebar-stays-hidden-after-focus-moves-away",
     "nightly": "find-close-returns-page-focus"
   }
 }
