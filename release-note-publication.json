@@ -3,6 +3,6 @@
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
     "development": "page-commands-follow-quick-window",
-    "nightly": "find-close-returns-page-focus"
+    "nightly": "page-commands-follow-quick-window"
   }
 }

@@ -6,32 +6,48 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.5</title>
-            <pubDate>Wed, 14 Oct 2026 14:22:37 +0000</pubDate>
+            <title>0.8.16</title>
+            <pubDate>Fri, 16 Oct 2026 13:44:58 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1250</sparkle:version>
-            <sparkle:shortVersionString>0.8.5</sparkle:shortVersionString>
+            <sparkle:version>1264</sparkle:version>
+            <sparkle:shortVersionString>0.8.16</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
+Showing the 12 most recent highlights from 13 user-facing changes.
+
+### New
+
+- Translate whole pages on device in Chromium too, with the same translation toolbar, automatic translation and Show Original as WebKit pages.
+
+### Improved
+
+- Resizing the window, a split or the sidebar is smoother.
+- The History, Archive and Downloads shortcuts open and close their list, showing the sidebar for the moment when it is hidden, and Command-F searches the list that is open.
+
 ### Fixed
 
-- Right-clicking an extension in Site Controls shows its menu without closing Site Controls.
-- Pins fill each row to the number chosen in Settings, as far as the sidebar width allows, instead of evening out the rows.
-- Pressing Option-Command-I again closes the Web Inspector or Chromium DevTools instead of leaving it open.
-- Closing find in page returns the keyboard to the page, including a page in Peek, so arrow keys and Space scroll right away.
+- Showing and hiding the sidebar is smoother when several Spaces are open.
+- Switching Spaces again before the slide finishes keeps sliding toward the next Space instead of jumping to it.
+- When the sidebar moves to the other side of the window, the window buttons travel with it instead of arriving first.
+- Download Languages in Page Translation settings opens language downloads without Crest quitting.
+- Pages in more languages, such as Swedish, now translate, and a page in a language Apple Translation doesn’t support says so instead of offering a translation that fails.
+- Opening a link in another Space shows the link there instead of the Start Page.
+- Control-A and Control-E move to the start and end of the line in the address bar instead of jumping between result sections.
+- A hidden sidebar no longer slides back out on its own when you click into another app or another Mac with the pointer at the window edge.
+- Back, Reload, Find, Zoom, Copy Page Link, Print and the other page commands work in a Quick Window.
 
 ---
 
 Nightly builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/55f266c0cbaf9e683cce5a59a991bed23f504421...fdee1e3d41566ba4cf245d528d325b438b8be48b) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.5-2026-10-14-1250-r250.1/Installer-Crest-0.8.5-nightly-2026-10-14-fdee1e3-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/fdee1e3d41566ba4cf245d528d325b438b8be48b...2b661960d1013f9101417871ebdfeb8796dab253) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.16-2026-10-16-1264-r264.1/Installer-Crest-0.8.16-nightly-2026-10-16-2b66196-arm64.dmg)
 
 [Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.5-2026-10-14-1250-r250.1/Installer-Crest-0.8.5-nightly-2026-10-14-fdee1e3-arm64.dmg" length="217349265" type="application/octet-stream" sparkle:edSignature="SpzCs4jK+AtkLggMzVXQDgyGPgIhAwjnJ7g3tEAKr3XqWX4VboPIuZSVmP2KE7xPBKeEuwkteqbx7uMEZdhmBA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.16-2026-10-16-1264-r264.1/Installer-Crest-0.8.16-nightly-2026-10-16-2b66196-arm64.dmg" length="217398930" type="application/octet-stream" sparkle:edSignature="6oxweNKVXvEwliR6hLbYZhpsbA2+FItDRVJKp5o+en688JLN1AUfr2HS9jGzKzZahEE5EM7tXO2rObFa8kOfCg=="/>
         </item>
         <item>
             <title>0.8.1</title>
@@ -98,6 +114,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: C9gokhGrP2vEwEEu5YxlsbG8x4i5jBDzUVMxtxanmJjkW2e0t0RWhiSPou7a69pwaOhRPLy83/8HplmOdT1JCg==
-length: 6749
+edSignature: sS+rTIV0a5hpRWYltVmn2bBM8HhqIXEKjm6pPLcLnfCOC8sM7mMSXKj0vYuf1DhTMxQzKWaVIKna18t48lDWDg==
+length: 7804
 -->
