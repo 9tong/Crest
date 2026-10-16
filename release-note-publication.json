@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "quick-window-page-tools",
+    "development": "space-slide-survives-sidebar-toggle",
     "nightly": "page-commands-follow-quick-window"
   }
 }
