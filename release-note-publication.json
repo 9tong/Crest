@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "http-dead-link-crash",
+    "development": "link-route-exact-site-name",
     "nightly": "page-commands-follow-quick-window"
   }
 }
