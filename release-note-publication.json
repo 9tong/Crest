@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "update-restart-quits-crest",
+    "development": "quit-after-space-deletion-fails",
     "nightly": "page-commands-follow-quick-window"
   }
 }
