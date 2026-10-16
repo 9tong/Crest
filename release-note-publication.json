@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "peek-close-returns-keyboard",
+    "development": "quick-window-page-tools",
     "nightly": "page-commands-follow-quick-window"
   }
 }
