@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "chromium-form-submit-autofill-save-crash",
+    "development": "setup-full-screen-look-choice",
     "nightly": "core-history-load-identity-on-failure"
   }
 }
