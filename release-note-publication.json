@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "settings-narrow-window-sidebar-clicks",
+    "development": "local-addresses-open-over-http",
     "nightly": "page-commands-follow-quick-window"
   }
 }
