@@ -6,29 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.30</title>
-            <pubDate>Sat, 17 Oct 2026 14:10:42 +0000</pubDate>
+            <title>0.8.31</title>
+            <pubDate>Sat, 17 Oct 2026 14:39:32 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1279</sparkle:version>
-            <sparkle:shortVersionString>0.8.30</sparkle:shortVersionString>
+            <sparkle:version>1280</sparkle:version>
+            <sparkle:shortVersionString>0.8.31</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### Fixed
+### Improved
 
-- Back and Forward keep working after a page opens in another engine, and take each page back to the engine it was shown in.
+- Tabs keep their back and forward history across engines after Crest relaunches, and a duplicated tab keeps it too.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/131c02060ee8204ac1d808f4e697b004e24633b3...3b8eeac554b976bfc2ea8a6ac99c6706b6718908) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.30-2026-10-17-1279-r279.1/Installer-Crest-0.8.30-development-2026-10-17-3b8eeac-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/3b8eeac554b976bfc2ea8a6ac99c6706b6718908...db5c45ec636a982c551eacfe6908c7f462827276) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.31-2026-10-17-1280-r280.1/Installer-Crest-0.8.31-development-2026-10-17-db5c45e-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.30-2026-10-17-1279-r279.1/Installer-Crest-0.8.30-development-2026-10-17-3b8eeac-arm64.dmg" length="219146393" type="application/octet-stream" sparkle:edSignature="+UEwuS7LUCYBBccZZdGorlYT/tmlehvbY2/AKIUFPJbqZmGMKnq1adtSAOJ/2rbwzUDf1oLaveA7hlHjA4wGCQ=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.31-2026-10-17-1280-r280.1/Installer-Crest-0.8.31-development-2026-10-17-db5c45e-arm64.dmg" length="219217561" type="application/octet-stream" sparkle:edSignature="YP1yStOP5y9iIdQdzFJwIUz941PnmIY7fTOMlR6sSNgLo4fUQ1Q9GAMAVEG2+w0XorJLUPUrZuKijYIjsGWTDQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: lOpItUGbWqukYAeWWPYRiZY31Jc5a1isyVbmbOwtkxpR+i0hQsuph1tHoIugyjftGXZYZ7xw3xzHmGwVKR3vDg==
-length: 4015
+edSignature: bZHykfzouZ7qbscXf5oHlRcfYeDQh8sqPe8R8wih7omuja2yBHkBw3vbDtf60gg5x3gtH3E5PaQubghxvTzVCg==
+length: 4010
 -->
