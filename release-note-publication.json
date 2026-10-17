@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "core-history-load-identity-on-failure",
+    "development": "history-refused-step-keeps-site-engine",
     "nightly": "core-history-load-identity-on-failure"
   }
 }
