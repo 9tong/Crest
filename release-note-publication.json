@@ -3,6 +3,6 @@
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
     "development": "core-history-load-identity-on-failure",
-    "nightly": "page-commands-follow-quick-window"
+    "nightly": "core-history-load-identity-on-failure"
   }
 }
