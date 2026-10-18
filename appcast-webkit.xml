@@ -6,42 +6,38 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.29</title>
-            <pubDate>Sat, 17 Oct 2026 13:00:42 +0000</pubDate>
+            <title>0.8.33</title>
+            <pubDate>Sun, 18 Oct 2026 13:07:15 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1278</sparkle:version>
-            <sparkle:shortVersionString>0.8.29</sparkle:shortVersionString>
+            <sparkle:version>1283</sparkle:version>
+            <sparkle:shortVersionString>0.8.33</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-Showing the 12 most recent highlights from 14 user-facing changes.
+### New
+
+- Setup on the Mac fills the screen and asks whether your Spaces wear Crest's heraldic banners and crests or a modern gradient and icon, then carries that look through importing, reviewing and making your Spaces yours.
+
+### Improved
+
+- Tabs keep their back and forward history across engines after Crest relaunches, and a duplicated tab keeps it too.
 
 ### Fixed
 
-- Next Space and Previous Space slide around from the last Space to the first, and back, instead of jumping.
-- A Space switch keeps sliding when you show or hide the sidebar during it, instead of jumping to the end.
-- On macOS 26, switches, pickers and the house choices in Settings take every click instead of ignoring clicks after the first.
-- Restart and Update quits Crest and installs the update instead of waiting until you quit, and Quit in the Dock works again, even after another app has used AppleScript with Crest.
-- Crest quits instead of waiting indefinitely when a Space couldn’t be fully deleted, and tries deleting that Space again the next time it opens.
-- Chromium is updated to 155.0.8059.39 with upstream security and compatibility fixes.
-- Opening an http:// address that can’t be reached shows Crest’s error page instead of closing Crest.
-- A link route set to “Is Exactly” with just a site’s name, such as docs.google.com, now matches that site’s home page, and Links settings say that routes apply to links from other apps.
-- A link route’s address field takes clicks and typing, with “example.com” shown as a hint inside it instead of a fixed label beside it.
-- In a narrow window, a Space’s Crest Studio no longer covers the Settings sidebar, so its search field and Space buttons take clicks again.
-- Typing a local address such as 192.168.0.1 or printer.local opens it over http, as other browsers do, and an address typed with http:// always opens over http.
-- When a page can’t be opened, its tab in the sidebar shows the site it tried to open instead of the previous page’s title.
+- Back and Forward keep working after a page opens in another engine, and take each page back to the engine it was shown in.
+- Crest no longer quits when you submit a form containing a payment card or address.
 
 ---
 
 Nightly builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/2b661960d1013f9101417871ebdfeb8796dab253...131c02060ee8204ac1d808f4e697b004e24633b3) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.29-2026-10-17-1278-r278.1/Installer-Crest-0.8.29-nightly-2026-10-17-131c020-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/131c02060ee8204ac1d808f4e697b004e24633b3...37618b0d4f8d9abfb19b72cf6af4774304090916) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.33-2026-10-18-1283-r283.1/Installer-Crest-0.8.33-nightly-2026-10-18-37618b0-arm64.dmg)
 
 [Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.29-2026-10-17-1278-r278.1/Installer-Crest-0.8.29-nightly-2026-10-17-131c020-arm64.dmg" length="219142801" type="application/octet-stream" sparkle:edSignature="QsXNrXoy/UNi51AGNjLK075dun/2N2D7Ijqz5CJQ0gwXWYemgQBJbKpqK9XfDEareH8dVbf0Jn912fJoC23TBA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.33-2026-10-18-1283-r283.1/Installer-Crest-0.8.33-nightly-2026-10-18-37618b0-arm64.dmg" length="219409042" type="application/octet-stream" sparkle:edSignature="gFkmk/3N1AVxzS3ndDGFF+7EBnZvFQpgv9Ej1P6libUSqgtQ5PNcmS18L9nWGABwCDebZdHgE3Hqdy9E71wODg=="/>
         </item>
         <item>
             <title>0.8.1</title>
@@ -108,6 +104,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: jYIB/YPufAYnBlYJqc9k6B0MbnnoXnevujR3dj3O7m/73LeNCtrcwnDkLe4BrMhY3LOaw1uO325D5/0yCKrQDw==
-length: 8010
+edSignature: 9yySSmCse4WR2O6O+f1f8tJgKayL6PsDM+1kaqekAWBvtCwFhO3zm2BbkHBT+XKmf2Tth+mi1OQQdl+MIm2mDg==
+length: 6875
 -->
