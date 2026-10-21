@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "mobile-full-screen-video-shows",
+    "development": "share-sheet-open-links",
     "nightly": "setup-full-screen-look-choice"
   }
 }
