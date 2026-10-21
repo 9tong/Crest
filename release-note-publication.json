@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "address-bar-selects-url-on-tap",
+    "development": "mobile-cross-site-download-test-wait",
     "nightly": "setup-full-screen-look-choice"
   }
 }
