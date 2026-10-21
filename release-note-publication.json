@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "setup-full-screen-look-choice",
+    "development": "address-bar-selects-url-on-tap",
     "nightly": "setup-full-screen-look-choice"
   }
 }
