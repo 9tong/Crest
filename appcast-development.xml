@@ -6,29 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.42</title>
-            <pubDate>Wed, 21 Oct 2026 18:44:04 +0000</pubDate>
+            <title>0.8.43</title>
+            <pubDate>Wed, 21 Oct 2026 19:39:34 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1295</sparkle:version>
-            <sparkle:shortVersionString>0.8.42</sparkle:shortVersionString>
+            <sparkle:version>1296</sparkle:version>
+            <sparkle:shortVersionString>0.8.43</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
+### Fixed
 
-- On iPhone and iPad, swipe in from a page's left edge to go back and from its right edge to go forward. With the sidebar hidden on iPad, a swipe in from the top or bottom of its edge still brings the sidebar back.
+- In setup, the color and emblem rows on Make it yours stay inside their panel while you scroll them, instead of drawing over the window preview.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/e7a304192244e91e69d825be430ade8aee1f95db...53fdbdae36cfe1da158b6693fbe7dbb201708e10) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.42-2026-10-21-1295-r295.1/Installer-Crest-0.8.42-development-2026-10-21-53fdbda-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/53fdbdae36cfe1da158b6693fbe7dbb201708e10...7529ea2e3a1b9a4c56fef91bd000a5123c1b526d) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.43-2026-10-21-1296-r296.1/Installer-Crest-0.8.43-development-2026-10-21-7529ea2-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.42-2026-10-21-1295-r295.1/Installer-Crest-0.8.42-development-2026-10-21-53fdbda-arm64.dmg" length="219406490" type="application/octet-stream" sparkle:edSignature="IsOGKn/DXeCE1imNSve5VdTxuHRTGhIeBz/qE90Ir+ExIP1QlCR9Rz899kmZ06CHlGjy3l1xF9LrZH7om+kDAA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.43-2026-10-21-1296-r296.1/Installer-Crest-0.8.43-development-2026-10-21-7529ea2-arm64.dmg" length="219371162" type="application/octet-stream" sparkle:edSignature="yFORabOTZL1gQ9oZlNGOddBRPvU2SNhXwHzXgIxVNXygVPBwx+9z5bro8N7JugxzIN5nLTHSnnOigCb+1kt8CQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: tb7qWJW7UmY6LcsU/p2xpt5E3Ee/hpVkRzlgBpWfA7a0kkDpsldpFmbezdW5pXQn61IOeNyoiezevqHWW/f3BQ==
-length: 4103
+edSignature: lujEnfn0cTKaHgG0ilC7bEg2x6gb+lp3aR2UOOr4l5fIDFBwOXxoxpcqNnVDqO1D89QIRPwOKhco9KqkOdssBQ==
+length: 4036
 -->
