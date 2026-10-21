@@ -6,29 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.40</title>
-            <pubDate>Wed, 21 Oct 2026 17:38:04 +0000</pubDate>
+            <title>0.8.41</title>
+            <pubDate>Wed, 21 Oct 2026 18:09:14 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1293</sparkle:version>
-            <sparkle:shortVersionString>0.8.40</sparkle:shortVersionString>
+            <sparkle:version>1294</sparkle:version>
+            <sparkle:shortVersionString>0.8.41</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
 ### Fixed
 
-- On iPhone and iPad, the page in the Appearance window preview rounds its corners with the preview's, so the window border keeps its width all the way around.
+- With tinted or clear app icons on iPhone, iPad and Mac, Crest's icon sits on the same tinted or glass background as other apps instead of a flat gray one.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/b51ce5904844cdd6f64d6d63beb714e8d60f797b...a0ba17a05d305f2f7916aa8592583747ef4166ea) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.40-2026-10-21-1293-r293.1/Installer-Crest-0.8.40-development-2026-10-21-a0ba17a-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/a0ba17a05d305f2f7916aa8592583747ef4166ea...e7a304192244e91e69d825be430ade8aee1f95db) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.41-2026-10-21-1294-r294.1/Installer-Crest-0.8.41-development-2026-10-21-e7a3041-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.40-2026-10-21-1293-r293.1/Installer-Crest-0.8.40-development-2026-10-21-a0ba17a-arm64.dmg" length="219339929" type="application/octet-stream" sparkle:edSignature="5COOSbumN80KJDEO5OMFI8xwirNikHRSeN5O/+BXNJ9Aki5piiScLhjf+7Apxa5mlk3qLJc63AfLUbsZz0HxAA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.41-2026-10-21-1294-r294.1/Installer-Crest-0.8.41-development-2026-10-21-e7a3041-arm64.dmg" length="219372186" type="application/octet-stream" sparkle:edSignature="yKsjqTRKK2Dzh0MuT4mWzabAuBHgmTxh01RcHEgo+YFeXmPAw8c6Y2fa5KTgyMJEH28bLvQ5ZvqCGMT2S/dlBA=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: OK5EtFsZE/6BDU2WpxYGQi5oFBe9llNFwNxOpC+Nw0QOKbFp/OW7ERDss0JnbIfpRXhz/rw0aFVBbMEF5y2hDQ==
-length: 4050
+edSignature: DQviwdStiSNl2uMNW+fH/J0ItTIkKZqu4K7USgWlgsO70sNjUhixwnva+huwttnp+0alPSszGomnrv7/65N2Aw==
+length: 4047
 -->
