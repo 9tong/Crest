@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "setup-color-strip-clip",
+    "development": "narrower-default-sidebar-ipad",
     "nightly": "setup-full-screen-look-choice"
   }
 }
