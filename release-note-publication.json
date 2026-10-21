@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "ios-icon-tinted-clear-background",
+    "development": "mobile-edge-swipe-back-forward",
     "nightly": "setup-full-screen-look-choice"
   }
 }
