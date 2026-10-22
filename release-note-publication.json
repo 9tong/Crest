@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "dismissed-address-shows-page",
+    "development": "sidebar-list-reaches-bottom-corner",
     "nightly": "setup-full-screen-look-choice"
   }
 }
