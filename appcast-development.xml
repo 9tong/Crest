@@ -6,40 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.44</title>
-            <pubDate>Wed, 21 Oct 2026 23:10:55 +0000</pubDate>
+            <title>0.8.45</title>
+            <pubDate>Thu, 22 Oct 2026 01:46:45 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1297</sparkle:version>
-            <sparkle:shortVersionString>0.8.44</sparkle:shortVersionString>
+            <sparkle:version>1298</sparkle:version>
+            <sparkle:shortVersionString>0.8.45</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
-
-- On iPhone Duo, Crest's controls move to the side bar where iOS puts them, pages use the outer display's full width, the open display's page and sidebar reach its edges, and folded like a book the sidebar and page, or a Split View's two pages, each take one side of the fold.
-- On iPhone and iPad, a swipe to go back or forward can also start on the frame around the page, where a finger reaching for the edge of the screen lands.
-
-### Improved
-
-- On iPad and iPhone Duo, the sidebar starts narrower, leaving more of the window to the page.
-
 ### Fixed
 
-- On iPhone and iPad, Crest no longer leaves an empty band at the bottom of the window for a keyboard that isn't on screen.
-- On iPhone Duo, opening or closing the phone keeps the sidebar and its colors on the Space you're in instead of showing your first Space.
-- On iPhone Duo, a Split View made on the outer display shows both of its pages when you open the phone, instead of one staying blank until you tap it.
+- On iPhone and iPad, a Quick Window no longer leaves an empty band above it, and on iPad a Quick Window or Peek beside the sidebar stays on screen instead of running off its edge.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/7529ea2e3a1b9a4c56fef91bd000a5123c1b526d...bc99dcd926de87af86354bd434080a02b262f656) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.44-2026-10-21-1297-r297.1/Installer-Crest-0.8.44-development-2026-10-21-bc99dcd-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/bc99dcd926de87af86354bd434080a02b262f656...30f9325290bf1296a1b826b3aba4234251b87826) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.45-2026-10-22-1298-r298.1/Installer-Crest-0.8.45-development-2026-10-22-30f9325-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.44-2026-10-21-1297-r297.1/Installer-Crest-0.8.44-development-2026-10-21-bc99dcd-arm64.dmg" length="219393177" type="application/octet-stream" sparkle:edSignature="enTnw9PI0F94ABeP63v4o0MvZWITzQX+Rm1sunu+LZtbS0pCEhfsY961bo7WhgtCH42T60tQN9CnfmN0g5DOCw=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.45-2026-10-22-1298-r298.1/Installer-Crest-0.8.45-development-2026-10-22-30f9325-arm64.dmg" length="219367578" type="application/octet-stream" sparkle:edSignature="LLDXU/g9UAc5tEY+4Z7iVgsNLTivF+2KbV5v+twpeScTSrqr/Y+47MExXMcFHDlj1syGdhhMY3n20TGnozYYCA=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -71,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: jtViXj62E4ZfdShgjgCEDiTvAI7Bi+BS+943O2ibvVVO4+FgU5nSluml23ospQt59JQVQV51cT3VbJmgoEiGBg==
-length: 4857
+edSignature: z+gZJG3zjmbXwDKR1aNTlWhSvusqKE7wim7Awd0ju0MYIdKsCQgeOCzBQNEOmd4wIU285uSoErEakf/DW//SCw==
+length: 4071
 -->
