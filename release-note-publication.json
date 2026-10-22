@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "sidebar-list-reaches-bottom-corner",
+    "development": "address-bar-swipes-through-tabs",
     "nightly": "sidebar-list-reaches-bottom-corner"
   }
 }
