@@ -3,6 +3,6 @@
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
     "development": "sidebar-list-reaches-bottom-corner",
-    "nightly": "setup-full-screen-look-choice"
+    "nightly": "sidebar-list-reaches-bottom-corner"
   }
 }

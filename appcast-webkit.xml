@@ -6,38 +6,48 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.33</title>
-            <pubDate>Sun, 18 Oct 2026 13:07:15 +0000</pubDate>
+            <title>0.8.47</title>
+            <pubDate>Thu, 22 Oct 2026 14:16:48 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1283</sparkle:version>
-            <sparkle:shortVersionString>0.8.33</sparkle:shortVersionString>
+            <sparkle:version>1301</sparkle:version>
+            <sparkle:shortVersionString>0.8.47</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
+Showing the 12 most recent highlights from 18 user-facing changes.
+
 ### New
 
-- Setup on the Mac fills the screen and asks whether your Spaces wear Crest's heraldic banners and crests or a modern gradient and icon, then carries that look through importing, reviewing and making your Spaces yours.
+- On iPhone and iPad, swipe in from a page's left edge to go back and from its right edge to go forward. With the sidebar hidden on iPad, a swipe in from the top or bottom of its edge still brings the sidebar back.
+- On iPhone Duo, Crest's controls move to the side bar where iOS puts them, pages use the outer display's full width, the open display's page and sidebar reach its edges, and folded like a book the sidebar and page, or a Split View's two pages, each take one side of the fold.
+- On iPhone and iPad, a swipe to go back or forward can also start on the frame around the page, where a finger reaching for the edge of the screen lands.
 
 ### Improved
 
-- Tabs keep their back and forward history across engines after Crest relaunches, and a duplicated tab keeps it too.
+- On iPad and iPhone Duo, the sidebar starts narrower, leaving more of the window to the page.
 
 ### Fixed
 
-- Back and Forward keep working after a page opens in another engine, and take each page back to the engine it was shown in.
-- Crest no longer quits when you submit a form containing a payment card or address.
+- With tinted or clear app icons on iPhone, iPad and Mac, Crest's icon sits on the same tinted or glass background as other apps instead of a flat gray one.
+- In setup, the color and emblem rows on Make it yours stay inside their panel while you scroll them, instead of drawing over the window preview.
+- On iPhone and iPad, Crest no longer leaves an empty band at the bottom of the window for a keyboard that isn't on screen.
+- On iPhone Duo, opening or closing the phone keeps the sidebar and its colors on the Space you're in instead of showing your first Space.
+- On iPhone Duo, a Split View made on the outer display shows both of its pages when you open the phone, instead of one staying blank until you tap it.
+- On iPhone and iPad, a Quick Window no longer leaves an empty band above it, and on iPad a Quick Window or Peek beside the sidebar stays on screen instead of running off its edge.
+- On iPhone and in a Mac Quick Window, leaving the address bar without going anywhere, by tapping or clicking away or pressing Escape, puts the page's address back instead of what you typed.
+- On iPad and iPhone Duo, the sidebar's tabs scroll on to the bottom of the screen and into its corner instead of stopping short above it.
 
 ---
 
 Nightly builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/131c02060ee8204ac1d808f4e697b004e24633b3...37618b0d4f8d9abfb19b72cf6af4774304090916) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.33-2026-10-18-1283-r283.1/Installer-Crest-0.8.33-nightly-2026-10-18-37618b0-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/37618b0d4f8d9abfb19b72cf6af4774304090916...d1082130937c86fca1b15e180f8885cb9e2868cd) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.47-2026-10-22-1301-r301.1/Installer-Crest-0.8.47-nightly-2026-10-22-d108213-arm64.dmg)
 
 [Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.33-2026-10-18-1283-r283.1/Installer-Crest-0.8.33-nightly-2026-10-18-37618b0-arm64.dmg" length="219409042" type="application/octet-stream" sparkle:edSignature="gFkmk/3N1AVxzS3ndDGFF+7EBnZvFQpgv9Ej1P6libUSqgtQ5PNcmS18L9nWGABwCDebZdHgE3Hqdy9E71wODg=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.47-2026-10-22-1301-r301.1/Installer-Crest-0.8.47-nightly-2026-10-22-d108213-arm64.dmg" length="219375250" type="application/octet-stream" sparkle:edSignature="78kQcGF11e/gS0kc+Yc3m+pNkW6P6tcW1oijdIKTmjdl3r7EVZYDetq7Jwi3uFrnblZLAPm4it0zL9oZ57dFCQ=="/>
         </item>
         <item>
             <title>0.8.1</title>
@@ -104,6 +114,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 9yySSmCse4WR2O6O+f1f8tJgKayL6PsDM+1kaqekAWBvtCwFhO3zm2BbkHBT+XKmf2Tth+mi1OQQdl+MIm2mDg==
-length: 6875
+edSignature: DvkMNUOU2Msmp9FIYNbfrpK45Bf0x+sC9URqWNtmtbexmvNluCMNaxuGhJWlm0ImDgROAQNhMGFpnjhhsb+iAQ==
+length: 8368
 -->
