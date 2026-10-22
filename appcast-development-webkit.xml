@@ -6,29 +6,30 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.48</title>
-            <pubDate>Thu, 22 Oct 2026 16:22:32 +0000</pubDate>
+            <title>0.8.49</title>
+            <pubDate>Thu, 22 Oct 2026 22:41:44 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1302</sparkle:version>
-            <sparkle:shortVersionString>0.8.48</sparkle:shortVersionString>
+            <sparkle:version>1303</sparkle:version>
+            <sparkle:shortVersionString>0.8.49</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
+### Fixed
 
-- On iPhone, swiping left or right on the address bar moves through the tabs of your Space in sidebar order, and the page slides along with your finger. In a Split View, the other cards sit beside the address bar, and the swipe moves card by card before carrying on to the next tab.
+- Chromium is updated to 155.0.8059.84 with upstream security and compatibility fixes.
+- Pages that run in Chromium no longer trust certificates from the compromised eMudhra certificate authorities, matching Chrome.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/d1082130937c86fca1b15e180f8885cb9e2868cd...721f3d908153310036ce4ddfb7e8edc207fb767c) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.48-2026-10-22-1302-r302.1/Installer-Crest-0.8.48-development-2026-10-22-721f3d9-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/721f3d908153310036ce4ddfb7e8edc207fb767c...d8b18cd190ea196db650fdb01888f11c0fe55cab) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.49-2026-10-22-1303-r303.1/Installer-Crest-0.8.49-development-2026-10-22-d8b18cd-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.48-2026-10-22-1302-r302.1/Installer-Crest-0.8.48-development-2026-10-22-721f3d9-arm64.dmg" length="219387546" type="application/octet-stream" sparkle:edSignature="Yx6s7f19P6tTeIokpzHiuKJUvpIV4BVsSgAwqe70MgvzVq2Vd+MVbBYBTo1bFhf2LmVEDQ3ReTZSl8xGd3HQCw=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.49-2026-10-22-1303-r303.1/Installer-Crest-0.8.49-development-2026-10-22-d8b18cd-arm64.dmg" length="219415706" type="application/octet-stream" sparkle:edSignature="bxEu4knuqub8nxTTmsv5L6kpUucTJUYTR9qH2Dmo0OdQh6hik9Sb5s7uW2X3vEbiisff3p7TRT4PMqibdgpXBQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +61,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: mxEqB0jOiVQwl6DiFTwupCPfivDbvc0h9kQJMkpy5eSZBLuExkMunn9csMfVM2NjOd2H/IVs0E4UnW8qRDpmCQ==
-length: 4171
+edSignature: ZJzHV1a0LWBRcN+3RXtLoL6sIwwZllvEqMPJe3yqwnpogLDNpD6Uebt5oC0rywUZ5+Wl6RrWayA7Xcs8Ut4yCg==
+length: 4106
 -->

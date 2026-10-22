@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "pinned-tab-status-badge-corner",
-    "development": "address-bar-swipes-through-tabs",
+    "development": "chromium-emudhra-certificates-distrusted",
     "nightly": "sidebar-list-reaches-bottom-corner"
   }
 }
