@@ -6,33 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.57</title>
-            <pubDate>Fri, 23 Oct 2026 17:19:50 +0000</pubDate>
+            <title>0.8.58</title>
+            <pubDate>Fri, 23 Oct 2026 18:00:20 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1315</sparkle:version>
-            <sparkle:shortVersionString>0.8.57</sparkle:shortVersionString>
+            <sparkle:version>1316</sparkle:version>
+            <sparkle:shortVersionString>0.8.58</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
 ### New
 
-- Settings > Appearance can keep the sidebar hover area working while a video plays full screen, so the sidebar floats over the video when the pointer reaches the edge of the screen.
-
-### Fixed
-
-- Pressing Next or Previous Space again while a Space is still sliding carries the slide on from where it is, without stepping back first, including around the ends.
+- An agent’s pointer shows where it works on a page, Settings › Agents lists what each agent did, Stop All Agents stops every agent at once, and Crest asks before an agent opens a window. Agents can also read a page’s text and answer its dialogs.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/b49654dadd7ae982d57e03058ea1ef6dcbe4666e...118d933403d1caf36fe940a6ff22431262d8fe7e) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.57-2026-10-23-1315-r315.1/Installer-Crest-0.8.57-development-2026-10-23-118d933-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/118d933403d1caf36fe940a6ff22431262d8fe7e...db8c4e0ede11456a8b010dc536f318f7f6399b73) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.58-2026-10-23-1316-r316.1/Installer-Crest-0.8.58-development-2026-10-23-db8c4e0-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.57-2026-10-23-1315-r315.1/Installer-Crest-0.8.57-development-2026-10-23-118d933-arm64.dmg" length="219507353" type="application/octet-stream" sparkle:edSignature="9SMmGqRRT+DltxWXQbyj4DANRMvCDuCqH/yVE0qVPMz1VfyR65jFe807xIT14fJDu5uxQetdSz+4NJnMFdagAA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.58-2026-10-23-1316-r316.1/Installer-Crest-0.8.58-development-2026-10-23-db8c4e0-arm64.dmg" length="219699354" type="application/octet-stream" sparkle:edSignature="Pd1ilkc/N00wlWTnQh1V6i/dTRaxN8mdHHAH8e0EzLmS6iuTWWK/J81ueht26GKn5Jllz0KK8kuWzpH4a5ilDA=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -64,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: T8dl7HJUxhpiuoRc/w9VSy6j7p21Ij22OykjGtbFWYYFkFqb+XaExRJW7fUavLdIt+PHTyvsTKi+/rToTpSwCw==
-length: 4249
+edSignature: Brag6fqQuzU3TsBL8EfpZvwcWoRdjRvu003E1pysBcOhqZ5Ec0nsXjStQfaTnrRQvv/Gr9TNXw0JFb7hAJJsBw==
+length: 4141
 -->
