@@ -6,37 +6,33 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.55</title>
-            <pubDate>Fri, 23 Oct 2026 16:47:42 +0000</pubDate>
+            <title>0.8.57</title>
+            <pubDate>Fri, 23 Oct 2026 17:19:50 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1313</sparkle:version>
-            <sparkle:shortVersionString>0.8.55</sparkle:shortVersionString>
+            <sparkle:version>1315</sparkle:version>
+            <sparkle:shortVersionString>0.8.57</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
 ### New
 
-- Spaces can start from a Neutral look: a plain gray sidebar with a fine grain that goes light or dark with the system. A Space's text color can follow the system's appearance too.
-
-### Improved
-
-- Connected tools can search history, use search providers, and open windows in allowed Spaces, and delete an address from a Space’s history once you agree, while private tabs remain inaccessible.
+- Settings > Appearance can keep the sidebar hover area working while a video plays full screen, so the sidebar floats over the video when the pointer reaches the edge of the screen.
 
 ### Fixed
 
-- The sidebar no longer slides back out under a pointer that is just resting at the screen edge, such as one left there by Universal Control. It reveals when you move the pointer to the edge.
+- Pressing Next or Previous Space again while a Space is still sliding carries the slide on from where it is, without stepping back first, including around the ends.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/84e5b3d273b9b328f709f48bdf1c8d04c31555f1...b49654dadd7ae982d57e03058ea1ef6dcbe4666e) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.55-2026-10-23-1313-r313.1/Installer-Crest-0.8.55-development-2026-10-23-b49654d-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/b49654dadd7ae982d57e03058ea1ef6dcbe4666e...118d933403d1caf36fe940a6ff22431262d8fe7e) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.57-2026-10-23-1315-r315.1/Installer-Crest-0.8.57-development-2026-10-23-118d933-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.55-2026-10-23-1313-r313.1/Installer-Crest-0.8.55-development-2026-10-23-b49654d-arm64.dmg" length="219536025" type="application/octet-stream" sparkle:edSignature="fCF/hLZX4IlEu8abC8II/tgFmwKUI//7chgukWRIEs2wus2pEm55bg4klgdK/opxIPwzap4+tk0yLSVUEVs+CQ=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.57-2026-10-23-1315-r315.1/Installer-Crest-0.8.57-development-2026-10-23-118d933-arm64.dmg" length="219507353" type="application/octet-stream" sparkle:edSignature="9SMmGqRRT+DltxWXQbyj4DANRMvCDuCqH/yVE0qVPMz1VfyR65jFe807xIT14fJDu5uxQetdSz+4NJnMFdagAA=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -68,6 +64,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 9J7wQmCHKQJo9ocneUWat4J6VR+EjzJD/b7AexkpvRKBIAoBGpWg2By/u/UiJdnfsez+ZNKv/3wRc3I847m6BQ==
-length: 4487
+edSignature: T8dl7HJUxhpiuoRc/w9VSy6j7p21Ij22OykjGtbFWYYFkFqb+XaExRJW7fUavLdIt+PHTyvsTKi+/rToTpSwCw==
+length: 4249
 -->
