@@ -7,28 +7,28 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>Crest</title>
         <item>
             <title>0.8.60</title>
-            <pubDate>Fri, 23 Oct 2026 19:20:07 +0000</pubDate>
+            <pubDate>Fri, 23 Oct 2026 20:09:21 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1318</sparkle:version>
+            <sparkle:version>1320</sparkle:version>
             <sparkle:shortVersionString>0.8.60</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
+### Maintenance
 
-- The Space icons at the bottom of the sidebar shrink so more Spaces fit without scrolling. To keep one size instead, turn off Fit Space icons to sidebar in Appearance settings and choose it with the slider.
+- Reliability and internal improvements.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/dafc4a122cacdb4abfc86d8bf46ba768c9c886ea...c20c37c9d54eac1c72a2ea1293446680d67b0321) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.60-2026-10-23-1318-r318.1/Installer-Crest-0.8.60-development-2026-10-23-c20c37c-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/c20c37c9d54eac1c72a2ea1293446680d67b0321...5e3c9db879aee7f2e6b68db1ece33ff1878f7541) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.60-2026-10-23-1320-r320.1/Installer-Crest-0.8.60-development-2026-10-23-5e3c9db-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.60-2026-10-23-1318-r318.1/Installer-Crest-0.8.60-development-2026-10-23-c20c37c-arm64.dmg" length="219708057" type="application/octet-stream" sparkle:edSignature="/IpyZb0tSxCRsWPJ0VXcivxJUK6L0XUlV9C2UsRMbK5Q8xFQyT2SeXMXPsWiE6saVbg8N07RTeDIgS0j66XHBQ=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.60-2026-10-23-1320-r320.1/Installer-Crest-0.8.60-development-2026-10-23-5e3c9db-arm64.dmg" length="219666073" type="application/octet-stream" sparkle:edSignature="c9dSVXvzZw3GMWZlYkcRzxQEcYSnxzlV0mbzDRe0olUS0T8jhdXxKd7If8q6yJIAZcF7weCL3zDA5ej07RL6AQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: TZFEbscPrqWQHcyOCrICG4GG8JkxGSgtBKQehFwKGNq7ZaUIMYVAemIY7gxG9gdhfF2EJM/YYXIDJte8f8+ICQ==
-length: 4096
+edSignature: BTrV71Ml1WbthCdxTWa40klmjn/PXBBufsQOXD0gzSbAlXycr8aqwSMjfRBUaYf1rqRv4g0BYYylJ6xL9svbCw==
+length: 3937
 -->
