@@ -7,6 +7,37 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>Crest</title>
         <item>
             <title>0.8.50</title>
+            <pubDate>Fri, 23 Oct 2026 00:44:01 +0000</pubDate>
+            <link>https://crestbrowser.com/</link>
+            <sparkle:channel>nightly</sparkle:channel>
+            <sparkle:version>1306</sparkle:version>
+            <sparkle:shortVersionString>0.8.50</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[## Highlights
+
+### New
+
+- On iPhone, swiping left or right on the address bar moves through the tabs of your Space in sidebar order, and the page slides along with your finger. In a Split View, the other cards sit beside the address bar, and the swipe moves card by card before carrying on to the next tab.
+- Crest 0.8.50 updates Chromium with its latest security fixes and stops trusting the compromised eMudhra certificate authorities, rebuilds setup on the Mac, translates whole pages in Chromium, and fixes several crashes and problems quitting.
+
+### Fixed
+
+- Chromium is updated to 155.0.8059.84 with upstream security and compatibility fixes.
+- Pages that run in Chromium no longer trust certificates from the compromised eMudhra certificate authorities, matching Chrome.
+
+---
+
+Nightly builds contain the newest changes and may be less reliable than stable releases.
+
+[View all changes](https://github.com/pauljoda/Crest/compare/d1082130937c86fca1b15e180f8885cb9e2868cd...867305d832c7389a4d50c810ab94b79d5ddf8d1d) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.50-2026-10-23-1306-r306.1/Installer-Crest-0.8.50-nightly-2026-10-23-867305d-arm64.dmg)
+
+[Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
+]]></description>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.50-2026-10-23-1306-r306.1/Installer-Crest-0.8.50-nightly-2026-10-23-867305d-arm64.dmg" length="219393682" type="application/octet-stream" sparkle:edSignature="Hia+LhhNHU5rVgcpLeYduYv3Tfp7a2wL245aH56r2QHzDYhtWMGw0ksOchOUeT9GB4XcGUYNxxVgUEjdz5PWCQ=="/>
+        </item>
+        <item>
+            <title>0.8.50</title>
             <pubDate>Fri, 23 Oct 2026 00:07:52 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:version>1305</sparkle:version>
@@ -49,74 +80,6 @@ Stable releases are signed, notarized, and ready for everyday use.
             <enclosure url="https://github.com/pauljoda/Crest/releases/download/v0.8.50/Installer-Crest-0.8.50-arm64.dmg" length="219425370" type="application/octet-stream" sparkle:edSignature="HkULqnD1KEEDiJrPevDbvY51EnH4E7uRCm8HzJnMCdYxdDJ63gYYsWWbhtLZ2/UlcJlT+4s8IMMliI8azQ6KBw=="/>
         </item>
         <item>
-            <title>0.8.47</title>
-            <pubDate>Thu, 22 Oct 2026 14:16:48 +0000</pubDate>
-            <link>https://crestbrowser.com/</link>
-            <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1301</sparkle:version>
-            <sparkle:shortVersionString>0.8.47</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Highlights
-
-Showing the 12 most recent highlights from 18 user-facing changes.
-
-### New
-
-- On iPhone and iPad, swipe in from a page's left edge to go back and from its right edge to go forward. With the sidebar hidden on iPad, a swipe in from the top or bottom of its edge still brings the sidebar back.
-- On iPhone Duo, Crest's controls move to the side bar where iOS puts them, pages use the outer display's full width, the open display's page and sidebar reach its edges, and folded like a book the sidebar and page, or a Split View's two pages, each take one side of the fold.
-- On iPhone and iPad, a swipe to go back or forward can also start on the frame around the page, where a finger reaching for the edge of the screen lands.
-
-### Improved
-
-- On iPad and iPhone Duo, the sidebar starts narrower, leaving more of the window to the page.
-
-### Fixed
-
-- With tinted or clear app icons on iPhone, iPad and Mac, Crest's icon sits on the same tinted or glass background as other apps instead of a flat gray one.
-- In setup, the color and emblem rows on Make it yours stay inside their panel while you scroll them, instead of drawing over the window preview.
-- On iPhone and iPad, Crest no longer leaves an empty band at the bottom of the window for a keyboard that isn't on screen.
-- On iPhone Duo, opening or closing the phone keeps the sidebar and its colors on the Space you're in instead of showing your first Space.
-- On iPhone Duo, a Split View made on the outer display shows both of its pages when you open the phone, instead of one staying blank until you tap it.
-- On iPhone and iPad, a Quick Window no longer leaves an empty band above it, and on iPad a Quick Window or Peek beside the sidebar stays on screen instead of running off its edge.
-- On iPhone and in a Mac Quick Window, leaving the address bar without going anywhere, by tapping or clicking away or pressing Escape, puts the page's address back instead of what you typed.
-- On iPad and iPhone Duo, the sidebar's tabs scroll on to the bottom of the screen and into its corner instead of stopping short above it.
-
----
-
-Nightly builds contain the newest changes and may be less reliable than stable releases.
-
-[View all changes](https://github.com/pauljoda/Crest/compare/37618b0d4f8d9abfb19b72cf6af4774304090916...d1082130937c86fca1b15e180f8885cb9e2868cd) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.47-2026-10-22-1301-r301.1/Installer-Crest-0.8.47-nightly-2026-10-22-d108213-arm64.dmg)
-
-[Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
-]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.47-2026-10-22-1301-r301.1/Installer-Crest-0.8.47-nightly-2026-10-22-d108213-arm64.dmg" length="219375250" type="application/octet-stream" sparkle:edSignature="78kQcGF11e/gS0kc+Yc3m+pNkW6P6tcW1oijdIKTmjdl3r7EVZYDetq7Jwi3uFrnblZLAPm4it0zL9oZ57dFCQ=="/>
-        </item>
-        <item>
-            <title>0.8.1</title>
-            <pubDate>Mon, 12 Oct 2026 23:35:12 +0000</pubDate>
-            <link>https://crestbrowser.com/</link>
-            <sparkle:version>1238</sparkle:version>
-            <sparkle:shortVersionString>0.8.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[## Highlights
-
-### Fixed
-
-- On pinned tabs, the sound and sharing badge sits in the tile’s bottom corner instead of over the site icon, so the icon is easy to click.
-
----
-
-Stable releases are signed, notarized, and ready for everyday use.
-
-[View all changes](https://github.com/pauljoda/Crest/compare/8fe8b18063068746780c8848697a4bdf41113da2...36b7a5830e7bd5d949ebf55724087a119eaeffa6) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/v0.8.1/Installer-Crest-0.8.1-arm64.dmg)
-
-[Browse Stable releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Afalse)
-]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/v0.8.1/Installer-Crest-0.8.1-arm64.dmg" length="217328730" type="application/octet-stream" sparkle:edSignature="z7BNx5ORoV+ghpUuZxM67VYi00frlOyJkD+aH0dGBLqOWAYWoKdIWZbu0ChhVK+bqSwdQ4AHlCCO1P2uGVIsAg=="/>
-        </item>
-        <item>
             <title>0.6.481</title>
             <pubDate>Fri, 02 Oct 2026 14:58:54 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
@@ -157,6 +120,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: DdUVX2Go+RdRsDIr1WpuFNyEoJch7BwLU/u2/Qp0z1NaMeduxIVy4BJ+SmHz9XY1lse5tA5j+gVSYloC6bpgDg==
-length: 11666
+edSignature: FQW6ufiwepRUeE7GX7FuJL2Y+6AZiAEtCUCA7q8hUteRj/ZNhIj1Xq0WpUFRcMvNU5edcZu++jkaf/UzbqZCCg==
+length: 8931
 -->
