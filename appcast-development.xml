@@ -6,29 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.50</title>
-            <pubDate>Thu, 22 Oct 2026 23:36:29 +0000</pubDate>
+            <title>0.8.51</title>
+            <pubDate>Fri, 23 Oct 2026 14:55:30 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1304</sparkle:version>
-            <sparkle:shortVersionString>0.8.50</sparkle:shortVersionString>
+            <sparkle:version>1308</sparkle:version>
+            <sparkle:shortVersionString>0.8.51</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
 ### New
 
-- Crest 0.8.50 updates Chromium with its latest security fixes and stops trusting the compromised eMudhra certificate authorities, rebuilds setup on the Mac, translates whole pages in Chromium, and fixes several crashes and problems quitting.
+- Keep Crest light or dark, or let it follow macOS, in Settings › Appearance. Spaces can also dim their colors in dark.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/d8b18cd190ea196db650fdb01888f11c0fe55cab...39fe5cd1684db793a296f07a2f4a873c0583bc56) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.50-2026-10-22-1304-r304.1/Installer-Crest-0.8.50-development-2026-10-22-39fe5cd-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/39fe5cd1684db793a296f07a2f4a873c0583bc56...fe8c1a3681f4d199de3db0676c27632410ebf69a) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.51-2026-10-23-1308-r308.1/Installer-Crest-0.8.51-development-2026-10-23-fe8c1a3-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.50-2026-10-22-1304-r304.1/Installer-Crest-0.8.50-development-2026-10-22-39fe5cd-arm64.dmg" length="219480218" type="application/octet-stream" sparkle:edSignature="wyWGJDKgYekNEMGqWlJnh1vwPEsxl+QIbabKFb0otOjntF+lkIq27zDP8qfGTI/uy/NJA34339gm6tyF8Ar8Bg=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.51-2026-10-23-1308-r308.1/Installer-Crest-0.8.51-development-2026-10-23-fe8c1a3-arm64.dmg" length="219435161" type="application/octet-stream" sparkle:edSignature="Ex8Gmxw3snBhmCGHvmIl/7Ho6RvpVXDvTectlE1kXVGfvElNV02kUtMANQFaItDQ61DGJg+HEEAhTB+YPayCAg=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: Gg9hpLabHyRipJavbUB2P6Sd7BPPW3XW56OcyqkplyxLRh6xAVM8qcr1GpduJXsYCh7lLemrLHSUMI857YZuCw==
-length: 4131
+edSignature: 6gwKHqrwXIwZfUJFpnkrsAlZphPcB2sqiJpAgP2KxilxXEM51qYK2RX7xPAl/QvWy4bc4bljpcB9aaVdgyeFBQ==
+length: 4010
 -->
