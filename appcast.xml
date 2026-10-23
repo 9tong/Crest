@@ -7,34 +7,28 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>Crest</title>
         <item>
             <title>0.8.50</title>
-            <pubDate>Fri, 23 Oct 2026 00:43:54 +0000</pubDate>
+            <pubDate>Fri, 23 Oct 2026 13:54:58 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1306</sparkle:version>
+            <sparkle:version>1307</sparkle:version>
             <sparkle:shortVersionString>0.8.50</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
+### Maintenance
 
-- On iPhone, swiping left or right on the address bar moves through the tabs of your Space in sidebar order, and the page slides along with your finger. In a Split View, the other cards sit beside the address bar, and the swipe moves card by card before carrying on to the next tab.
-- Crest 0.8.50 updates Chromium with its latest security fixes and stops trusting the compromised eMudhra certificate authorities, rebuilds setup on the Mac, translates whole pages in Chromium, and fixes several crashes and problems quitting.
-
-### Fixed
-
-- Chromium is updated to 155.0.8059.84 with upstream security and compatibility fixes.
-- Pages that run in Chromium no longer trust certificates from the compromised eMudhra certificate authorities, matching Chrome.
+- Reliability and internal improvements.
 
 ---
 
 Nightly builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/d1082130937c86fca1b15e180f8885cb9e2868cd...867305d832c7389a4d50c810ab94b79d5ddf8d1d) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.50-2026-10-23-1306-r306.1/Installer-Crest-0.8.50-nightly-2026-10-23-867305d-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/867305d832c7389a4d50c810ab94b79d5ddf8d1d...30312f1111a56aa7517c72b55bc73ef155ef1afb) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.50-2026-10-23-1307-r307.1/Installer-Crest-0.8.50-nightly-2026-10-23-30312f1-arm64.dmg)
 
 [Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.50-2026-10-23-1306-r306.1/Installer-Crest-0.8.50-nightly-2026-10-23-867305d-arm64.dmg" length="219393682" type="application/octet-stream" sparkle:edSignature="Hia+LhhNHU5rVgcpLeYduYv3Tfp7a2wL245aH56r2QHzDYhtWMGw0ksOchOUeT9GB4XcGUYNxxVgUEjdz5PWCQ=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.50-2026-10-23-1307-r307.1/Installer-Crest-0.8.50-nightly-2026-10-23-30312f1-arm64.dmg" length="219482769" type="application/octet-stream" sparkle:edSignature="NLa0NKHfOldeYgW2f2g8wMY4I3/Ofu49OKbh6aWw/ro/xwBaO9Ei9Kx/Q9L8sO6px4p7bLbqiBUGbWOJBeCdCQ=="/>
         </item>
         <item>
             <title>0.8.50</title>
@@ -120,6 +114,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 5FUo4LcY+r/sQqXb+JaeS2GVMdh9ZJGHaQtV9Qp06iHrkFPqCmDcvgPbbBx6rbr/HLVPpPhsv60Sx3dqPH32Bw==
-length: 8931
+edSignature: lckw/sViCi50j5oPL1VG8Ktjeiwf7AEmrHZnynIZfo635VSWOLdDqudeMPE0AReSPpOelkk7UTK6NkYDGBwBAw==
+length: 8226
 -->
