@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "crest-0-8-50-chromium-security-setup-translation",
-    "development": "appearance-light-dark-follow-system",
+    "development": "background-launch-for-connected-tools",
     "nightly": "upload-ios-cloud-archives-without-ad-hoc-export"
   }
 }
