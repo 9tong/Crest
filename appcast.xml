@@ -6,29 +6,48 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.50</title>
-            <pubDate>Fri, 23 Oct 2026 13:54:58 +0000</pubDate>
+            <title>0.8.67</title>
+            <pubDate>Sat, 24 Oct 2026 13:10:51 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>nightly</sparkle:channel>
-            <sparkle:version>1307</sparkle:version>
-            <sparkle:shortVersionString>0.8.50</sparkle:shortVersionString>
+            <sparkle:version>1328</sparkle:version>
+            <sparkle:shortVersionString>0.8.67</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### Maintenance
+Showing the 12 most recent highlights from 17 user-facing changes.
 
-- Reliability and internal improvements.
+### New
+
+- Settings > Appearance can keep the sidebar hover area working while a video plays full screen, so the sidebar floats over the video when the pointer reaches the edge of the screen.
+- An agent’s pointer shows where it works on a page, Settings › Agents lists what each agent did, Stop All Agents stops every agent at once, and Crest asks before an agent opens a window. Agents can also read a page’s text and answer its dialogs.
+- The Space icons at the bottom of the sidebar shrink so more Spaces fit without scrolling. To keep one size instead, turn off Fit Space icons to sidebar in Appearance settings and choose it with the slider.
+- On Mac, Capture Page in the Page menu and the command palette lets you drag over part of a page to copy it as an image. Its shortcut is Command-Shift-2.
+- Pins can stretch to fill the width of a row that isn't full, so an uneven number of pins no longer leaves empty space.
+
+### Improved
+
+- The command palette offers to search for a typed or pasted address as well as open it.
+
+### Fixed
+
+- Pressing Next or Previous Space again while a Space is still sliding carries the slide on from where it is, without stepping back first, including around the ends.
+- The sidebar hides and shows more smoothly, the History, Archive and Downloads selector closes back to its button, and History, Archive or Downloads opened over a hidden sidebar stays open while you use the page.
+- Turning off a Space’s lock in Settings now sticks after one Touch ID or password check, instead of the lock coming back. With iCloud sync, turning a lock on or off reaches your other devices too, even where the Space is locked, without unlocking it there first. If a lock can’t change, Crest says so at the top of the window.
+- Shift-clicking a tab in the sidebar selects every tab between the active tab and the one you clicked, instead of only adding that tab like Command-click.
+- Paste and Match Style now works in editable web content, from the Edit menu, its shortcut and the page's right-click menu.
+- Mouse Back and Forward buttons set up as swipes in Logitech Options+ switch Spaces when the pointer is over the sidebar, as other mice do.
 
 ---
 
 Nightly builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/867305d832c7389a4d50c810ab94b79d5ddf8d1d...30312f1111a56aa7517c72b55bc73ef155ef1afb) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.50-2026-10-23-1307-r307.1/Installer-Crest-0.8.50-nightly-2026-10-23-30312f1-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/30312f1111a56aa7517c72b55bc73ef155ef1afb...36ed0821b08b6373775208aa9bb104596f1184a1) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/nightly-0.8.67-2026-10-24-1328-r328.1/Installer-Crest-0.8.67-nightly-2026-10-24-36ed082-arm64.dmg)
 
 [Browse Nightly releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Nightly+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.50-2026-10-23-1307-r307.1/Installer-Crest-0.8.50-nightly-2026-10-23-30312f1-arm64.dmg" length="219482769" type="application/octet-stream" sparkle:edSignature="NLa0NKHfOldeYgW2f2g8wMY4I3/Ofu49OKbh6aWw/ro/xwBaO9Ei9Kx/Q9L8sO6px4p7bLbqiBUGbWOJBeCdCQ=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/nightly-0.8.67-2026-10-24-1328-r328.1/Installer-Crest-0.8.67-nightly-2026-10-24-36ed082-arm64.dmg" length="219685521" type="application/octet-stream" sparkle:edSignature="NfBpqhv4O8wErCvrR0D62q1Aej/XYb/3BsPYZGN5ndHbAVNFbm2rjS/ksF7pJWNjybaOc5QigG1r0LRxTcVDBQ=="/>
         </item>
         <item>
             <title>0.8.50</title>
@@ -114,6 +133,6 @@ Nightly builds contain the newest changes and may be less reliable than stable r
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: lckw/sViCi50j5oPL1VG8Ktjeiwf7AEmrHZnynIZfo635VSWOLdDqudeMPE0AReSPpOelkk7UTK6NkYDGBwBAw==
-length: 8226
+edSignature: PJWrPVfaRIj4fngApKwwKNKtFvoV0Ys0v/b7+IyiVeyMc0Wvx5FiBbZf3gq6ViLYDOa7m8ungk0EIMH5ka1fAw==
+length: 10415
 -->
