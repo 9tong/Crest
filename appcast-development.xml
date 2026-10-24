@@ -6,33 +6,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.64</title>
-            <pubDate>Sat, 24 Oct 2026 02:29:02 +0000</pubDate>
+            <title>0.8.65</title>
+            <pubDate>Sat, 24 Oct 2026 02:57:03 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1324</sparkle:version>
-            <sparkle:shortVersionString>0.8.64</sparkle:shortVersionString>
+            <sparkle:version>1325</sparkle:version>
+            <sparkle:shortVersionString>0.8.65</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
+### Fixed
 
-- On Mac, Capture Page in the Page menu and the command palette lets you drag over part of a page to copy it as an image. Its shortcut is Command-Shift-2.
-
-### Improved
-
-- The command palette offers to search for a typed or pasted address as well as open it.
+- Paste and Match Style now works in editable web content, from the Edit menu, its shortcut and the page's right-click menu.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/799148024644b689845c59731dcbac478b790891...cccf4a8057d1f4d2bbaf4d74e63935ff98e18511) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.64-2026-10-24-1324-r324.1/Installer-Crest-0.8.64-development-2026-10-24-cccf4a8-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/cccf4a8057d1f4d2bbaf4d74e63935ff98e18511...58a4792bed157f0e4f4d9cbc508dff19c2f4d375) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.65-2026-10-24-1325-r325.1/Installer-Crest-0.8.65-development-2026-10-24-58a4792-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.64-2026-10-24-1324-r324.1/Installer-Crest-0.8.64-development-2026-10-24-cccf4a8-arm64.dmg" length="219706010" type="application/octet-stream" sparkle:edSignature="6oDyPMvsGbjA6OZ3F1Qm25GQxMqfGsa1H1W1kdixP1YlaLieuMhzpANCR64HTXmS4QwHkDYDS1fUzgkPrIQBCA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.65-2026-10-24-1325-r325.1/Installer-Crest-0.8.65-development-2026-10-24-58a4792-arm64.dmg" length="219677850" type="application/octet-stream" sparkle:edSignature="Zu4/KHYIjTyFKxWEmQmLZg8waN9ZJOcAGnaoEhfH20G1GaBJsBWaGNa/Xk0SNDGcDrTNqxyBisqfByk5QsHjDQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -64,6 +60,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: Gp/1MTz/NzfDxNL30cv5j7LWxrb7mvNlv9ddOXeEFPmWERaPg0I1Kax1Cu3d0jGbSKbP0h9fLMbnWQY6JFipCA==
-length: 4147
+edSignature: mv91WWAp71dd4poWLW3vPRmJ8KvLa+gdcsGcMClhs3xAnpZOSIsSnCWILLqV9j2WBxuHvi6Tocj/ZTIEYGwHDw==
+length: 4015
 -->
