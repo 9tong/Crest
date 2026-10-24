@@ -6,30 +6,33 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.62</title>
-            <pubDate>Fri, 23 Oct 2026 20:49:12 +0000</pubDate>
+            <title>0.8.64</title>
+            <pubDate>Sat, 24 Oct 2026 02:29:06 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1322</sparkle:version>
-            <sparkle:shortVersionString>0.8.62</sparkle:shortVersionString>
+            <sparkle:version>1324</sparkle:version>
+            <sparkle:shortVersionString>0.8.64</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### Fixed
+### New
 
-- Turning off a Space’s lock in Settings now sticks after one Touch ID or password check, instead of the lock coming back. With iCloud sync, turning a lock on or off reaches your other devices too, even where the Space is locked, without unlocking it there first. If a lock can’t change, Crest says so at the top of the window.
-- Shift-clicking a tab in the sidebar selects every tab between the active tab and the one you clicked, instead of only adding that tab like Command-click.
+- On Mac, Capture Page in the Page menu and the command palette lets you drag over part of a page to copy it as an image. Its shortcut is Command-Shift-2.
+
+### Improved
+
+- The command palette offers to search for a typed or pasted address as well as open it.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/5e3c9db879aee7f2e6b68db1ece33ff1878f7541...799148024644b689845c59731dcbac478b790891) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.62-2026-10-23-1322-r322.1/Installer-Crest-0.8.62-development-2026-10-23-7991480-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/799148024644b689845c59731dcbac478b790891...cccf4a8057d1f4d2bbaf4d74e63935ff98e18511) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.64-2026-10-24-1324-r324.1/Installer-Crest-0.8.64-development-2026-10-24-cccf4a8-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.62-2026-10-23-1322-r322.1/Installer-Crest-0.8.62-development-2026-10-23-7991480-arm64.dmg" length="219712665" type="application/octet-stream" sparkle:edSignature="if5pEb5Apq0sMOo0GE/SODGeZEy2UrCjgtiDDk7BWQ1QugJxviZ1N2omKPpfhDFOGlhDRHm/xTplFn6m95f6CQ=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.64-2026-10-24-1324-r324.1/Installer-Crest-0.8.64-development-2026-10-24-cccf4a8-arm64.dmg" length="219706010" type="application/octet-stream" sparkle:edSignature="6oDyPMvsGbjA6OZ3F1Qm25GQxMqfGsa1H1W1kdixP1YlaLieuMhzpANCR64HTXmS4QwHkDYDS1fUzgkPrIQBCA=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -61,6 +64,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 093QpX1+i/OZHmjdNBlzZ/SN7fF0+4eVsCnTkhSQsDcCP8aVu6f7BGLYPx8NiKXNZPbR8b4xUU9enXh0p/rFDg==
-length: 4378
+edSignature: JrUHJDe0UT+3FxWfc3ximF/vrARSj6XY8Ttg5Gipz+UshOXd0L0R7yja5ZPxVQRbz890UlV7RRdYjwEiY/bCAw==
+length: 4147
 -->
