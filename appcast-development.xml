@@ -6,29 +6,33 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.100</title>
-            <pubDate>Sun, 25 Oct 2026 15:08:53 +0000</pubDate>
+            <title>0.8.101</title>
+            <pubDate>Sun, 25 Oct 2026 15:39:55 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1334</sparkle:version>
-            <sparkle:shortVersionString>0.8.100</sparkle:shortVersionString>
+            <sparkle:version>1335</sparkle:version>
+            <sparkle:shortVersionString>0.8.101</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
+### New
+
+- Holding Control-Tab on the Mac shows previews of your five most recent tabs in the window, so you can pick one and let go to switch. Control-Shift-Tab goes the other way, and you can turn the previews off in Settings.
+
 ### Fixed
 
-- Crest no longer freezes when an iCloud sync arrives while it’s saving a change, such as deleting a Space, moving or closing several tabs, or importing from another browser.
+- Control-Tab treats a Split View as one tab, so it reaches your other tabs instead of only switching between the two pages of the split.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/321a7c2eab20731b290388ec859807c5e175f649...e4d08a31582180422fd2870298d63f358ffe499a) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.100-2026-10-25-1334-r334.1/Installer-Crest-0.8.100-development-2026-10-25-e4d08a3-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/e4d08a31582180422fd2870298d63f358ffe499a...179e9e8b108caf7212188fc10c22625033764832) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.101-2026-10-25-1335-r335.1/Installer-Crest-0.8.101-development-2026-10-25-179e9e8-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.100-2026-10-25-1334-r334.1/Installer-Crest-0.8.100-development-2026-10-25-e4d08a3-arm64.dmg" length="219618459" type="application/octet-stream" sparkle:edSignature="x93WB8o4tB+EtPCnTSQOil6nn8ewua7eyQfdPuqxaKz5slcR+Q6zYQFmyLtZuu664fPPazhnP5T4gzTsk5vOCw=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.101-2026-10-25-1335-r335.1/Installer-Crest-0.8.101-development-2026-10-25-179e9e8-arm64.dmg" length="219817115" type="application/octet-stream" sparkle:edSignature="LATEeV3LzP/vU7VdrbRBsI9FumskMcVKgG4UbPtulw6DXhwZ9Hl0Zj27TFtq9prGu8TyCTZi/n9kOoQdZNvkBg=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +64,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: Vk1oHuL0WHJcTxmA2yofiKYTuLABlkhtP4TXcfMAM4SiuUuXanbBmFm3Xku2OcOwTPZvAr6uhr0BqLKmyootBg==
-length: 4073
+edSignature: kKerPXuuQpFsFNK9EERuwyZvr048zxYFEKSGipOVGkvcR+G4TtV8FU8XZtEP81k5CqtlAgSVbF/QHXo7J9roCg==
+length: 4264
 -->
