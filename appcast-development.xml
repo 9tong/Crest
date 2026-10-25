@@ -6,29 +6,30 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.102</title>
-            <pubDate>Sun, 25 Oct 2026 16:24:43 +0000</pubDate>
+            <title>0.8.104</title>
+            <pubDate>Sun, 25 Oct 2026 16:58:15 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1336</sparkle:version>
-            <sparkle:shortVersionString>0.8.102</sparkle:shortVersionString>
+            <sparkle:version>1338</sparkle:version>
+            <sparkle:shortVersionString>0.8.104</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
 ### Fixed
 
-- Passwords saved for an IPv6 address load again, and one saved password Crest can't read no longer hides a Space's other passwords. Settings can remove it.
+- Passwords imported from another browser are no longer saved for the wrong site when the address contains escaped characters.
+- Importing a password file now lists rows with a malformed IP address as invalid instead of saving passwords that could never fill.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/179e9e8b108caf7212188fc10c22625033764832...aa01db15dd43bb00c8f232d8688ddcbd0ee76cd4) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.102-2026-10-25-1336-r336.1/Installer-Crest-0.8.102-development-2026-10-25-aa01db1-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/aa01db15dd43bb00c8f232d8688ddcbd0ee76cd4...e8d91844a2b450eaad4b97a80b7d84b08ff40585) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.104-2026-10-25-1338-r338.1/Installer-Crest-0.8.104-development-2026-10-25-e8d9184-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.102-2026-10-25-1336-r336.1/Installer-Crest-0.8.102-development-2026-10-25-aa01db1-arm64.dmg" length="219807898" type="application/octet-stream" sparkle:edSignature="Ns3ZLdA/owJIqkxVX7igSseGwq/jmqgxEXn71CpW3LN4VRtYsv2pjO5BPvxMd7zoKiXZ0/S5fvke9MEhkdM6AA=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.104-2026-10-25-1338-r338.1/Installer-Crest-0.8.104-development-2026-10-25-e8d9184-arm64.dmg" length="219837083" type="application/octet-stream" sparkle:edSignature="GdUwLgtTvrghEbYoPuPG4nZkr/CQvoOJi2ehoXudTp+RyIQhCnBvStOnB6Hpa/Z48M0KpooBrWxprZ+JvaVNDA=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +61,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: VvZ4wYhZDBcoeWXyiUxyw277uER0Wkf1tnQQnt2pP5gTNJoBQaBT8ZBYEHUopcnW/WVpgi1W5EOSPWxKYly8Bw==
-length: 4053
+edSignature: CkoOr+36b+V13TlHzmHbnt/Fe8Rium8JWitEITsk3LwxKXGYTcwQPYzS785WEr9Zh9uEyIBmvhySpWImySi0BQ==
+length: 4156
 -->
