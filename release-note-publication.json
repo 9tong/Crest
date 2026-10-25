@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "crest-0-8-50-chromium-security-setup-translation",
-    "development": "split-view-one-recent-tab",
+    "development": "ipv6-saved-password-origin",
     "nightly": "sync-record-envelope"
   }
 }
