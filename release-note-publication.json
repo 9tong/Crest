@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "channels": {
     "stable": "crest-0-8-50-chromium-security-setup-translation",
-    "development": "import-invalid-ip-address-passwords",
+    "development": "imported-ip-address-passwords-fill",
     "nightly": "sync-record-envelope"
   }
 }
