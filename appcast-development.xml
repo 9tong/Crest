@@ -6,29 +6,30 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.113</title>
-            <pubDate>Sun, 25 Oct 2026 22:49:12 +0000</pubDate>
+            <title>0.8.114</title>
+            <pubDate>Sun, 25 Oct 2026 23:18:59 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1347</sparkle:version>
-            <sparkle:shortVersionString>0.8.113</sparkle:shortVersionString>
+            <sparkle:version>1349</sparkle:version>
+            <sparkle:shortVersionString>0.8.114</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### Fixed
+### New
 
-- On a Start Page, Command-T closes an open command bar and puts the cursor back in the Start Page field.
+- Site Controls can clear the open site's cookies or its cache. Clearing cookies signs you out of the site and removes everything it stored in that Space, including service workers and what sites embedded in it stored there. Both are also in the command palette and, on iPhone and iPad, the page menu.
+- Each Space's Privacy settings list the sites that keep data, with Remove and Remove All, and can clear history, cookies and site data, and cached files from the last hour up to all time.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/99ea5c623e9e48599cfbc999f9ad60219ee29ddd...957ab7ea404697d27a8adf47e6c1d4318f5dcb8e) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.113-2026-10-25-1347-r347.1/Installer-Crest-0.8.113-development-2026-10-25-957ab7e-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/957ab7ea404697d27a8adf47e6c1d4318f5dcb8e...a6f0f0c35427c5cf9029a1f01bd47d20ea3b42a6) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.114-2026-10-25-1349-r349.1/Installer-Crest-0.8.114-development-2026-10-25-a6f0f0c-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.113-2026-10-25-1347-r347.1/Installer-Crest-0.8.113-development-2026-10-25-957ab7e-arm64.dmg" length="219903643" type="application/octet-stream" sparkle:edSignature="2JZ+f0vnrK2qN+KVYloz1g/uzbv9jy23zrIEPp+ZUHVe96sEqtJHl4GbISiGIap1e2cVlOLbBXNAkBAh1+AkBg=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.114-2026-10-25-1349-r349.1/Installer-Crest-0.8.114-development-2026-10-25-a6f0f0c-arm64.dmg" length="220106394" type="application/octet-stream" sparkle:edSignature="O5pvjGs7Vgd08KsCKugJPOlzJNR4B2HpFqELQksqcBk/qKXj+nhY6xq+CKrIpV3WIvksY8SRgevrYOlJFTZuDQ=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -60,6 +61,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: uP7GHJ9oukZ+tyoj0SQz08Tbb2iOTBmVfSA3EYTFKhJLmS8qv88Tygg4FdvuCkuDmgk/0i9Bds+T36IUHjvvDw==
-length: 4002
+edSignature: poF3RDFuyAqZPV98MixnMgh4FgBHklNFzfCfMkbn1p6nH52joUn10dtd6J8fKizoB3a0mU78/B29UleDibswCw==
+length: 4385
 -->
