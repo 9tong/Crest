@@ -6,38 +6,33 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Crest</title>
         <item>
-            <title>0.8.69</title>
-            <pubDate>Sat, 24 Oct 2026 16:11:44 +0000</pubDate>
+            <title>0.8.97</title>
+            <pubDate>Sun, 25 Oct 2026 00:25:48 +0000</pubDate>
             <link>https://crestbrowser.com/</link>
             <sparkle:channel>development</sparkle:channel>
-            <sparkle:version>1330</sparkle:version>
-            <sparkle:shortVersionString>0.8.69</sparkle:shortVersionString>
+            <sparkle:version>1331</sparkle:version>
+            <sparkle:shortVersionString>0.8.97</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.1</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[## Highlights
 
-### New
-
-- Pins can stretch to fill the width of a row that isn't full, so an uneven number of pins no longer leaves empty space.
-
 ### Improved
 
-- Opening a link in a background tab now shows a brief confirmation at the top of the window.
+- The Space menu and the iPhone page menu now name and show commands the way the menu bar does, such as Clear Unpinned Tabs and Show History.
 
 ### Fixed
 
-- Mouse Back and Forward buttons set up as swipes in Logitech Options+ switch Spaces when the pointer is over the sidebar, as other mice do.
-- Dragging an Appearance setting, such as the window border, material, Space icon size or the tab and address field colors, no longer slows the whole app down.
+- A folder you make without naming it is called New Folder in the app's language, not always in English.
 
 ---
 
 Development builds contain the newest changes and may be less reliable than stable releases.
 
-[View all changes](https://github.com/pauljoda/Crest/compare/58a4792bed157f0e4f4d9cbc508dff19c2f4d375...b3fd540c0157fb630535540793e68888f23f508a) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.69-2026-10-24-1330-r330.1/Installer-Crest-0.8.69-development-2026-10-24-b3fd540-arm64.dmg)
+[View all changes](https://github.com/pauljoda/Crest/compare/b3fd540c0157fb630535540793e68888f23f508a...c27d743b929d43914e3a3d5daf8051871d0a1440) · [Download the installer](https://github.com/pauljoda/Crest/releases/download/development-0.8.97-2026-10-24-1331-r331.1/Installer-Crest-0.8.97-development-2026-10-24-c27d743-arm64.dmg)
 
 [Browse Development releases](https://github.com/pauljoda/Crest/releases?q=prerelease%3Atrue+%22Development+builds%22)
 ]]></description>
-            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.69-2026-10-24-1330-r330.1/Installer-Crest-0.8.69-development-2026-10-24-b3fd540-arm64.dmg" length="219760793" type="application/octet-stream" sparkle:edSignature="uM2XhP33MPUMiyH1+/GuUv77JLg3PsDMJFH4166yCNlMMHYmaa9GuueAsqhbqq/tkZrxwaY07RrsLTflAto7Aw=="/>
+            <enclosure url="https://github.com/pauljoda/Crest/releases/download/development-0.8.97-2026-10-24-1331-r331.1/Installer-Crest-0.8.97-development-2026-10-24-c27d743-arm64.dmg" length="219607193" type="application/octet-stream" sparkle:edSignature="IyVGTs6aspkI5jDtWZkJDSZODyNTkSukyLlZYYLPGHzCcEtV2V7/UbOE4KYg430DEu2rYxk6rTf21SyKWcqbBA=="/>
         </item>
         <item>
             <title>0.6.484</title>
@@ -69,6 +64,6 @@ Development builds contain the newest changes and may be less reliable than stab
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: sZDz3EpUxMTjFKkFI+eZMh1LRLWzfZFhVwaIkVQAAsRoe7hYtR0iFwEylYVMXIxh1rVUSZz/Hwj8g4a0lLX0AQ==
-length: 4431
+edSignature: xSXBS+348pd2OAh8WWZc8hpmUsN4Yp1MjiTG4aSaN0GeVPFXCNAhm1EmbBaIEvplUE5ejVM1whIKQmVRr4WuCg==
+length: 4152
 -->
