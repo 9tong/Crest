@@ -39,12 +39,16 @@ public sealed record FinishDeletingSpace(Guid WorkspaceId, Guid WindowId, Guid S
     /// A Space's deletion finishes only once this run erased, on every
     /// registered engine, the data of each profile its deletion erases; a
     /// Space the session no longer holds is the session's to refuse. A deleted
-    /// Space leaves nothing in this device's link or agent preferences.
+    /// Space leaves nothing in this device's link, agent or site preferences,
+    /// except the site choices a primary kept for the group it handed over,
+    /// which its successor keeps.
     internal override void Commit(CrestApp app, ChangeFeed changes) {
-        if (app.Device.Workspace(WorkspaceId).Current.PendingDeletion(SpaceId) is { } deletion
-            && deletion.Erasing.Any(profile => !app.DataDeletions.Erased(profile)))
+        var deletion = app.Device.Workspace(WorkspaceId).Current.PendingDeletion(SpaceId);
+        if (deletion is not null && deletion.Erasing.Any(profile => !app.DataDeletions.Erased(profile)))
             throw new Rejected(new SpaceDataNotErased(SpaceId));
         base.Commit(app, changes);
+        if (deletion?.SuccessorId is { } successor) app.Device.HandOverSitePermissions(SpaceId, successor, changes);
+        app.Device.ForgetSitePermissions(SpaceId, changes);
         app.Device.ForgetLinks(SpaceId, changes);
         app.Device.ForgetAgents(SpaceId, changes);
     }

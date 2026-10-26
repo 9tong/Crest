@@ -49,4 +49,16 @@ public sealed record BeginDeletingSpace(Guid WorkspaceId, Guid WindowId, Guid Sp
     }
 
     #endregion
+
+    #region Actions - Routing
+
+    /// The Sub-Space that takes over a deleted primary's group keeps the
+    /// site choices the primary kept for it.
+    internal override void Commit(CrestApp app, ChangeFeed changes) {
+        base.Commit(app, changes);
+        if (app.Device.Workspace(WorkspaceId).Current.PendingDeletion(SpaceId)?.SuccessorId is { } successor)
+            app.Device.HandOverSitePermissions(SpaceId, successor, changes);
+    }
+
+    #endregion
 }

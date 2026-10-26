@@ -48,7 +48,8 @@ public sealed record JoinSpace(Guid WorkspaceId, Guid SpaceId, Guid GroupSpaceId
     /// joining Space takes the grant this process holds for the group's
     /// primary, and a group that locks because the joining Space was locked
     /// takes the joining Space's grant. Agents reach the joining Space only
-    /// while they reach the group.
+    /// while they reach the group, and where the group already chose for a
+    /// site, its choice stands.
     internal override void Commit(CrestApp app, ChangeFeed changes) {
         base.Commit(app, changes);
         var session = app.Device.Workspace(WorkspaceId).Current;
@@ -57,6 +58,7 @@ public sealed record JoinSpace(Guid WorkspaceId, Guid SpaceId, Guid GroupSpaceId
         app.Access.Changing(changes, authority => [.. authority.Extend(primary, joining),
             .. group.Members.SelectMany(member => authority.Extend(joining, new(member.Id, member.OwnProfileId)))]);
         app.Device.ShareAgents(joined.Id, group.Primary.Id, changes);
+        app.Device.ShareSitePermissions(joined.Id, changes);
     }
 
     #endregion
