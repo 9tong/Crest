@@ -165,14 +165,17 @@ internal sealed partial class Device {
     /// it, or null while agents are off or the person's own session is not
     /// open. A Space of a group is reached while agents reach its primary,
     /// which holds the group's choice; a pinned tab the group shares is listed
-    /// once, with the primary that keeps it. Called without the device lock.
+    /// once, with the primary that keeps it, and a Sub-Space's own pinned tabs,
+    /// which its sidebar hides while it shows the group's, are not listed.
+    /// Called without the device lock.
     private IReadOnlyList<(SpaceState Space, bool IsLocked)>? ReachedSpaces() {
         var preferences = Agents;
         if (!preferences.IsOn || Persistent() is not (_, var authority)) return null;
         var session = authority.Current;
         return [.. session.Spaces
             .Where(space => preferences.SpaceIds.Contains(session.RecordsOwner(space).Id) && !authority.IsDeleting(space.Id))
-            .Select(space => (space, authority.IsLocked(space)))];
+            .Select(space => (space.PinOwnerId is null ? space : space with { Tabs = [.. space.Tabs.Where(tab => !tab.IsPinned)] },
+                authority.IsLocked(space)))];
     }
 
     #endregion

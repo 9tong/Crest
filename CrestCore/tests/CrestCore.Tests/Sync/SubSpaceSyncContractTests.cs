@@ -76,6 +76,35 @@ public sealed partial class BrowserContractsTests {
         Assert.Equal(400, Unix(left["membershipModifiedAt"]), precision: 6);
     }
 
+    /// A group shares its protection, so a Space's content blocking and data
+    /// retention merge by when someone chose them: a copy that wins the record
+    /// with an older choice keeps its other browsing choices, not its
+    /// protection.
+    [Fact]
+    public void ANewerProtectionChoiceOutlivesACopyThatWinsTheRecord() {
+        var space = Fixed(2_250);
+        var journal = new JournalUnderTest(Fixed(2_299));
+        journal.Stage(SessionOf(SpaceOf(space, Fixed(2_290))), at: 300);
+        var record = journal.Record(SyncRecordKind.Space, space)!;
+        var protecting = Edited(record, 10, Fixed(2_251), value => {
+            value["browsingPreferences"]!["contentBlockingPolicy"] = "balanced";
+            value["browsingPreferences"]!["dataRetention"]!["history"] = "oneWeek";
+            value["protectionModifiedAt"] = At(500);
+        });
+        var older = Edited(record, 100, Fixed(2_252), value => {
+            value["browsingPreferences"]!["contentBlockingPolicy"] = "off";
+            value["browsingPreferences"]!["searchSuggestionsEnabled"] = true;
+            value["protectionModifiedAt"] = At(400);
+        });
+
+        var kept = ConvergedValue(SyncRecordKind.Space, space, protecting, older);
+        var browsing = kept["browsingPreferences"]!;
+        Assert.Equal("balanced", browsing["contentBlockingPolicy"]!.GetValue<string>());
+        Assert.Equal("oneWeek", browsing["dataRetention"]!["history"]!.GetValue<string>());
+        Assert.True(browsing["searchSuggestionsEnabled"]!.GetValue<bool>());
+        Assert.Equal(500, Unix(kept["protectionModifiedAt"]), precision: 6);
+    }
+
     /// An older build that drags a Sub-Space away from its group moves only
     /// that record; the session this device makes of it puts the group back
     /// together where its primary is.

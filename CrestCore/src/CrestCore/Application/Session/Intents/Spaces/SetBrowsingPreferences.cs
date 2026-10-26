@@ -28,7 +28,8 @@ public sealed record SetBrowsingPreferences(Guid WorkspaceId, Guid SpaceId, Curr
         var protects = before.ContentBlocking != ContentBlocking || before.DataRetention != DataRetention;
         var configured = space.Configured(space.Settings with {
             BrowsingPreferences = preferences,
-            ProtectionModifiedAt = protects ? turn.Now : space.Settings.ProtectionModifiedAt
+            ProtectionModifiedAt = protects
+                ? SpaceSettings.Chosen(space.Settings.ProtectionModifiedAt, turn.Now) : space.Settings.ProtectionModifiedAt
         });
         var shared = protects ? turn.Basis.Sharing(configured, GroupSetting.Protection) : turn.Basis.Replacing(configured);
         if (before.CurrentTabCleanup == preferences.CurrentTabCleanup && before.DataRetention == preferences.DataRetention)
