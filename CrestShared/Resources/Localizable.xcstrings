@@ -283,6 +283,9 @@
     "%@ is using this tab" : {
       "comment" : "The bar on a page an agent uses."
     },
+    "%@ Keeps the Group" : {
+
+    },
     "%@ of %@ · %@" : {
       "localizations" : {
         "en" : {

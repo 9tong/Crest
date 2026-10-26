@@ -13,6 +13,8 @@ struct MobileSpaceSettingsView: View {
     @State private var editorSection = BrowserSpaceEditorSection.appearance
     @State private var editingAppearanceSpace: SpaceModel?
     @State private var forgeStep = BrowserCrestStudioStep.shape
+    @State private var pendingGroupChange: BrowserSpaceGroupChange?
+    @State private var pendingDeletion: BrowserSpaceDeletionRequest?
 
     var body: some View {
         Group {
@@ -23,6 +25,11 @@ struct MobileSpaceSettingsView: View {
             }
         }
         .crestRepairsSpaceSelection($selectedSpaceID, in: browser)
+        .browserSpaceGroupChangeConfirmation($pendingGroupChange, browser: browser, spaceAccess: spaceAccess)
+        .browserSpaceDeletionConfirmation(
+            $pendingDeletion, browser: browser, spaceAccess: spaceAccess, dataDeleter: dataDeleter
+        )
+        .onDisappear { BrowserSpaceGroupNotices.shared.dismiss() }
         .fullScreenCover(item: $editingAppearanceSpace) { requested in
             NavigationStack {
                 appearanceWorkspace(for: requested)
@@ -41,7 +48,9 @@ struct MobileSpaceSettingsView: View {
         BrowserSettingsPane(.spaces) {
             MobileSpaceSelectionSection(
                 browser: browser,
-                selectedSpaceID: Binding(get: { editedSpaceID }, set: { selectEditedSpace($0) })
+                selectedSpaceID: Binding(get: { editedSpaceID }, set: { selectEditedSpace($0) }),
+                requestGroupChange: { pendingGroupChange = $0 },
+                requestDeletion: { pendingDeletion = $0 }
             )
 
             if let space, canReveal(space) {
@@ -66,8 +75,19 @@ struct MobileSpaceSettingsView: View {
             MobileSpaceSettingsWorkspaceToolbar(
                 browser: browser,
                 selectedSpaceID: Binding(get: { editedSpaceID }, set: { selectEditedSpace($0) }),
-                section: $editorSection)
+                section: $editorSection,
+                requestGroupChange: { pendingGroupChange = $0 },
+                requestDeletion: { pendingDeletion = $0 })
             Divider()
+            if BrowserSpaceGroupNotices.shared.current != nil {
+                BrowserSpaceGroupNoticeLabel()
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, CrestSpacing.small)
+                    .background(BrowserSettingsCanvas.card)
+            }
             if let space {
                 if canReveal(space) {
                     Group {

@@ -1,0 +1,53 @@
+import SwiftUI
+
+/// The menu items that start a Sub-Space of a Space, or move the Space into or
+/// out of a group, each after the confirmation its change carries.
+struct BrowserSpaceGroupMenuItems: View {
+    let browser: BrowserStore
+    let space: SpaceModel
+    let requestGroupChange: (BrowserSpaceGroupChange) -> Void
+
+    var body: some View {
+        if !browser.isPrivateBrowsing {
+            Button("New Sub-Space") {
+                if browser.addSubSpace(after: space.id) { BrowserSpaceGroupNotices.formed() }
+            }
+            .disabled(browser.isDeleting(space.id))
+        }
+        if let separation = BrowserSpaceGroupChange.separating(space, in: browser) {
+            Button("Separate from “\(browser.primary(of: space).settings.name)”…") { requestGroupChange(separation) }
+        }
+        if browser.canJoinGroup(space), !browser.joinableGroups(for: space).isEmpty {
+            Menu("Make Sub-Space of") {
+                ForEach(browser.joinableGroups(for: space)) { group in
+                    Button(group.settings.name) {
+                        if let join = BrowserSpaceGroupChange.joining(space, into: group, in: browser) {
+                            requestGroupChange(join)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// The menu items that delete a Space, or a primary with its Sub-Spaces, each
+/// after the confirmation its request's plan describes.
+struct BrowserSpaceDeletionMenuItems: View {
+    let browser: BrowserStore
+    let space: SpaceModel
+    let requestDeletion: (BrowserSpaceDeletionRequest) -> Void
+
+    var body: some View {
+        Button("Delete “\(space.settings.name)”…", role: .destructive) {
+            requestDeletion(BrowserSpaceDeletionRequest(spaceID: space.id))
+        }
+        .disabled(browser.spaceModels.count <= 1 || browser.isDeleting(space.id))
+        if browser.leadsGroup(space) {
+            Button("Delete “\(space.settings.name)” and Its Sub-Spaces…", role: .destructive) {
+                requestDeletion(BrowserSpaceDeletionRequest(spaceID: space.id, includesSubSpaces: true))
+            }
+            .disabled(browser.groupMembers(of: space).count >= browser.spaceModels.count)
+        }
+    }
+}

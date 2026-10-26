@@ -6,6 +6,8 @@ struct MobileSpaceSettingsWorkspaceToolbar: View {
     let browser: BrowserStore
     @Binding var selectedSpaceID: UUID?
     @Binding var section: BrowserSpaceEditorSection
+    let requestGroupChange: (BrowserSpaceGroupChange) -> Void
+    let requestDeletion: (BrowserSpaceDeletionRequest) -> Void
 
     var body: some View {
         ViewThatFits(in: .horizontal) {
@@ -15,6 +17,7 @@ struct MobileSpaceSettingsWorkspaceToolbar: View {
                 Spacer(minLength: 0)
                 sectionPicker.frame(width: 220)
                 spaceOrderControls
+                spaceActions
                 addSpaceButton
             }
             VStack(spacing: 12) {
@@ -22,6 +25,7 @@ struct MobileSpaceSettingsWorkspaceToolbar: View {
                     identity
                     Spacer(minLength: 0)
                     spacePicker
+                    spaceActions
                     addSpaceButton
                 }
                 HStack {
@@ -50,15 +54,21 @@ struct MobileSpaceSettingsWorkspaceToolbar: View {
         .fixedSize()
     }
 
+    /// Every Space in picker order, each group in a section of its own.
     private var spacePicker: some View {
         Picker("Space", selection: $selectedSpaceID) {
-            ForEach(browser.spaceModels) { space in
-                BrowserSpaceIdentityLabel(space: space).tag(Optional(space.id))
+            ForEach(browser.spaceGroups, id: \.[0].id) { group in
+                Section {
+                    ForEach(group) { space in
+                        BrowserSpaceIdentityLabel(space: space).tag(Optional(space.id))
+                    }
+                }
             }
         }
         .labelsHidden()
         .pickerStyle(.menu)
         .lineLimit(1)
+        .fixedSize()
         .accessibilityIdentifier("space-settings-picker")
     }
 
@@ -70,6 +80,28 @@ struct MobileSpaceSettingsWorkspaceToolbar: View {
         }
         .pickerStyle(.segmented)
         .accessibilityIdentifier("space-settings-section-picker")
+    }
+
+    /// What can be done to the selected Space's group: a new Sub-Space,
+    /// joining or leaving a group, and deleting it.
+    private var spaceActions: some View {
+        Menu {
+            if let space = selectedSpaceID.flatMap({ browser.spaceModel($0) }) {
+                BrowserSpaceGroupMenuItems(browser: browser, space: space, requestGroupChange: requestGroupChange)
+                Divider()
+                BrowserSpaceDeletionMenuItems(browser: browser, space: space, requestDeletion: requestDeletion)
+            }
+        } label: {
+            Label("Space Actions", systemImage: "ellipsis")
+                .labelStyle(.iconOnly)
+                .foregroundStyle(.primary)
+                .frame(width: CrestLayout.minimumHitTarget, height: CrestLayout.minimumHitTarget)
+                .contentShape(.rect)
+        }
+        .buttonStyle(.plain)
+        .glassEffect(.regular.interactive(), in: .capsule)
+        .disabled(selectedSpaceID == nil)
+        .accessibilityIdentifier("space-settings-actions")
     }
 
     private var addSpaceButton: some View {

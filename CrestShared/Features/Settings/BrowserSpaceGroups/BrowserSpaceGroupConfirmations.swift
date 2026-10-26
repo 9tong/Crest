@@ -28,23 +28,6 @@ extension View {
     }
 }
 
-/// The notices a group change shows in the window the person looks at.
-@MainActor
-enum BrowserSpaceGroupNotices {
-    /// A Space joined a group: the first group on this device reminds the
-    /// person to update Crest on their other devices.
-    static func formed() {
-        guard BrowserSpaceGroupUpdateNotice.takeIfDue() else { return }
-        BrowserNoticeCenter.shared.post(
-            BrowserNotice(message: BrowserSpaceGroupUpdateNotice.message, systemImage: "arrow.down.circle"))
-    }
-
-    /// The change could not run: `reason` says why.
-    static func failed(_ reason: String) {
-        BrowserNoticeCenter.shared.post(BrowserNotice(message: reason, systemImage: "exclamationmark.triangle.fill"))
-    }
-}
-
 private struct BrowserSpaceGroupChangeConfirmation: ViewModifier {
     @Binding var change: BrowserSpaceGroupChange?
     let browser: BrowserStore
@@ -102,14 +85,26 @@ private struct BrowserSpaceDeletionConfirmation: ViewModifier {
             } message: { plan in
                 Text(plan.message)
             }
-            .sheet(
-                isPresented: Binding(
-                    get: { plan.map { !$0.successors.isEmpty } == true }, set: { if !$0 { request = nil } })
-            ) {
-                if let plan {
-                    BrowserSpaceSuccessorSheet(plan: plan) { successor in delete(plan, successor: successor) }
+            #if os(macOS)
+                .sheet(isPresented: choosesSuccessor(plan)) {
+                    if let plan {
+                        BrowserSpaceSuccessorSheet(plan: plan) { successor in delete(plan, successor: successor) }
+                    }
                 }
-            }
+            #else
+                .confirmationDialog(
+                    plan?.title ?? "", isPresented: choosesSuccessor(plan), titleVisibility: .visible, presenting: plan
+                ) { plan in
+                    ForEach(plan.successors) { space in
+                        Button("\(space.settings.name) Keeps the Group", role: .destructive) {
+                            delete(plan, successor: space.id)
+                        }
+                    }
+                    Button("Cancel", role: .cancel) {}
+                } message: { plan in
+                    Text(plan.message)
+                }
+            #endif
             .alert(
                 "Couldn’t Delete Space",
                 isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })
@@ -118,6 +113,12 @@ private struct BrowserSpaceDeletionConfirmation: ViewModifier {
             } message: {
                 Text(failure ?? "")
             }
+    }
+
+    /// Whether the person chooses which Sub-Space keeps the group of the
+    /// primary `plan` deletes.
+    private func choosesSuccessor(_ plan: BrowserSpaceDeletionPlan?) -> Binding<Bool> {
+        Binding(get: { plan.map { !$0.successors.isEmpty } == true }, set: { if !$0 { request = nil } })
     }
 
     private func delete(_ plan: BrowserSpaceDeletionPlan, successor: UUID?) {
@@ -136,44 +137,46 @@ private struct BrowserSpaceDeletionConfirmation: ViewModifier {
     }
 }
 
-/// Asks which Sub-Space takes over the group of a primary that is deleted.
-private struct BrowserSpaceSuccessorSheet: View {
-    let plan: BrowserSpaceDeletionPlan
-    let delete: (UUID) -> Void
-    @Environment(\.dismiss) private var dismiss
-    @State private var successorID: UUID?
+#if os(macOS)
+    /// Asks which Sub-Space takes over the group of a primary that is deleted.
+    private struct BrowserSpaceSuccessorSheet: View {
+        let plan: BrowserSpaceDeletionPlan
+        let delete: (UUID) -> Void
+        @Environment(\.dismiss) private var dismiss
+        @State private var successorID: UUID?
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: CrestSpacing.large) {
-            Text(plan.title).font(.headline)
-            Text(plan.message).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
-            Picker("New primary", selection: $successorID) {
-                ForEach(plan.successors) { space in
-                    Label {
-                        Text(space.settings.name)
-                    } icon: {
-                        BrowserSpaceIdentityIcon(space: space, size: 16)
+        var body: some View {
+            VStack(alignment: .leading, spacing: CrestSpacing.large) {
+                Text(plan.title).font(.headline)
+                Text(plan.message).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
+                Picker("New primary", selection: $successorID) {
+                    ForEach(plan.successors) { space in
+                        Label {
+                            Text(space.settings.name)
+                        } icon: {
+                            BrowserSpaceIdentityIcon(space: space, size: 16)
+                        }
+                        .tag(Optional(space.id))
                     }
-                    .tag(Optional(space.id))
+                }
+                .labelsHidden()
+                .accessibilityIdentifier("space-deletion-successor")
+                HStack {
+                    Spacer()
+                    Button("Cancel", role: .cancel) { dismiss() }
+                        .keyboardShortcut(.cancelAction)
+                    Button(plan.confirmation, role: .destructive) {
+                        guard let successorID else { return }
+                        dismiss()
+                        delete(successorID)
+                    }
+                    .disabled(successorID == nil)
+                    .accessibilityIdentifier("confirm-delete-space")
                 }
             }
-            .labelsHidden()
-            .accessibilityIdentifier("space-deletion-successor")
-            HStack {
-                Spacer()
-                Button("Cancel", role: .cancel) { dismiss() }
-                    .keyboardShortcut(.cancelAction)
-                Button(plan.confirmation, role: .destructive) {
-                    guard let successorID else { return }
-                    dismiss()
-                    delete(successorID)
-                }
-                .disabled(successorID == nil)
-                .accessibilityIdentifier("confirm-delete-space")
-            }
+            .padding(20)
+            .frame(width: 380)
+            .onAppear { successorID = successorID ?? plan.successors.first?.id }
         }
-        .padding(20)
-        .frame(width: 380)
-        .onAppear { successorID = successorID ?? plan.successors.first?.id }
     }
-}
+#endif

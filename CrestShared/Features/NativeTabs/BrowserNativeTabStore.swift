@@ -38,10 +38,19 @@ final class BrowserNativeTabStore {
             at: time)
     }
 
+    /// A tab already loaded in the same Space with the same content carries on
+    /// under the profile its Space browses with now, whether or not
+    /// `reconcile(spaces:)` has seen the change yet.
     private func load(
         _ content: BrowserNativeTabContent, matching assignment: BrowserTabRuntimeAssignment, at time: Date
     ) {
-        if let runtime = runtime(matching: assignment, content: content) {
+        if let runtime = runtimes[assignment.tabID], runtime.content == content,
+            runtime.assignment.spaceID == assignment.spaceID
+        {
+            if runtime.assignment != assignment {
+                runtime.assignment = assignment
+                residencyRevision &+= 1
+            }
             runtime.lastPresented = time
         } else {
             runtimes[assignment.tabID] = BrowserNativeTabRuntime(assignment: assignment, content: content, at: time)

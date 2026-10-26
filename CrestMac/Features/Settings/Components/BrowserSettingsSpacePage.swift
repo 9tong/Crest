@@ -209,39 +209,11 @@ struct BrowserSettingsSpaceMenu: View {
         Button("Move Up", action: order.moveUp).disabled(!order.canMoveUp)
         Button("Move Down", action: order.moveDown).disabled(!order.canMoveDown)
         Divider()
-        if !browser.isPrivateBrowsing {
-            Button("New Sub-Space") {
-                if browser.addSubSpace(after: space.id) { BrowserSpaceGroupNotices.formed() }
-            }
-            .disabled(browser.isDeleting(space.id))
-        }
-        if let separation = BrowserSpaceGroupChange.separating(space, in: browser) {
-            Button("Separate from “\(browser.primary(of: space).settings.name)”…") { requestGroupChange(separation) }
-        }
-        if browser.canJoinGroup(space), !browser.joinableGroups(for: space).isEmpty {
-            Menu("Make Sub-Space of") {
-                ForEach(browser.joinableGroups(for: space)) { group in
-                    Button(group.settings.name) {
-                        if let join = BrowserSpaceGroupChange.joining(space, into: group, in: browser) {
-                            requestGroupChange(join)
-                        }
-                    }
-                }
-            }
-        }
+        BrowserSpaceGroupMenuItems(browser: browser, space: space, requestGroupChange: requestGroupChange)
         Divider()
         Toggle("Lock Space", isOn: lock)
         Divider()
-        Button("Delete “\(space.settings.name)”…", role: .destructive) {
-            requestDeletion(BrowserSpaceDeletionRequest(spaceID: space.id))
-        }
-        .disabled(browser.spaceModels.count <= 1 || browser.isDeleting(space.id))
-        if browser.leadsGroup(space) {
-            Button("Delete “\(space.settings.name)” and Its Sub-Spaces…", role: .destructive) {
-                requestDeletion(BrowserSpaceDeletionRequest(spaceID: space.id, includesSubSpaces: true))
-            }
-            .disabled(browser.groupMembers(of: space).count >= browser.spaceModels.count)
-        }
+        BrowserSpaceDeletionMenuItems(browser: browser, space: space, requestDeletion: requestDeletion)
     }
 
     private var lock: Binding<Bool> {
