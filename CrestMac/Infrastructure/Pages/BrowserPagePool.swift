@@ -99,9 +99,10 @@ final class BrowserPagePool:
     @ObservationIgnored let usesEphemeralWebsiteDataStores: Bool
     @ObservationIgnored private let pageZoomPreferences: BrowserDefaultPageZoomStore
     @ObservationIgnored private let dialogPresenter: BrowserDialogPresenter
-    /// Opens a Quick Window for a window a page asked for; the window's
-    /// presentation installs it. Without one, such a page has nowhere to show
-    /// and goes.
+    /// Opens a Quick Window over this pool's window: for a window a page asked
+    /// for, or for a link or page the person opens in another Space's session.
+    /// The window's presentation installs it. Without one, such a page has
+    /// nowhere to show and goes.
     @ObservationIgnored var popupWindowPresenter: ((BrowserQuickWindowRequest) -> Void)?
     /// Whether a Peek is open for the person rather than staged while they
     /// still drag its link; the window's transient browsing answers.

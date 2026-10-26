@@ -5525,6 +5525,10 @@ struct SendPermission: Equatable, Sendable {
     let refusal: Rejection?
 }
 
+struct SeparateImportSpace: Intent, SetupFlowIntent, Equatable, Sendable {
+    let sourceSpaceID: UUID
+}
+
 struct SeparateSpace: Intent, SessionIntent, Equatable, Sendable {
     let workspaceID: UUID
     let spaceID: UUID

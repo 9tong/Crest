@@ -408,6 +408,18 @@ final class BrowserOnboardingFlow {
         send(IncludeImportSpace(sourceSpaceID: sourceSpaceID, included: isIncluded))
     }
 
+    /// Brings the reviewed Space `sourceSpaceID` in on its own rather than in
+    /// a group with the Spaces it shared a session with.
+    func separate(_ sourceSpaceID: UUID) {
+        send(SeparateImportSpace(sourceSpaceID: sourceSpaceID))
+    }
+
+    /// The reviewed Spaces that come in with `review` as one group, `review`
+    /// among them, in the review's order.
+    func reviewGroup(of review: BrowserImportSpaceReview) -> [BrowserImportSpaceReview] {
+        reviewSpaces.filter { $0.groupID == review.groupID }
+    }
+
     func setPasswordsIncluded(_ isIncluded: Bool, in sourceSpaceID: UUID) {
         send(IncludeImportPasswords(sourceSpaceID: sourceSpaceID, included: isIncluded))
     }

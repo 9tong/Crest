@@ -9218,15 +9218,8 @@
     "Open Last Active Tab" : {
 
     },
-    "Open Link in Another Space" : {
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "فتح الرابط في مساحة أخرى"
-          }
-        }
-      }
+    "Open Link in" : {
+
     },
     "Open Link in Peek" : {
 
@@ -9316,6 +9309,9 @@
 
     },
     "Open tabs cleared" : {
+
+    },
+    "Open This Page in" : {
 
     },
     "Open Translate…" : {
@@ -13283,6 +13279,9 @@
           }
         }
       }
+    },
+    "Sub-Space of %@" : {
+
     },
     "Substitutions" : {
 

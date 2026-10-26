@@ -38,6 +38,9 @@ struct BrowserImportSpaceReview: Identifiable, Equatable {
     }
     /// The name, symbol and look the Space takes.
     var customization: SpaceCustomization { record.customization }
+    /// The reviewed Space that leads the group this one comes in with: the
+    /// Space it shared a session with where it came from, or itself.
+    var groupID: UUID { record.source.membership?.primaryID ?? record.source.id }
 
     // MARK: - Initializers
 
