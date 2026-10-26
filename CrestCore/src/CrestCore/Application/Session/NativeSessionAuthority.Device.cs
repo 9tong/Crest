@@ -119,7 +119,7 @@ public sealed partial class NativeSessionAuthority {
 
     private bool IsLockedUnderGate(SpaceState space) {
         if (access is null) return false;
-        lock (access) return access.IsLocked(new SpaceAccessAssignment(space.Id, space.ProfileId), space.Settings.RequiresAuthentication);
+        lock (access) return access.IsLocked(new SpaceAccessAssignment(space.Id, space.OwnProfileId), space.Settings.RequiresAuthentication);
     }
 
     #endregion

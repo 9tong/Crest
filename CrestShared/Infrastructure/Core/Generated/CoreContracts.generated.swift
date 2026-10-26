@@ -5518,7 +5518,7 @@ struct SessionState: Equatable, Sendable {
         var spaces: [SpaceState.Seed]
         var defaultSpaceID: UUID?
         var disposableSeedMarker: UUID?
-        var spaceDeletions: [SpaceDeletionState]
+        var spaceDeletions: [SpaceDeletionState.Seed]
         var appPreferences: AppPreferences?
     }
 
@@ -5528,7 +5528,7 @@ struct SessionState: Equatable, Sendable {
             spaces: spaces.map(\.seed),
             defaultSpaceID: defaultSpaceID,
             disposableSeedMarker: disposableSeedMarker,
-            spaceDeletions: spaceDeletions,
+            spaceDeletions: spaceDeletions.map(\.seed),
             appPreferences: appPreferences
         )
     }
@@ -6177,9 +6177,25 @@ struct SpaceDataNotErased: Equatable, Sendable {
 }
 
 struct SpaceDeletionState: Equatable, Sendable, Identifiable {
-    var id: UUID
-    var spaceID: UUID
-    var profileID: UUID
+    let id: UUID
+    let spaceID: UUID
+    let profileID: UUID
+    let erasedProfileIDs: [UUID]?
+    let erasing: [UUID]
+
+    /// The fields of a `SpaceDeletionState` alone, as a platform builds one to send. The
+    /// core resolves the rest when it reads it.
+    struct Seed: Equatable, Sendable, Identifiable {
+        var id: UUID
+        var spaceID: UUID
+        var profileID: UUID
+        var erasedProfileIDs: [UUID]?
+    }
+
+    /// The record's fields alone, as a platform sends it back.
+    var seed: Seed {
+        Seed(id: id, spaceID: spaceID, profileID: profileID, erasedProfileIDs: erasedProfileIDs)
+    }
 }
 
 struct SpaceDeletionUnderway: Equatable, Sendable {
@@ -6211,6 +6227,12 @@ struct SpaceLocked: Equatable, Sendable {
     var message: LocalizedStringResource {
         LocalizedStringResource("The Space is locked or no longer active. Unlock it and select the tabs again.")
     }
+}
+
+struct SpaceMembership: Equatable, Sendable {
+    var primaryID: UUID?
+    var sharedProfileID: UUID?
+    var modifiedAt: Date
 }
 
 struct SpaceProfileChanged: Equatable, Sendable {
@@ -6278,39 +6300,43 @@ struct SpaceSettingsChanged: CoreChange, Equatable, Sendable {
 
 struct SpaceState: Equatable, Sendable, Identifiable {
     let id: UUID
-    let profileID: UUID
+    let ownProfileID: UUID
     let settings: SpaceSettings
     let folders: [FolderState]
     let tabs: [TabState]
     let splitGroups: [SplitGroupState]
     let archivedTabs: [ArchivedTabState]
     let history: [HistoryEntryState]
+    let membership: SpaceMembership?
+    let profileID: UUID
     let sidebar: SidebarOutline
 
     /// The fields of a `SpaceState` alone, as a platform builds one to send. The
     /// core resolves the rest when it reads it.
     struct Seed: Equatable, Sendable, Identifiable {
         var id: UUID
-        var profileID: UUID
+        var ownProfileID: UUID
         var settings: SpaceSettings.Seed
         var folders: [FolderState.Seed]
         var tabs: [TabState.Seed]
         var splitGroups: [SplitGroupState.Seed]
         var archivedTabs: [ArchivedTabState.Seed]
         var history: [HistoryEntryState]
+        var membership: SpaceMembership?
     }
 
     /// The record's fields alone, as a platform sends it back.
     var seed: Seed {
         Seed(
             id: id,
-            profileID: profileID,
+            ownProfileID: ownProfileID,
             settings: settings.seed,
             folders: folders.map(\.seed),
             tabs: tabs.map(\.seed),
             splitGroups: splitGroups.map(\.seed),
             archivedTabs: archivedTabs.map(\.seed),
-            history: history
+            history: history,
+            membership: membership
         )
     }
 }
@@ -7360,6 +7386,8 @@ enum SessionFlaw: Int, CaseIterable, Sendable {
     case sharedProfile = 3
     case duplicateTab = 4
     case unknownDeletion = 5
+    case unknownPrimary = 6
+    case scatteredGroup = 7
 }
 
 enum ShareSourceChoice: Int, CaseIterable, Sendable {

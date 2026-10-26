@@ -128,24 +128,25 @@ internal sealed partial class Device {
         }
     }
 
-    /// The one Space of `profileId` the person may see: held by an attached
-    /// workspace, not locked and not being deleted. Null when no Space or more
-    /// than one holds the profile.
-    internal Guid? OnlySpaceOf(Guid profileId) => OnlyShowableSpaceOf(profileId)?.SpaceId;
+    /// The Space of `profileId` the person may see; see `ShowableSpaceOf`.
+    internal Guid? SpaceOf(Guid profileId) => ShowableSpaceOf(profileId)?.SpaceId;
 
-    /// The one Space of `profileId` the person may see, with the workspace
-    /// that owns it rather than one that borrows it: held by an attached
-    /// workspace, not locked and not being deleted. Null when no Space or more
-    /// than one holds the profile.
-    internal (Guid WorkspaceId, Guid SpaceId)? OnlyShowableSpaceOf(Guid profileId) {
+    /// The Space of `profileId` the person may see, with the workspace that
+    /// owns it rather than one that borrows it: held by an attached workspace,
+    /// not locked and not being deleted. Of the Spaces of a group, which
+    /// browse with one profile, it is the one the person used last. Null when
+    /// no such Space holds the profile, or Spaces of more than one workspace do.
+    internal (Guid WorkspaceId, Guid SpaceId)? ShowableSpaceOf(Guid profileId) {
         KeyValuePair<Guid, NativeSessionAuthority>[] attached;
         lock (gate) attached = [.. workspaces];
         var owners = attached.OrderByDescending(workspace => workspace.Value.Kind.OwnsSpaces)
             .SelectMany(workspace => workspace.Value.Current.Spaces.Where(space => space.ProfileId == profileId)
                 .Select(space => (Workspace: workspace, Space: space))).DistinctBy(owner => owner.Space.Id).ToList();
-        if (owners.Count != 1) return null;
-        var (owner, only) = owners[0];
-        return owner.Value.IsDeleting(only.Id) || owner.Value.IsLocked(only) ? null : (owner.Key, only.Id);
+        if (owners.Count == 0 || owners.Any(other => other.Workspace.Key != owners[0].Workspace.Key)) return null;
+        var owner = owners[0].Workspace;
+        var showable = owners.Select(other => other.Space)
+            .Where(space => !owner.Value.IsDeleting(space.Id) && !owner.Value.IsLocked(space)).ToList();
+        return showable.Count == 0 ? null : (owner.Key, showable.MaxBy(space => space.LastShownAt)!.Id);
     }
 
     /// Refused with `SpaceLocked` when a locked Space holds profile

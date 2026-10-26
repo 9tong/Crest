@@ -129,23 +129,25 @@ static size_t session_seed(uint8_t* output, size_t capacity, uint8_t deleted) {
         0              /* nobody chose its lock */
     };
     size_t at = 0;
-    assert(capacity >= 1 + 37 + sizeof(settings) + 4 + 48);
+    assert(capacity >= 1 + 37 + sizeof(settings) + 5 + 49);
     output[at++] = 1;
     memset(output + at, 0x44, 16);
     memset(output + at + 16, 0x55, 16);
     memcpy(output + at + 32, settings, sizeof(settings));
     at += 32 + sizeof(settings);
-    /* No folders, tabs, splits, archived tabs or history, then no default
-     * Space or seed marker. */
-    memset(output + at, 0, 7);
-    at += 7;
-    /* The Space deletions: each its operation, Space and profile. */
+    /* No folders, tabs, splits, archived tabs, history or group, then no
+     * default Space or seed marker. */
+    memset(output + at, 0, 8);
+    at += 8;
+    /* The Space deletions: each its operation, Space and profile, with no
+     * profiles it names to erase, so it erases that one. */
     output[at++] = deleted != 0;
     if (deleted != 0) {
         memset(output + at, 0x77, 16);
         memset(output + at + 16, deleted, 16);
         memset(output + at + 32, 0x78, 16);
-        at += 48;
+        output[at + 48] = 0;
+        at += 49;
     }
     /* No app preferences. */
     output[at++] = 0;

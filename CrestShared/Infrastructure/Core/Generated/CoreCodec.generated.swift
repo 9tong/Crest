@@ -7,7 +7,7 @@ import Foundation
 enum CoreCodec {
     /// SHA-256 of the canonical contract schema. The core refuses any other.
     static let fingerprint: [UInt8] = [
-        0x2e, 0xd4, 0xbb, 0xcf, 0xf3, 0x7d, 0xf6, 0x2f, 0x29, 0x89, 0x33, 0xd5, 0x21, 0x69, 0x58, 0xb8, 0x9d, 0x7f, 0x2a, 0x12, 0x80, 0x3b, 0x72, 0x87, 0x99, 0x66, 0x36, 0xdf, 0x66, 0xed, 0x13, 0x70
+        0x1d, 0x0f, 0xd9, 0x45, 0xb8, 0xb4, 0xca, 0x43, 0x94, 0x7d, 0xbb, 0x48, 0x7f, 0xdb, 0xd3, 0x20, 0x78, 0x71, 0x9c, 0x56, 0xbd, 0x7f, 0xc8, 0xa8, 0x27, 0x69, 0xe2, 0xdd, 0x87, 0x98, 0x27, 0xc3
     ]
     /// SHA-256 of the engine contract alone, which an engine binding registers with.
     static let engineFingerprint: [UInt8] = [
@@ -19321,10 +19321,10 @@ extension SessionState.Seed {
             disposableSeedMarker = nil
         }
         let spaceDeletionsCount = try reader.readCount()
-        var spaceDeletions: [SpaceDeletionState] = []
+        var spaceDeletions: [SpaceDeletionState.Seed] = []
         spaceDeletions.reserveCapacity(spaceDeletionsCount)
         for _ in 0..<spaceDeletionsCount {
-            let spaceDeletionsElement = try SpaceDeletionState(from: &reader)
+            let spaceDeletionsElement = try SpaceDeletionState.Seed(from: &reader)
             spaceDeletions.append(spaceDeletionsElement)
         }
         let appPreferences: AppPreferences?
@@ -21675,13 +21675,83 @@ extension SpaceDeletionState {
         let id = try reader.readUUID()
         let spaceID = try reader.readUUID()
         let profileID = try reader.readUUID()
-        self.init(id: id, spaceID: spaceID, profileID: profileID)
+        let erasedProfileIDs: [UUID]?
+        if try reader.readPresence() {
+            let erasedProfileIDsValueCount = try reader.readCount()
+            var erasedProfileIDsValue: [UUID] = []
+            erasedProfileIDsValue.reserveCapacity(erasedProfileIDsValueCount)
+            for _ in 0..<erasedProfileIDsValueCount {
+                let erasedProfileIDsValueElement = try reader.readUUID()
+                erasedProfileIDsValue.append(erasedProfileIDsValueElement)
+            }
+            erasedProfileIDs = erasedProfileIDsValue
+        } else {
+            erasedProfileIDs = nil
+        }
+        let erasingCount = try reader.readCount()
+        var erasing: [UUID] = []
+        erasing.reserveCapacity(erasingCount)
+        for _ in 0..<erasingCount {
+            let erasingElement = try reader.readUUID()
+            erasing.append(erasingElement)
+        }
+        self.init(id: id, spaceID: spaceID, profileID: profileID, erasedProfileIDs: erasedProfileIDs, erasing: erasing)
     }
 
     func encode(into writer: inout WireWriter) {
         writer.writeUUID(id)
         writer.writeUUID(spaceID)
         writer.writeUUID(profileID)
+        if let present0 = erasedProfileIDs {
+            writer.writePresence(true)
+            writer.writeCount(present0.count)
+            for element1 in present0 {
+                writer.writeUUID(element1)
+            }
+        } else {
+            writer.writePresence(false)
+        }
+        writer.writeCount(erasing.count)
+        for element0 in erasing {
+            writer.writeUUID(element0)
+        }
+    }
+}
+
+extension SpaceDeletionState.Seed {
+    init(from reader: inout WireReader) throws(WireError) {
+        let id = try reader.readUUID()
+        let spaceID = try reader.readUUID()
+        let profileID = try reader.readUUID()
+        let erasedProfileIDs: [UUID]?
+        if try reader.readPresence() {
+            let erasedProfileIDsValueCount = try reader.readCount()
+            var erasedProfileIDsValue: [UUID] = []
+            erasedProfileIDsValue.reserveCapacity(erasedProfileIDsValueCount)
+            for _ in 0..<erasedProfileIDsValueCount {
+                let erasedProfileIDsValueElement = try reader.readUUID()
+                erasedProfileIDsValue.append(erasedProfileIDsValueElement)
+            }
+            erasedProfileIDs = erasedProfileIDsValue
+        } else {
+            erasedProfileIDs = nil
+        }
+        self.init(id: id, spaceID: spaceID, profileID: profileID, erasedProfileIDs: erasedProfileIDs)
+    }
+
+    func encode(into writer: inout WireWriter) {
+        writer.writeUUID(id)
+        writer.writeUUID(spaceID)
+        writer.writeUUID(profileID)
+        if let present0 = erasedProfileIDs {
+            writer.writePresence(true)
+            writer.writeCount(present0.count)
+            for element1 in present0 {
+                writer.writeUUID(element1)
+            }
+        } else {
+            writer.writePresence(false)
+        }
     }
 }
 
@@ -21741,6 +21811,43 @@ extension SpaceLocked {
 
     func encode(into writer: inout WireWriter) {
         writer.writeUUID(spaceID)
+    }
+}
+
+extension SpaceMembership {
+    init(from reader: inout WireReader) throws(WireError) {
+        let primaryID: UUID?
+        if try reader.readPresence() {
+            let primaryIDValue = try reader.readUUID()
+            primaryID = primaryIDValue
+        } else {
+            primaryID = nil
+        }
+        let sharedProfileID: UUID?
+        if try reader.readPresence() {
+            let sharedProfileIDValue = try reader.readUUID()
+            sharedProfileID = sharedProfileIDValue
+        } else {
+            sharedProfileID = nil
+        }
+        let modifiedAt = try reader.readDate()
+        self.init(primaryID: primaryID, sharedProfileID: sharedProfileID, modifiedAt: modifiedAt)
+    }
+
+    func encode(into writer: inout WireWriter) {
+        if let present0 = primaryID {
+            writer.writePresence(true)
+            writer.writeUUID(present0)
+        } else {
+            writer.writePresence(false)
+        }
+        if let present0 = sharedProfileID {
+            writer.writePresence(true)
+            writer.writeUUID(present0)
+        } else {
+            writer.writePresence(false)
+        }
+        writer.writeDate(modifiedAt)
     }
 }
 
@@ -21927,7 +22034,7 @@ extension SpaceSettingsChanged {
 extension SpaceState {
     init(from reader: inout WireReader) throws(WireError) {
         let id = try reader.readUUID()
-        let profileID = try reader.readUUID()
+        let ownProfileID = try reader.readUUID()
         let settings = try SpaceSettings(from: &reader)
         let foldersCount = try reader.readCount()
         var folders: [FolderState] = []
@@ -21964,13 +22071,21 @@ extension SpaceState {
             let historyElement = try HistoryEntryState(from: &reader)
             history.append(historyElement)
         }
+        let membership: SpaceMembership?
+        if try reader.readPresence() {
+            let membershipValue = try SpaceMembership(from: &reader)
+            membership = membershipValue
+        } else {
+            membership = nil
+        }
+        let profileID = try reader.readUUID()
         let sidebar = try SidebarOutline(from: &reader)
-        self.init(id: id, profileID: profileID, settings: settings, folders: folders, tabs: tabs, splitGroups: splitGroups, archivedTabs: archivedTabs, history: history, sidebar: sidebar)
+        self.init(id: id, ownProfileID: ownProfileID, settings: settings, folders: folders, tabs: tabs, splitGroups: splitGroups, archivedTabs: archivedTabs, history: history, membership: membership, profileID: profileID, sidebar: sidebar)
     }
 
     func encode(into writer: inout WireWriter) {
         writer.writeUUID(id)
-        writer.writeUUID(profileID)
+        writer.writeUUID(ownProfileID)
         settings.encode(into: &writer)
         writer.writeCount(folders.count)
         for element0 in folders {
@@ -21992,6 +22107,13 @@ extension SpaceState {
         for element0 in history {
             element0.encode(into: &writer)
         }
+        if let present0 = membership {
+            writer.writePresence(true)
+            present0.encode(into: &writer)
+        } else {
+            writer.writePresence(false)
+        }
+        writer.writeUUID(profileID)
         sidebar.encode(into: &writer)
     }
 }
@@ -21999,7 +22121,7 @@ extension SpaceState {
 extension SpaceState.Seed {
     init(from reader: inout WireReader) throws(WireError) {
         let id = try reader.readUUID()
-        let profileID = try reader.readUUID()
+        let ownProfileID = try reader.readUUID()
         let settings = try SpaceSettings.Seed(from: &reader)
         let foldersCount = try reader.readCount()
         var folders: [FolderState.Seed] = []
@@ -22036,12 +22158,19 @@ extension SpaceState.Seed {
             let historyElement = try HistoryEntryState(from: &reader)
             history.append(historyElement)
         }
-        self.init(id: id, profileID: profileID, settings: settings, folders: folders, tabs: tabs, splitGroups: splitGroups, archivedTabs: archivedTabs, history: history)
+        let membership: SpaceMembership?
+        if try reader.readPresence() {
+            let membershipValue = try SpaceMembership(from: &reader)
+            membership = membershipValue
+        } else {
+            membership = nil
+        }
+        self.init(id: id, ownProfileID: ownProfileID, settings: settings, folders: folders, tabs: tabs, splitGroups: splitGroups, archivedTabs: archivedTabs, history: history, membership: membership)
     }
 
     func encode(into writer: inout WireWriter) {
         writer.writeUUID(id)
-        writer.writeUUID(profileID)
+        writer.writeUUID(ownProfileID)
         settings.encode(into: &writer)
         writer.writeCount(folders.count)
         for element0 in folders {
@@ -22062,6 +22191,12 @@ extension SpaceState.Seed {
         writer.writeCount(history.count)
         for element0 in history {
             element0.encode(into: &writer)
+        }
+        if let present0 = membership {
+            writer.writePresence(true)
+            present0.encode(into: &writer)
+        } else {
+            writer.writePresence(false)
         }
     }
 }

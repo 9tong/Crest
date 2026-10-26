@@ -22,11 +22,21 @@ final class SpaceModel: ObservedModel, Identifiable {
     let sidebar: SidebarModel
     let history: HistoryModel
     let archive: ArchiveModel
+    /// The profile the Space was made with, which never changes.
+    let ownProfileID: UUID
+    /// The profile the Space browses with: its own, or the session it shares
+    /// as a Sub-Space.
     private(set) var profileID: UUID {
         get { observed(\.profileIDStorage, as: \.profileID) }
         set { publish(newValue, into: \.profileIDStorage, as: \.profileID) }
     }
     @ObservationIgnored private var profileIDStorage: UUID
+    /// The session the Space shares besides its own, as the core resolved it.
+    private(set) var membership: SpaceMembership? {
+        get { observed(\.membershipStorage, as: \.membership) }
+        set { publish(newValue, into: \.membershipStorage, as: \.membership) }
+    }
+    @ObservationIgnored private var membershipStorage: SpaceMembership?
     /// What a person chose for each split. Membership stays on the tabs.
     private(set) var splitGroups: [SplitGroupState] {
         get { observed(\.splitGroupsStorage, as: \.splitGroups) }
@@ -36,9 +46,9 @@ final class SpaceModel: ObservedModel, Identifiable {
 
     var value: SpaceState {
         SpaceState(
-            id: id, profileID: profileID, settings: settings.value, folders: folders.values, tabs: tabs.values,
-            splitGroups: splitGroups, archivedTabs: archive.entries, history: history.entries,
-            sidebar: sidebar.outline(folders: folders.models))
+            id: id, ownProfileID: ownProfileID, settings: settings.value, folders: folders.values, tabs: tabs.values,
+            splitGroups: splitGroups, archivedTabs: archive.entries, history: history.entries, membership: membership,
+            profileID: profileID, sidebar: sidebar.outline(folders: folders.models))
     }
 
     /// Every tab the Space holds, open or archived.
@@ -50,7 +60,9 @@ final class SpaceModel: ObservedModel, Identifiable {
 
     init(_ value: SpaceState) {
         id = value.id
+        ownProfileID = value.ownProfileID
         profileIDStorage = value.profileID
+        membershipStorage = value.membership
         settings = SpaceSettingsModel(value.settings)
         tabs = ObservedList(value.tabs)
         folders = ObservedList(value.folders)
@@ -65,6 +77,7 @@ final class SpaceModel: ObservedModel, Identifiable {
     func update(_ value: SpaceState) {
         precondition(value.id == id, "A SpaceModel takes only its own Space's values.")
         profileID = value.profileID
+        membership = value.membership
         settings.update(value.settings)
         tabs.replace(with: value.tabs)
         folders.replace(with: value.folders)

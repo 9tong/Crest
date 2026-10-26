@@ -1,3 +1,5 @@
+using CrestCore.Domain;
+
 namespace CrestCore.Contracts;
 
 /// <summary>
@@ -50,6 +52,22 @@ public sealed record SessionState(
     /// The deletion under way of the Space `spaceId` names, or null while it stays.
     internal SpaceDeletionState? PendingDeletion(Guid spaceId) =>
         SpaceDeletions.FirstOrDefault(deletion => deletion.SpaceId == spaceId);
+
+    /// The deletion of `space` under `operationId`: it erases the Space's own
+    /// profile and the one it browses with, but none that a Space staying
+    /// after it and the Spaces `alsoLeaving` names browses with.
+    internal SpaceDeletionState Deleting(SpaceState space, Guid operationId, IReadOnlySet<Guid>? alsoLeaving = null) {
+        var kept = StayingSpaces.Where(other => other.Id != space.Id && alsoLeaving?.Contains(other.Id) != true)
+            .Select(other => other.ProfileId).ToHashSet();
+        return new(operationId, space.Id, space.OwnProfileId,
+            [.. new[] { space.OwnProfileId, space.ProfileId }.Distinct().Where(profile => !kept.Contains(profile))]);
+    }
+
+    /// The groups of the Spaces, in order; see `SpaceGroup`.
+    internal IReadOnlyList<SpaceGroup> Groups => SpaceGroup.Of(Spaces, SpaceDeletions.Select(deletion => deletion.SpaceId).ToHashSet());
+
+    /// The group that holds the Space `spaceId` names, or null when none does.
+    internal SpaceGroup? GroupOf(Guid spaceId) => Groups.FirstOrDefault(group => group.Members.Any(member => member.Id == spaceId));
 
     /// The session with each of `edited` in place of the Space of its id.
     internal SessionState Replacing(params SpaceState[] edited) => this with {

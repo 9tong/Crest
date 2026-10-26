@@ -206,10 +206,10 @@ internal sealed class NativeWorkspaceImport {
             var destination = created ? input : spaces.FirstOrDefault(s => s.Id == id);
             if (destination is null) continue; // A setup cannot recreate an existing Space deleted elsewhere.
             Available(id);
-            if (!created && destination.State.ProfileId != input.State.ProfileId) throw new Rejected(new SpaceProfileChanged(id));
+            if (!created && destination.State.OwnProfileId != input.State.OwnProfileId) throw new Rejected(new SpaceProfileChanged(id));
             if (created && spaces.Any(s => s.Id == id)) throw new Rejected(new SpaceAlreadyExists(id));
-            if (created && spaces.Any(s => s.State.ProfileId == input.State.ProfileId))
-                throw new Rejected(new ProfileInUse(input.State.ProfileId));
+            if (created && spaces.Any(s => s.State.OwnProfileId == input.State.OwnProfileId || s.State.ProfileId == input.State.OwnProfileId))
+                throw new Rejected(new ProfileInUse(input.State.OwnProfileId));
             Customize(destination, draft.Customization);
             if (!created) continue;
             spaces.Add(destination);

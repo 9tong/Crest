@@ -28,7 +28,7 @@ public static class NativeSyncMaterializer {
             .ThenBy(space => space.Id.ToString("D"), StringComparer.Ordinal)) {
             if (!profiles.Add(remote.ProfileId)) throw Error(SyncRecordFlaw.SharedProfile, remote.ProfileId);
             locals.TryGetValue(remote.Id, out var local);
-            if (local is not null && local.ProfileId != remote.ProfileId) throw Error(SyncRecordFlaw.ProfileChanged, remote.Id);
+            if (local is not null && local.OwnProfileId != remote.ProfileId) throw Error(SyncRecordFlaw.ProfileChanged, remote.Id);
             if (pending.Contains(remote.Id) && local is not null) { spaces.Add(local); continue; }
             var folders = Folders(remote.Id, records, policy, local, owners, deleted);
             var tabs = Tabs(remote.Id, records, policy, local, folders, owners, deleted);
@@ -46,11 +46,11 @@ public static class NativeSyncMaterializer {
             var settings = new SpaceSettings(remote.Name, remote.Symbol, remote.Accent, brandingIds.Contains(remote.Id) ? remote.Branding : null, remote.BrowsingPreferences,
                 credentials, accessPolicy, remote.IsSavedTabsExpanded, remote.SavedTabsExpansionModifiedAt?.Moment,
                 credentialsModifiedAt, accessModifiedAt);
-            spaces.Add(new(remote.Id, remote.ProfileId, settings, folders, tabs, groups, archive, history));
+            spaces.Add(new(remote.Id, remote.ProfileId, settings, folders, tabs, groups, archive, history, Membership(local, remote)));
         }
         foreach (var id in pending.Where(id => spaces.All(space => space.Id != id))) {
             var local = locals[id];
-            if (!profiles.Add(local.ProfileId)) throw Error(SyncRecordFlaw.SharedProfile, local.ProfileId);
+            if (!profiles.Add(local.OwnProfileId)) throw Error(SyncRecordFlaw.SharedProfile, local.OwnProfileId);
             spaces.Add(local);
         }
         return spaces.Count == 0 ? session : session with { Spaces = spaces, DisposableSeedMarker = null };
@@ -77,6 +77,13 @@ public static class NativeSyncMaterializer {
             ? (kept with { IsEnabled = enabled }, modifiedAt.Moment)
             : (kept, local?.Settings.CredentialsEnabledModifiedAt);
     }
+
+    /// The session the Space browses with besides its own, and when someone
+    /// chose, come from the record once someone chose; until then the Space
+    /// keeps what this device holds. Repair then mends the groups they make.
+    private static SpaceMembership? Membership(SpaceState? local, SpacePayload remote) =>
+        remote.MembershipModifiedAt is { } modifiedAt
+            ? new(remote.PrimarySpaceId, remote.SharedProfileId, modifiedAt.Moment) : local?.Membership;
 
     /// Who may open the Space, and when someone chose. The later choice wins on
     /// every device, since the device that made it authenticated for it, and

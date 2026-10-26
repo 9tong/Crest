@@ -160,6 +160,8 @@ internal abstract class SyncPayloadType {
             LatestFields(result, first, second, StoredSessionCodec.Key.SavedTabsExpansionModifiedAt, StoredSessionCodec.Key.IsSavedTabsExpanded);
             LatestFields(result, first, second, StoredSessionCodec.Key.CredentialsEnabledModifiedAt, SyncPayload.Key.CredentialsEnabled);
             LatestFields(result, first, second, StoredSessionCodec.Key.AccessPolicyModifiedAt, StoredSessionCodec.Key.AccessPolicy);
+            LatestFields(result, first, second, StoredSessionCodec.Key.MembershipModifiedAt, StoredSessionCodec.Key.PrimarySpaceId,
+                StoredSessionCodec.Key.SharedProfileId);
             const string groups = StoredSessionCodec.Key.SplitGroups;
             result[groups] = MergeGroups(first[groups] as JsonArray, second[groups] as JsonArray, winner);
         }

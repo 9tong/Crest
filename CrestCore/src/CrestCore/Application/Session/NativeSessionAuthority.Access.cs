@@ -38,7 +38,7 @@ public sealed partial class NativeSessionAuthority {
             var space = session.KnownSpace(spaceId);
             if (session.PendingDeletion(spaceId) is not null || borrowedSource?.IsDeleting(spaceId) == true)
                 throw new Rejected(new SpaceBeingDeleted(spaceId));
-            return (new(space.Id, space.ProfileId), space.Settings.RequiresAuthentication);
+            return (new(space.Id, space.OwnProfileId), space.Settings.RequiresAuthentication);
         }
     }
 

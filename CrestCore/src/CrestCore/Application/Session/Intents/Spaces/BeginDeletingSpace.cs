@@ -24,7 +24,7 @@ public sealed record BeginDeletingSpace(Guid WorkspaceId, Guid WindowId, Guid Sp
                 ? new(turn.Basis, SyncStaging.Withdrawal)
                 : throw new Rejected(new WrongDeletionOperation(space.Id));
         SessionState.RequireRemovable(turn.Basis.Spaces.Count - turn.Basis.SpaceDeletions.Count);
-        var next = turn.Basis with { SpaceDeletions = [.. turn.Basis.SpaceDeletions, new(OperationId, space.Id, space.ProfileId)] };
+        var next = turn.Basis with { SpaceDeletions = [.. turn.Basis.SpaceDeletions, turn.Basis.Deleting(space, OperationId)] };
         var followUp = new WindowFollowUp(workspace.IssuingWindow(WindowId));
         if (followUp.Window?.ShownSpaceId == space.Id)
             followUp.ShowSpace(next.Spaces.First(candidate => next.PendingDeletion(candidate.Id) is null).Id);

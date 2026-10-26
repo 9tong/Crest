@@ -14,7 +14,7 @@ namespace CrestCore.Native;
 public static class ContractCodec {
     /// <summary>SHA-256 of the canonical contract schema.</summary>
     public static ReadOnlySpan<byte> Fingerprint => [
-        0x2e, 0xd4, 0xbb, 0xcf, 0xf3, 0x7d, 0xf6, 0x2f, 0x29, 0x89, 0x33, 0xd5, 0x21, 0x69, 0x58, 0xb8, 0x9d, 0x7f, 0x2a, 0x12, 0x80, 0x3b, 0x72, 0x87, 0x99, 0x66, 0x36, 0xdf, 0x66, 0xed, 0x13, 0x70
+        0x1d, 0x0f, 0xd9, 0x45, 0xb8, 0xb4, 0xca, 0x43, 0x94, 0x7d, 0xbb, 0x48, 0x7f, 0xdb, 0xd3, 0x20, 0x78, 0x71, 0x9c, 0x56, 0xbd, 0x7f, 0xc8, 0xa8, 0x27, 0x69, 0xe2, 0xdd, 0x87, 0x98, 0x27, 0xc3
     ];
 
     /// <summary>SHA-256 of the engine contract alone, which an engine binding registers with.</summary>
@@ -15191,7 +15191,7 @@ public static class ContractCodec {
             reader.ReadList(() => ReadSpaceStateSeed(reader)),
             reader.ReadPresence() ? (Guid?)reader.ReadGuid() : null,
             reader.ReadPresence() ? (Guid?)reader.ReadGuid() : null,
-            reader.ReadList(() => ReadSpaceDeletionState(reader)),
+            reader.ReadList(() => ReadSpaceDeletionStateSeed(reader)),
             reader.ReadPresence() ? (AppPreferences?)ReadAppPreferences(reader) : null);
     }
 
@@ -15216,7 +15216,7 @@ public static class ContractCodec {
         }
         writer.WriteCount(value.SpaceDeletions.Count);
         foreach (var itemSpaceDeletions in value.SpaceDeletions) {
-            WriteSpaceDeletionState(writer, itemSpaceDeletions);
+            WriteSpaceDeletionStateSeed(writer, itemSpaceDeletions);
         }
         if (value.AppPreferences is { } presentAppPreferences) {
             writer.WritePresence(true);
@@ -16849,10 +16849,13 @@ public static class ContractCodec {
 
     public static SpaceDeletionState ReadSpaceDeletionState(WireReader reader) {
         ArgumentNullException.ThrowIfNull(reader);
-        return new SpaceDeletionState(
+        var value = new SpaceDeletionState(
             reader.ReadGuid(),
             reader.ReadGuid(),
-            reader.ReadGuid());
+            reader.ReadGuid(),
+            reader.ReadPresence() ? (IReadOnlyList<Guid>?)reader.ReadList(() => reader.ReadGuid()) : null);
+        _ = reader.ReadList(() => reader.ReadGuid());
+        return value;
     }
 
     public static void WriteSpaceDeletionState(WireWriter writer, SpaceDeletionState value) {
@@ -16861,6 +16864,45 @@ public static class ContractCodec {
         writer.WriteGuid(value.Id);
         writer.WriteGuid(value.SpaceId);
         writer.WriteGuid(value.ProfileId);
+        if (value.ErasedProfileIds is { } presentErasedProfileIds) {
+            writer.WritePresence(true);
+            writer.WriteCount(presentErasedProfileIds.Count);
+            foreach (var itemErasedProfileIdsValue in presentErasedProfileIds) {
+                writer.WriteGuid(itemErasedProfileIdsValue);
+            }
+        } else {
+            writer.WritePresence(false);
+        }
+        writer.WriteCount(value.Erasing.Count);
+        foreach (var itemErasing in value.Erasing) {
+            writer.WriteGuid(itemErasing);
+        }
+    }
+
+    public static SpaceDeletionState ReadSpaceDeletionStateSeed(WireReader reader) {
+        ArgumentNullException.ThrowIfNull(reader);
+        return new SpaceDeletionState(
+            reader.ReadGuid(),
+            reader.ReadGuid(),
+            reader.ReadGuid(),
+            reader.ReadPresence() ? (IReadOnlyList<Guid>?)reader.ReadList(() => reader.ReadGuid()) : null);
+    }
+
+    public static void WriteSpaceDeletionStateSeed(WireWriter writer, SpaceDeletionState value) {
+        ArgumentNullException.ThrowIfNull(writer);
+        ArgumentNullException.ThrowIfNull(value);
+        writer.WriteGuid(value.Id);
+        writer.WriteGuid(value.SpaceId);
+        writer.WriteGuid(value.ProfileId);
+        if (value.ErasedProfileIds is { } presentErasedProfileIds) {
+            writer.WritePresence(true);
+            writer.WriteCount(presentErasedProfileIds.Count);
+            foreach (var itemErasedProfileIdsValue in presentErasedProfileIds) {
+                writer.WriteGuid(itemErasedProfileIdsValue);
+            }
+        } else {
+            writer.WritePresence(false);
+        }
     }
 
     public static SpaceDeletionUnderway ReadSpaceDeletionUnderway(WireReader reader) {
@@ -16918,6 +16960,32 @@ public static class ContractCodec {
         ArgumentNullException.ThrowIfNull(writer);
         ArgumentNullException.ThrowIfNull(value);
         writer.WriteGuid(value.SpaceId);
+    }
+
+    public static SpaceMembership ReadSpaceMembership(WireReader reader) {
+        ArgumentNullException.ThrowIfNull(reader);
+        return new SpaceMembership(
+            reader.ReadPresence() ? (Guid?)reader.ReadGuid() : null,
+            reader.ReadPresence() ? (Guid?)reader.ReadGuid() : null,
+            reader.ReadDate());
+    }
+
+    public static void WriteSpaceMembership(WireWriter writer, SpaceMembership value) {
+        ArgumentNullException.ThrowIfNull(writer);
+        ArgumentNullException.ThrowIfNull(value);
+        if (value.PrimaryId is { } presentPrimaryId) {
+            writer.WritePresence(true);
+            writer.WriteGuid(presentPrimaryId);
+        } else {
+            writer.WritePresence(false);
+        }
+        if (value.SharedProfileId is { } presentSharedProfileId) {
+            writer.WritePresence(true);
+            writer.WriteGuid(presentSharedProfileId);
+        } else {
+            writer.WritePresence(false);
+        }
+        writer.WriteDate(value.ModifiedAt);
     }
 
     public static SpaceProfileChanged ReadSpaceProfileChanged(WireReader reader) {
@@ -17067,7 +17135,9 @@ public static class ContractCodec {
             reader.ReadList(() => ReadTabState(reader)),
             reader.ReadList(() => ReadSplitGroupState(reader)),
             reader.ReadList(() => ReadArchivedTabState(reader)),
-            reader.ReadList(() => ReadHistoryEntryState(reader)));
+            reader.ReadList(() => ReadHistoryEntryState(reader)),
+            reader.ReadPresence() ? (SpaceMembership?)ReadSpaceMembership(reader) : null);
+        _ = reader.ReadGuid();
         _ = ReadSidebarOutline(reader);
         return value;
     }
@@ -17076,7 +17146,7 @@ public static class ContractCodec {
         ArgumentNullException.ThrowIfNull(writer);
         ArgumentNullException.ThrowIfNull(value);
         writer.WriteGuid(value.Id);
-        writer.WriteGuid(value.ProfileId);
+        writer.WriteGuid(value.OwnProfileId);
         WriteSpaceSettings(writer, value.Settings);
         writer.WriteCount(value.Folders.Count);
         foreach (var itemFolders in value.Folders) {
@@ -17098,6 +17168,13 @@ public static class ContractCodec {
         foreach (var itemHistory in value.History) {
             WriteHistoryEntryState(writer, itemHistory);
         }
+        if (value.Membership is { } presentMembership) {
+            writer.WritePresence(true);
+            WriteSpaceMembership(writer, presentMembership);
+        } else {
+            writer.WritePresence(false);
+        }
+        writer.WriteGuid(value.ProfileId);
         WriteSidebarOutline(writer, value.Sidebar);
     }
 
@@ -17111,14 +17188,15 @@ public static class ContractCodec {
             reader.ReadList(() => ReadTabStateSeed(reader)),
             reader.ReadList(() => ReadSplitGroupStateSeed(reader)),
             reader.ReadList(() => ReadArchivedTabStateSeed(reader)),
-            reader.ReadList(() => ReadHistoryEntryState(reader)));
+            reader.ReadList(() => ReadHistoryEntryState(reader)),
+            reader.ReadPresence() ? (SpaceMembership?)ReadSpaceMembership(reader) : null);
     }
 
     public static void WriteSpaceStateSeed(WireWriter writer, SpaceState value) {
         ArgumentNullException.ThrowIfNull(writer);
         ArgumentNullException.ThrowIfNull(value);
         writer.WriteGuid(value.Id);
-        writer.WriteGuid(value.ProfileId);
+        writer.WriteGuid(value.OwnProfileId);
         WriteSpaceSettingsSeed(writer, value.Settings);
         writer.WriteCount(value.Folders.Count);
         foreach (var itemFolders in value.Folders) {
@@ -17139,6 +17217,12 @@ public static class ContractCodec {
         writer.WriteCount(value.History.Count);
         foreach (var itemHistory in value.History) {
             WriteHistoryEntryState(writer, itemHistory);
+        }
+        if (value.Membership is { } presentMembership) {
+            writer.WritePresence(true);
+            WriteSpaceMembership(writer, presentMembership);
+        } else {
+            writer.WritePresence(false);
         }
     }
 
@@ -19303,7 +19387,7 @@ public static class ContractCodec {
 
     public static SessionFlaw ReadSessionFlaw(WireReader reader) {
         ArgumentNullException.ThrowIfNull(reader);
-        return (SessionFlaw)reader.ReadEnum(6);
+        return (SessionFlaw)reader.ReadEnum(8);
     }
 
     public static void WriteSessionFlaw(WireWriter writer, SessionFlaw value) {
