@@ -16,7 +16,8 @@ public sealed record SetCredentialPreferences(Guid WorkspaceId, Guid SpaceId, Cr
         var edited = space.Configured(space.Settings with {
             CredentialPreferences = Preferences,
             CredentialsEnabledModifiedAt = Preferences.IsEnabled == space.Settings.CredentialPreferences.IsEnabled
-                ? space.Settings.CredentialsEnabledModifiedAt : turn.Now
+                ? space.Settings.CredentialsEnabledModifiedAt
+                : SpaceSettings.Chosen(space.Settings.CredentialsEnabledModifiedAt, turn.Now)
         });
         return new(turn.Basis.Sharing(edited, GroupSetting.CrestPasswords), SyncStaging.Protection);
     }
