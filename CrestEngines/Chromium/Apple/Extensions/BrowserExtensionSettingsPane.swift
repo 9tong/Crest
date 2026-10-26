@@ -85,7 +85,11 @@ struct BrowserExtensionsView: View {
             }
             Button("Cancel", role: .cancel) { pendingRemoval = nil }
         } message: { item in
-            Text("\(item.name) and its data are removed from this Space only.")
+            if store.sharesProfile(space) {
+                Text("\(item.name) and its data are removed from every Space in this group.")
+            } else {
+                Text("\(item.name) and its data are removed from this Space only.")
+            }
         }
         .sheet(item: $pendingCopy) { item in BrowserExtensionCopySheet(item: item, space: space, store: store) }
     }

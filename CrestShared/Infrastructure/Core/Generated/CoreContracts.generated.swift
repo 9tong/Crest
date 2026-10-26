@@ -20697,7 +20697,7 @@ struct SitePermission: Hashable, Sendable {
 }
 
 /// The members of the core's `SitePermissionDecision`. A member's wire tag is its index in `all`.
-/// Core-only behavior, not emitted: `record`.
+/// Core-only behavior, not emitted: `record`, `overrule`.
 struct SitePermissionDecision: Hashable, Sendable {
     let tag: Int
     var name: String { facts.name }

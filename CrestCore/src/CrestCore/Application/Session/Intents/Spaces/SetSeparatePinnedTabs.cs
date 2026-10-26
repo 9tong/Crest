@@ -14,7 +14,7 @@ public sealed record SetSeparatePinnedTabs(Guid WorkspaceId, Guid SpaceId, bool 
         workspace.RequireOwnedSpaces();
         var space = workspace.Editable(turn.Basis, SpaceId);
         if (space.Settings.SeparatesPinnedTabs == Separates) return new(turn.Basis, SyncStaging.Edit);
-        var edited = space.Configured(space.Settings with { SeparatesPinnedTabs = Separates, SeparatesPinnedTabsModifiedAt = turn.Now });
+        var edited = space.Configured(space.Settings with { SeparatesPinnedTabs = Separates, SeparatesPinnedTabsModifiedAt = SpaceSettings.Chosen(space.Settings.SeparatesPinnedTabsModifiedAt, turn.Now) });
         return new(turn.Basis.Sharing(edited, GroupSetting.PinnedTabs), SyncStaging.Edit);
     }
 

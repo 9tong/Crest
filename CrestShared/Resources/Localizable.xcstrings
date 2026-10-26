@@ -169,6 +169,12 @@
         }
       }
     },
+    "%@ and its data are removed from every Space in this group." : {
+
+    },
+    "%@ and its data will be removed from every Space in this group." : {
+
+    },
     "%@ and its Space-local data will be removed. Other Spaces are unchanged." : {
 
     },
