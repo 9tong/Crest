@@ -27,6 +27,7 @@ struct BrowserExtensionSettingsPane: View {
                     space: space, accessController: spaceAccess,
                     detail: "Unlock this Space to see its extensions.")
             }
+            BrowserSpaceGroupSharingNote(browser: browser, spaceID: space?.id)
         }
         .onAppear { if selectedSpaceID == nil { selectedSpaceID = browser.selectedSpaceID } }
         .onChange(of: browser.spaceModels.map(\.id)) {

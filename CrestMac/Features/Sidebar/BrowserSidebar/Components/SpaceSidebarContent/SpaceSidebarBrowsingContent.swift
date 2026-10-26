@@ -62,7 +62,12 @@ struct SpaceSidebarBrowsingContent: View {
         SpaceSidebarTabListScroll(browser: browser) {
             BrowserSidebarBackgroundInteractionView(
                 editSpace: editSpace,
-                createSpace: createSpace
+                createSpace: createSpace,
+                createSubSpace: browser.isPrivateBrowsing
+                    ? nil
+                    : { [space = listContext.space.id] in
+                        if browser.addSubSpace(after: space) { BrowserSpaceGroupNotices.formed() }
+                    }
             )
             .modifier(
                 BrowserSidebarEmptySpaceNewTabGesture(

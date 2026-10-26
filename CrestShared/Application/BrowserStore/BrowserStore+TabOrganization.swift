@@ -128,7 +128,7 @@ extension BrowserStore {
 
     func canMoveTab(_ id: UUID, from sourceSpaceID: UUID, into destinationSpaceID: UUID) -> Bool {
         guard !isDeleting(sourceSpaceID), !isDeleting(destinationSpaceID), sourceSpaceID != destinationSpaceID,
-            spaceModel(sourceSpaceID)?.tabs.contains(id) == true, spaceModel(destinationSpaceID) != nil
+            spaceModel(sourceSpaceID)?.shownTab(id) != nil, spaceModel(destinationSpaceID) != nil
         else { return false }
         return family.canSend(
             MoveTabToSpace(
@@ -160,7 +160,7 @@ extension BrowserStore {
         into destinationSpaceID: UUID
     ) -> Bool {
         guard !isDeleting(sourceSpaceID), !isDeleting(destinationSpaceID),
-            let sourceSpace = spaceModel(sourceSpaceID), sourceSpace.tabs.contains(id)
+            let sourceSpace = spaceModel(sourceSpaceID), sourceSpace.shownTab(id) != nil
         else { return false }
         let source = BrowserTabRuntimeAssignment(tabID: id, spaceID: sourceSpaceID, profileID: sourceSpace.profileID)
         guard moveTabBetweenSpaces(id, from: sourceSpaceID, into: destinationSpaceID),

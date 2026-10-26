@@ -12,7 +12,8 @@ struct BrowserSettingsSpacePage: View {
 
     @State private var downloads = BrowserSpaceDownloadSettingsModel()
     @State private var passwordSearchText = ""
-    @State private var pendingDeletionID: UUID?
+    @State private var pendingDeletion: BrowserSpaceDeletionRequest?
+    @State private var pendingGroupChange: BrowserSpaceGroupChange?
     @State private var showsArtworkCredits = false
 
     var body: some View {
@@ -37,7 +38,10 @@ struct BrowserSettingsSpacePage: View {
             }
         }
         .background(BrowserSettingsCanvas.background)
-        .browserSpaceDeletionConfirmation($pendingDeletionID, browser: browser, dataDeleter: dataDeleter)
+        .browserSpaceDeletionConfirmation(
+            $pendingDeletion, browser: browser, spaceAccess: spaceAccess, dataDeleter: dataDeleter
+        )
+        .browserSpaceGroupChangeConfirmation($pendingGroupChange, browser: browser, spaceAccess: spaceAccess)
         .sheet(isPresented: $showsArtworkCredits) {
             BrowserCrestArtworkCredits()
         }
@@ -68,7 +72,7 @@ struct BrowserSettingsSpacePage: View {
             Menu {
                 BrowserSettingsSpaceMenu(
                     browser: browser, space: space, spaceAccess: spaceAccess, openSpace: openSpace,
-                    requestDeletion: { pendingDeletionID = space.id })
+                    requestDeletion: { pendingDeletion = $0 }, requestGroupChange: { pendingGroupChange = $0 })
                 Divider()
                 Button("Reset Appearance") { resetAppearance() }
                     .disabled(startingAppearance == nil || startingAppearance == space.settings.look)
@@ -156,6 +160,7 @@ struct BrowserSettingsSpacePage: View {
     private var browsingPane: some View {
         BrowserSettingsPane(.spaces) {
             BrowserSpaceBrowsingSection(browser: browser, space: space)
+            BrowserSpaceGroupPinnedTabsSection(browser: browser, space: space)
             BrowserSpaceDownloadsSection(settings: downloads.settings(for: space))
             BrowserSpaceDeletionSection(browser: browser, spaceID: space.id, dataDeleter: dataDeleter)
         }
@@ -186,13 +191,15 @@ private struct BrowserCrestArtworkCredits: View {
     }
 }
 
-/// What can be done to a Space from its sidebar row or its page.
+/// What can be done to a Space from its sidebar row or its page, including
+/// moving it into or out of a group, each after a confirmation.
 struct BrowserSettingsSpaceMenu: View {
     let browser: BrowserStore
     let space: SpaceModel
     let spaceAccess: BrowserSpaceAccessController
     let openSpace: BrowserSettingsOpenSpaceAction
-    let requestDeletion: () -> Void
+    let requestDeletion: (BrowserSpaceDeletionRequest) -> Void
+    let requestGroupChange: (BrowserSpaceGroupChange) -> Void
 
     var body: some View {
         let order = BrowserSpaceOrderActions(browser: browser, spaceID: space.id)
@@ -202,10 +209,39 @@ struct BrowserSettingsSpaceMenu: View {
         Button("Move Up", action: order.moveUp).disabled(!order.canMoveUp)
         Button("Move Down", action: order.moveDown).disabled(!order.canMoveDown)
         Divider()
+        if !browser.isPrivateBrowsing {
+            Button("New Sub-Space") {
+                if browser.addSubSpace(after: space.id) { BrowserSpaceGroupNotices.formed() }
+            }
+            .disabled(browser.isDeleting(space.id))
+        }
+        if let separation = BrowserSpaceGroupChange.separating(space, in: browser) {
+            Button("Separate from “\(browser.primary(of: space).settings.name)”…") { requestGroupChange(separation) }
+        }
+        if browser.canJoinGroup(space), !browser.joinableGroups(for: space).isEmpty {
+            Menu("Make Sub-Space of") {
+                ForEach(browser.joinableGroups(for: space)) { group in
+                    Button(group.settings.name) {
+                        if let join = BrowserSpaceGroupChange.joining(space, into: group, in: browser) {
+                            requestGroupChange(join)
+                        }
+                    }
+                }
+            }
+        }
+        Divider()
         Toggle("Lock Space", isOn: lock)
         Divider()
-        Button("Delete “\(space.settings.name)”…", role: .destructive, action: requestDeletion)
-            .disabled(browser.spaceModels.count <= 1 || browser.isDeleting(space.id))
+        Button("Delete “\(space.settings.name)”…", role: .destructive) {
+            requestDeletion(BrowserSpaceDeletionRequest(spaceID: space.id))
+        }
+        .disabled(browser.spaceModels.count <= 1 || browser.isDeleting(space.id))
+        if browser.leadsGroup(space) {
+            Button("Delete “\(space.settings.name)” and Its Sub-Spaces…", role: .destructive) {
+                requestDeletion(BrowserSpaceDeletionRequest(spaceID: space.id, includesSubSpaces: true))
+            }
+            .disabled(browser.groupMembers(of: space).count >= browser.spaceModels.count)
+        }
     }
 
     private var lock: Binding<Bool> {
@@ -218,66 +254,6 @@ struct BrowserSettingsSpaceMenu: View {
                     matching: BrowserSpaceRuntimeAssignment(space: space),
                     in: browser
                 )
-            }
-        }
-    }
-}
-
-extension View {
-    /// Asks before deleting the Space `spaceID` names, then deletes it and
-    /// its data, reporting a failure.
-    func browserSpaceDeletionConfirmation(
-        _ spaceID: Binding<UUID?>,
-        browser: BrowserStore,
-        dataDeleter: any BrowserSpaceDataDeleting
-    ) -> some View {
-        modifier(BrowserSpaceDeletionConfirmation(spaceID: spaceID, browser: browser, dataDeleter: dataDeleter))
-    }
-}
-
-private struct BrowserSpaceDeletionConfirmation: ViewModifier {
-    @Binding var spaceID: UUID?
-    let browser: BrowserStore
-    let dataDeleter: any BrowserSpaceDataDeleting
-    @State private var failure: String?
-
-    func body(content: Content) -> some View {
-        content
-            .alert(
-                "Delete “\(spaceName)”?",
-                isPresented: Binding(get: { spaceID != nil }, set: { if !$0 { spaceID = nil } }),
-                presenting: spaceID
-            ) { id in
-                Button("Delete Space and Data", role: .destructive) { delete(id) }
-                    .accessibilityIdentifier("confirm-delete-space")
-                Button("Cancel", role: .cancel) {}
-            } message: { _ in
-                Text(
-                    "This permanently removes this Space’s browser data from Crest. "
-                        + "Downloaded files you already saved are kept."
-                )
-            }
-            .alert(
-                "Couldn’t Delete Space",
-                isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })
-            ) {
-                Button("OK") { failure = nil }
-            } message: {
-                Text(failure ?? "")
-            }
-    }
-
-    private var spaceName: String {
-        spaceID.flatMap(browser.spaceModel)?.settings.name ?? "Space"
-    }
-
-    private func delete(_ id: UUID) {
-        spaceID = nil
-        Task { @MainActor in
-            do {
-                try await browser.deleteSpace(id, dataDeleter: dataDeleter)
-            } catch {
-                failure = "\(error.localizedDescription) The Space was kept so you can try again."
             }
         }
     }

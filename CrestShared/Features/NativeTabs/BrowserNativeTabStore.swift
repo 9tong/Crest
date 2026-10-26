@@ -93,7 +93,9 @@ final class BrowserNativeTabStore {
     }
 
     /// Drops the native content of every tab `spaces` no longer holds with
-    /// the same Space, profile and content.
+    /// the same Space and content. Native content reads no website data, so a
+    /// Space that joins or leaves a group, which changes the profile it
+    /// browses with, keeps its loaded native tabs under the new profile.
     func reconcile(spaces: [SpaceModel]) {
         let live = Dictionary(
             uniqueKeysWithValues: spaces.flatMap { space in
@@ -108,9 +110,14 @@ final class BrowserNativeTabStore {
                 }
             })
         let removed = runtimes.compactMap { id, runtime in
-            live[id]?.0 == runtime.assignment && live[id]?.1 == runtime.content ? nil : id
+            live[id]?.0.spaceID == runtime.assignment.spaceID && live[id]?.1 == runtime.content ? nil : id
         }
         for id in removed { remove(id) }
+        for (id, runtime) in runtimes {
+            guard let assignment = live[id]?.0, assignment != runtime.assignment else { continue }
+            runtime.assignment = assignment
+            residencyRevision &+= 1
+        }
     }
 
     func inactiveTabIDs(excluding presented: [UUID]) -> [UUID] {
@@ -126,7 +133,8 @@ final class BrowserNativeTabStore {
 @MainActor
 final class BrowserNativeTabRuntime: Identifiable {
     let id = UUID()
-    let assignment: BrowserTabRuntimeAssignment
+    /// The tab, its Space and the profile that Space browses with now.
+    fileprivate(set) var assignment: BrowserTabRuntimeAssignment
     let content: BrowserNativeTabContent
     var lastPresented: Date
     private var models: [ObjectIdentifier: AnyObject] = [:]

@@ -6,7 +6,8 @@ import SwiftUI
 struct BrowserSettingsSidebar: View {
     @Environment(\.locale) private var locale
     @State private var standaloneScroll = BrowserNativeScrollState()
-    @State private var pendingDeletionID: UUID?
+    @State private var pendingDeletion: BrowserSpaceDeletionRequest?
+    @State private var pendingGroupChange: BrowserSpaceGroupChange?
     @State private var hoveredItem: BrowserSettingsSidebarItem?
     @Bindable var tabState: BrowserSettingsTabState
     let browser: BrowserStore
@@ -37,7 +38,10 @@ struct BrowserSettingsSidebar: View {
             .browserNativeScrollState(tabState.sidebarScroll)
         }
         .background(BrowserSettingsCanvas.background)
-        .browserSpaceDeletionConfirmation($pendingDeletionID, browser: browser, dataDeleter: dataDeleter)
+        .browserSpaceDeletionConfirmation(
+            $pendingDeletion, browser: browser, spaceAccess: spaceAccess, dataDeleter: dataDeleter
+        )
+        .browserSpaceGroupChangeConfirmation($pendingGroupChange, browser: browser, spaceAccess: spaceAccess)
         .onChange(of: navigation.query.isEmpty) { _, isEmpty in
             if !isEmpty { tabState.isArrangingSpaces = false }
         }
@@ -100,6 +104,10 @@ struct BrowserSettingsSidebar: View {
                 }
             } header: {
                 spacesHeader
+                    // A Sub-Space dropped on the list's heading leaves its group.
+                    .dropDestination(for: String.self) { items, _ in
+                        requestSeparation(of: items)
+                    }
             }
         }
     }
@@ -137,6 +145,11 @@ struct BrowserSettingsSidebar: View {
 
     private func spaceRow(_ space: SpaceModel) -> some View {
         HStack(spacing: 6) {
+            // A Sub-Space sits under its primary, as a tab sits in a folder.
+            if browser.isSubSpace(space) {
+                Color.clear.frame(width: BrowserSettingsSidebarMetrics.subSpaceIndent, height: 1)
+                    .accessibilityHidden(true)
+            }
             Label {
                 Text(space.settings.name.isEmpty ? String(localized: "Untitled Space") : space.settings.name)
                     .lineLimit(1)
@@ -172,13 +185,44 @@ struct BrowserSettingsSidebar: View {
         .settingsSidebarRow(.space(space.id), hovered: $hoveredItem, selection: selection)
         .moveDisabled(!tabState.isArrangingSpaces)
         .contextMenu { spaceMenu(space) }
+        .modifier(
+            BrowserSettingsSpaceGroupDrag(space: space, isArranging: tabState.isArrangingSpaces) { items in
+                requestJoin(of: items, into: space)
+            }
+        )
         .accessibilityIdentifier("settings-space-\(space.id)")
+    }
+
+    /// Asks to make the Space a dragged row names a Sub-Space of `group`'s
+    /// group. Answers whether the drop named one that may join it.
+    private func requestJoin(of items: [String], into group: SpaceModel) -> Bool {
+        guard let space = draggedSpace(items), space !== group,
+            let change = BrowserSpaceGroupChange.joining(space, into: group, in: browser)
+        else { return false }
+        pendingGroupChange = change
+        return true
+    }
+
+    /// Asks to separate the Sub-Space a dragged row names from its group.
+    private func requestSeparation(of items: [String]) -> Bool {
+        guard let space = draggedSpace(items), let change = BrowserSpaceGroupChange.separating(space, in: browser)
+        else { return false }
+        pendingGroupChange = change
+        return true
+    }
+
+    /// The Space of this workspace a dragged Settings row names.
+    private func draggedSpace(_ items: [String]) -> SpaceModel? {
+        guard items.count == 1, let id = items.first.flatMap(UUID.init(uuidString:)), !browser.isDeleting(id) else {
+            return nil
+        }
+        return browser.spaceModel(id)
     }
 
     private func spaceMenu(_ space: SpaceModel) -> some View {
         BrowserSettingsSpaceMenu(
             browser: browser, space: space, spaceAccess: spaceAccess, openSpace: openSpace,
-            requestDeletion: { pendingDeletionID = space.id })
+            requestDeletion: { pendingDeletion = $0 }, requestGroupChange: { pendingGroupChange = $0 })
     }
 
     /// Every Space while arranging; otherwise the Spaces the search shows.
@@ -240,4 +284,25 @@ private enum BrowserSettingsSidebarMetrics {
     /// Lines the header's buttons up with the trailing glyphs of the rows.
     static let headerTrailingInset: CGFloat = 6
     static let headerButtonSize = CGSize(width: 22, height: 22)
+    /// How far a Sub-Space's row sits in from its primary's.
+    static let subSpaceIndent: CGFloat = 14
+}
+
+/// Lets a Space's Settings row be dragged onto another Space's row, which
+/// asks to make it a Sub-Space there, or onto the Spaces heading, which asks
+/// to separate it. While the person arranges Spaces, rows reorder instead.
+private struct BrowserSettingsSpaceGroupDrag: ViewModifier {
+    let space: SpaceModel
+    let isArranging: Bool
+    let drop: ([String]) -> Bool
+
+    func body(content: Content) -> some View {
+        if isArranging {
+            content
+        } else {
+            content
+                .draggable(space.id.uuidString)
+                .dropDestination(for: String.self) { items, _ in drop(items) }
+        }
+    }
 }
