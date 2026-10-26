@@ -127,4 +127,32 @@ public sealed class SitePermissionLedgerTests {
         Assert.DoesNotContain(ledger.PersistentRecords, record => record.Space == primary);
     }
 
+    /// A session answer is the group's until the process ends: it overrides
+    /// every Space's saved choice without removing it, a joining Space's own
+    /// session answer yields to what the group chose, and a successor keeps
+    /// the session answers of the primary it replaces beside its own.
+    [Fact]
+    public void AGroupSessionAnswerKeepsSavedChoicesAndOutlivesItsPrimary() {
+        var ledger = new SitePermissionLedger();
+        Guid primary = Guid.NewGuid(), member = Guid.NewGuid(), joining = Guid.NewGuid();
+        IReadOnlyList<Guid> group = [primary, member];
+        Set(ledger, member, SitePermission.Camera, SitePermissionDecision.GrantPersistently);
+        var answered = ledger.Set(group, Meet, SitePermission.Camera, null, SitePermissionDecision.DenyForSession, Guid.NewGuid(), 20);
+        Assert.False(answered.PersistenceChanged);
+        Assert.Equal(member, Assert.Single(ledger.PersistentRecords).Space);
+        Assert.Equal(SitePermissionDecision.DenyForSession, ledger.Decision(group, Meet, SitePermission.Camera, null, false));
+
+        ledger.Set(group, Meet, SitePermission.Microphone, null, SitePermissionDecision.DenyPersistently, Guid.NewGuid(), 30);
+        Set(ledger, joining, SitePermission.Microphone, SitePermissionDecision.GrantForSession);
+        Assert.NotSame(SitePermissionOutcome.Unchanged, ledger.Joining(joining, group));
+        IReadOnlyList<Guid> joined = [primary, member, joining];
+        Assert.Equal(SitePermissionDecision.DenyPersistently, ledger.Decision(joined, Meet, SitePermission.Microphone, null, false));
+
+        Set(ledger, member, SitePermission.Location, SitePermissionDecision.GrantForSession);
+        Assert.NotSame(SitePermissionOutcome.Unchanged, ledger.HandingOver(primary, member));
+        IReadOnlyList<Guid> handed = [member, joining];
+        Assert.Equal(SitePermissionDecision.DenyForSession, ledger.Decision(handed, Meet, SitePermission.Camera, null, false));
+        Assert.Equal(SitePermissionDecision.GrantForSession, ledger.Decision(handed, Meet, SitePermission.Location, null, false));
+    }
+
 }

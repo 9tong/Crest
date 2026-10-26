@@ -112,8 +112,9 @@ public sealed class SitePermissionLedger {
     /// Records one answer for the group `spaces` names, in its first Space,
     /// clearing the same choice from the others, so the answer is the
     /// group's. Ask clears both the session and the saved choice; a session
-    /// answer overrides the saved choice without replacing it; a persistent
-    /// answer replaces both and keeps an existing record's identity.
+    /// answer overrides the saved choice without replacing it, in any Space of
+    /// the group; a persistent answer replaces both and keeps an existing
+    /// record's identity.
     /// `recordId` names the record a new persistent choice creates, and `now`
     /// is when it was made, in seconds of the stored epoch. Throws `Rejected`
     /// for an origin or a detail the rules cannot read, for a grant of a
@@ -131,7 +132,7 @@ public sealed class SitePermissionLedger {
         var key = new SitePermissionKey(origin, permission, detail);
         var space = spaces[0];
         bool persistenceChanged = decision.Record(this, space, key, recordId, now);
-        foreach (var other in spaces.Skip(1)) persistenceChanged |= Forget(other, key);
+        foreach (var other in spaces.Skip(1)) persistenceChanged |= decision.Overrule(this, other, key);
         return new(persistenceChanged, [.. spaces.Select(member => new SitePermissionChange(member, new(origin, permission, detail,
             !decision.Grants)))]);
     }
@@ -152,6 +153,13 @@ public sealed class SitePermissionLedger {
     internal bool Forget(Guid space, SitePermissionKey key) {
         if (session.TryGetValue(space, out var cleared)) cleared.Remove(key);
         return persistent.RemoveAll(record => record.Space == space && Key(record) == key) > 0;
+    }
+
+    /// Clears the session answer for `key` in `space`, leaving the saved
+    /// choice, so nothing it saves changes.
+    internal bool ForgetForSession(Guid space, SitePermissionKey key) {
+        if (session.TryGetValue(space, out var answers)) answers.Remove(key);
+        return false;
     }
 
     /// Answers `key` in `space` with `decision` until the process ends,
@@ -189,27 +197,37 @@ public sealed class SitePermissionLedger {
 
     /// `space` joins the group whose other Spaces `group` names: where the
     /// group already chose for a site, its choice stands and the joining
-    /// Space's own goes.
+    /// Space's own goes. A session answer the group gave overrides the
+    /// joining Space's saved choice without replacing it.
     public SitePermissionOutcome Joining(Guid space, IReadOnlyList<Guid> group) {
         ArgumentNullException.ThrowIfNull(group);
-        var decided = persistent.Where(record => record.Space != space && group.Contains(record.Space)).Select(Key).ToHashSet();
-        var overruled = persistent.Where(record => record.Space == space && decided.Contains(Key(record))).ToList();
-        foreach (var record in overruled) persistent.Remove(record);
-        return overruled.Count == 0 ? SitePermissionOutcome.Unchanged
-            : new(true, [.. group.Append(space).Distinct().Select(member => new SitePermissionChange(member, new(null, null, null, true)))]);
+        var others = group.Where(member => member != space).ToList();
+        var saved = persistent.Where(record => others.Contains(record.Space)).Select(Key).ToHashSet();
+        var decided = others.SelectMany(member => session.TryGetValue(member, out var answers) ? answers.Keys : Enumerable.Empty<SitePermissionKey>())
+            .Union(saved).ToHashSet();
+        int removed = persistent.RemoveAll(record => record.Space == space && saved.Contains(Key(record)));
+        int answered = 0;
+        if (session.TryGetValue(space, out var own))
+            foreach (var key in own.Keys.Where(decided.Contains).ToList()) answered += own.Remove(key) ? 1 : 0;
+        return removed + answered == 0 ? SitePermissionOutcome.Unchanged
+            : new(removed > 0, [.. group.Append(space).Distinct().Select(member => new SitePermissionChange(member, new(null, null, null, true)))]);
     }
 
-    /// `successor` keeps the choices `from` kept for the group it took over,
-    /// in place of its own for the same sites.
+    /// `successor` keeps the choices, saved and for the session, `from` kept
+    /// for the group it took over, in place of its own for the same sites.
     public SitePermissionOutcome HandingOver(Guid from, Guid successor) {
         var moved = persistent.Where(record => record.Space == from).ToList();
-        if (moved.Count == 0) return SitePermissionOutcome.Unchanged;
+        session.Remove(from, out var answers);
+        if (moved.Count == 0 && (answers is null || answers.Count == 0)) return SitePermissionOutcome.Unchanged;
         var keys = moved.Select(Key).ToHashSet();
         persistent.RemoveAll(record => record.Space == successor && keys.Contains(Key(record)));
         for (int index = 0; index < persistent.Count; index++)
             if (persistent[index].Space == from) persistent[index] = persistent[index] with { Space = successor };
-        if (session.Remove(from, out var answers)) session[successor] = answers;
-        return new(true, [new(from, new(null, null, null, true)), new(successor, new(null, null, null, true))]);
+        if (answers is not null) {
+            if (!session.TryGetValue(successor, out var kept)) session[successor] = kept = [];
+            foreach (var (key, decision) in answers) kept[key] = decision;
+        }
+        return new(moved.Count > 0, [new(from, new(null, null, null, true)), new(successor, new(null, null, null, true))]);
     }
 
     #endregion
