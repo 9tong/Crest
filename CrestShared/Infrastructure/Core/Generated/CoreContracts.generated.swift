@@ -278,6 +278,7 @@ enum Rejection: Equatable, Error, Sendable {
     case noSetup(NoSetup)
     case noSplitStep(NoSplitStep)
     case noStoredSession(NoStoredSession)
+    case noTabsBelow(NoTabsBelow)
     case notAnArchive(NotAnArchive)
     case notPrivateWorkspace(NotPrivateWorkspace)
     case pageNotLoadable(PageNotLoadable)
@@ -1143,6 +1144,13 @@ struct ArchiveInvalid: Equatable, Sendable {
     var message: LocalizedStringResource {
         LocalizedStringResource("This file does not contain valid Crest browser data.")
     }
+}
+
+struct ArchiveTabsBelow: Intent, SessionIntent, Equatable, Sendable {
+    let workspaceID: UUID
+    let windowID: UUID
+    let spaceID: UUID
+    let tabID: UUID
 }
 
 struct ArchiveTooLarge: Equatable, Sendable {
@@ -3947,6 +3955,10 @@ struct NoSplitStep: Equatable, Sendable {
 }
 
 struct NoStoredSession: Equatable, Sendable {
+}
+
+struct NoTabsBelow: Equatable, Sendable {
+    let tabID: UUID
 }
 
 struct NormalizeBranding: Query, Equatable, Sendable {
@@ -6758,6 +6770,18 @@ struct TabState: Equatable, Sendable, Identifiable {
             keepsPageLoaded: keepsPageLoaded
         )
     }
+}
+
+struct TabsBelow: Equatable, Sendable {
+    let tabIDs: [UUID]
+}
+
+struct TabsBelowPreview: Query, Equatable, Sendable {
+    typealias Answer = TabsBelow
+
+    let workspaceID: UUID
+    let spaceID: UUID
+    let tabID: UUID
 }
 
 struct TabsChanged: CoreChange, Equatable, Sendable {

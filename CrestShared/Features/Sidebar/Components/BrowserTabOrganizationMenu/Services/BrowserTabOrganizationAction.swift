@@ -50,6 +50,20 @@ struct BrowserTabOrganizationAction {
         return browser.closeTab(assignment.tabID, matching: spaceAssignment)
     }
 
+    /// Whether the sidebar lists an open tab below this open tab to archive.
+    func canArchiveTabs(below assignment: BrowserTabRuntimeAssignment) -> Bool {
+        guard liveSpaceAssignment(for: assignment, expectedPlacement: .current) != nil else { return false }
+        return !browser.sessionTabs(below: assignment.tabID, in: assignment.spaceID).isEmpty
+    }
+
+    @discardableResult
+    func archiveTabs(below assignment: BrowserTabRuntimeAssignment) -> Bool {
+        guard let spaceAssignment = liveSpaceAssignment(for: assignment, expectedPlacement: .current) else {
+            return false
+        }
+        return browser.archiveTabs(below: assignment.tabID, matching: spaceAssignment)
+    }
+
     @discardableResult
     func delete(
         _ assignment: BrowserTabRuntimeAssignment,

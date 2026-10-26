@@ -117,6 +117,19 @@ extension BrowserStore {
             from: self) != nil
     }
 
+    func archiveSessionTabs(below tabID: UUID, in spaceID: UUID) -> Bool {
+        family.perform(
+            ArchiveTabsBelow(workspaceID: family.workspaceID, windowID: windowID, spaceID: spaceID, tabID: tabID),
+            from: self) != nil
+    }
+
+    /// The open tabs the sidebar lists below `tabID`, which archiving below it
+    /// puts away, in sidebar order.
+    func sessionTabs(below tabID: UUID, in spaceID: UUID) -> [UUID] {
+        let preview = TabsBelowPreview(workspaceID: family.workspaceID, spaceID: spaceID, tabID: tabID)
+        return (try? core.query(preview))?.tabIDs ?? []
+    }
+
     func renameSessionTab(_ title: String?, tabID: UUID, in spaceID: UUID) -> Bool {
         family.send(
             RenameTab(workspaceID: family.workspaceID, spaceID: spaceID, tabID: tabID, title: title),

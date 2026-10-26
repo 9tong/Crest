@@ -16,6 +16,10 @@ public sealed record SelectedRoot(Guid Id, SidebarRowKind Kind);
 /// A tab a selection holds, with where it lives.
 public sealed record SelectedTab(Guid Id, TabPlacement Placement, Guid? FolderId, Guid? SplitGroupId);
 
+/// The open tabs the sidebar lists below a tab, in sidebar order, which
+/// `ArchiveTabsBelow` archives.
+public sealed record TabsBelow(IReadOnlyList<Guid> TabIds);
+
 #endregion
 
 #region Rejections
@@ -56,6 +60,9 @@ public sealed record IncompleteSplit(Guid GroupId) : Rejection {
 
     #endregion
 }
+
+/// The sidebar lists no open tab below the tab, so there is nothing to archive.
+public sealed record NoTabsBelow(Guid TabId) : Rejection;
 
 /// The selection is not what the window saw: the window no longer shows its
 /// Space, or a selected tab or folder is gone, or its folders hold other tabs.

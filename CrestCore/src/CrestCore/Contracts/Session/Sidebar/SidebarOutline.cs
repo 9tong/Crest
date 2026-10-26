@@ -191,6 +191,21 @@ public sealed record SidebarOutline(IReadOnlyList<SidebarList> Lists) {
         return positions;
     }
 
+    /// <summary>The tabs the sidebar lists after the row that shows <paramref name="tabId"/>,
+    /// to the end of that row's section, collapsed or not: the rest of its folder, then
+    /// every row and folder below with the tabs they hold. A split's row shows its tabs as
+    /// one, so the tab's partners in that row are not below it. Empty when no row shows
+    /// the tab, as none shows a Start Page.</summary>
+    public IReadOnlyList<Guid> Below(Guid tabId) {
+        foreach (var list in Lists) {
+            if (list.FolderId is not null) continue;
+            SidebarRow[] rows = [.. Rows(section => section == list.Section, _ => true)];
+            int index = Array.FindIndex(rows, row => !row.Kind.OpensList && row.Members.Contains(tabId));
+            if (index >= 0) return [.. rows[(index + 1)..].Where(row => !row.Kind.OpensList).SelectMany(row => row.Members)];
+        }
+        return [];
+    }
+
     /// <summary>The tabs and folders a person sees, in order: the sections
     /// <paramref name="isSectionExpanded"/> answers for, skipping the inside of every folder
     /// of <paramref name="folders"/> that is collapsed.</summary>

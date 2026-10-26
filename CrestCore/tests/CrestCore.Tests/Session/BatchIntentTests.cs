@@ -127,5 +127,30 @@ public sealed partial class BrowserContractsTests {
         Assert.All(core.Current.Spaces[0].Tabs, tab => Assert.Null(tab.SplitGroupId));
     }
 
+    [Fact]
+    public void ArchivingBelowATabArchivesTheOpenTabsTheSidebarListsAfterItsRow() {
+        var f = new BatchSpace();
+        using var device = new TestDevice(f.Session);
+        var core = device.Authority;
+        var window = device.Open(f.Space, (f.Space, f.Last));
+        var before = core.Current;
+
+        // The last tab, in its folder at the end, and a saved tab have nothing to archive below.
+        Assert.IsType<NoTabsBelow>(Assert.Throws<Rejected>(() => device.Send(new ArchiveTabsBelow(device.Workspace, window, f.Space, f.Filed))).Rejection);
+        Assert.IsType<CurrentTabsOnly>(device.Query(new CanSend(new ArchiveTabsBelow(device.Workspace, window, f.Space, f.Saved))).Refusal);
+        Assert.Empty(device.Query(new TabsBelowPreview(device.Workspace, f.Space, f.Saved)).TabIds);
+        Assert.Same(before, core.Current);
+
+        // Below a split's tab are the tabs after its row, its folder's tab
+        // among them, and not its partner.
+        Assert.Equal([f.Last, f.Filed], device.Query(new TabsBelowPreview(device.Workspace, f.Space, f.Left)).TabIds);
+        device.Send(new ArchiveTabsBelow(device.Workspace, window, f.Space, f.Left));
+        Assert.Equal([f.Pinned, f.Saved, f.Open, f.Left, f.Right], Tabs(core));
+        Assert.Equal([f.Last, f.Filed], core.Current.Spaces[0].ArchivedTabs.TakeLast(2).Select(entry => entry.Tab.Id));
+        Assert.All(core.Current.Spaces[0].ArchivedTabs.TakeLast(2), entry => Assert.Equal(ArchiveReason.Closed, entry.Reason));
+        // The window showed an archived tab, and shows the one it archived below.
+        Assert.Equal(f.Left, device.Tab(window, f.Space));
+    }
+
     private const int BrowserTabCollectionLimit = CrestCore.Domain.BrowserTabCollection.MaximumSplitMembers;
 }

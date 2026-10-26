@@ -172,6 +172,27 @@ extension BrowserStore {
         }
     }
 
+    /// Archives the open tabs below `id`, once their pages agree to go. The
+    /// pages asked are the ones the core lists below it now; a list that
+    /// changes while they answer archives nothing.
+    @discardableResult
+    func archiveTabs(
+        below id: UUID,
+        matching assignment: BrowserSpaceRuntimeAssignment
+    ) -> Bool {
+        guard let space = spaceModel(matching: assignment) else { return false }
+        let ids = sessionTabs(below: id, in: space.id)
+        guard !ids.isEmpty else { return false }
+        let tabs = ids.map { BrowserTabRuntimeAssignment(tabID: $0, spaceID: space.id, profileID: space.profileID) }
+        return performPageDismissal(of: tabs) { [weak self] in
+            guard let self, self.spaceModel(matching: assignment) != nil,
+                self.sessionTabs(below: id, in: assignment.spaceID) == ids,
+                self.archiveSessionTabs(below: id, in: assignment.spaceID)
+            else { return false }
+            return true
+        }
+    }
+
     @discardableResult
     func deleteTab(
         _ id: UUID,

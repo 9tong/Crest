@@ -313,6 +313,13 @@ struct BrowserTabOrganizationMenuContent: View {
                 }
             }
         }
+
+        if !tab.placement.isDurable {
+            Button("Archive Tabs Below", systemImage: "arrow.down.to.line") {
+                performIfCurrent { organizationAction.archiveTabs(below: assignment) }
+            }
+            .disabled(!organizationAction.canArchiveTabs(below: assignment))
+        }
     }
 
     /// One "Move Left"/"Move Right" item, dimmed once the card is at that end.
