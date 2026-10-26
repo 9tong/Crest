@@ -573,8 +573,13 @@ final class ChromiumExtensionInstallation {
         self.approvesItself = approvesItself
     }
     var isAuthorized: Bool { store.authorized(space) && (targetSpace.map { store.authorized($0) } ?? true) }
+    /// The Spaces a copy may go to, one per profile, which a group's primary
+    /// stands for: never the source's own group, which already has it.
     var destinations: [BrowserSpaceIdentity] {
-        store.spaces.filter { $0.id != space.id && !(store.installed[$0.profileID] ?? []).contains { $0.id == id } }
+        var profiles: Set<UUID> = [space.profileID]
+        return store.spaces.filter {
+            profiles.insert($0.profileID).inserted && !(store.installed[$0.profileID] ?? []).contains { $0.id == id }
+        }
     }
     func start() async {
         for target in store.spaces { await store.load(target) }

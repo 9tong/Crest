@@ -21,7 +21,7 @@ struct BrowserLinkDestinationHost {
                     spaceID: source.spaceID, profileID: source.profileID
                 ), accessController: spaceAccess)
         else { return false }
-        return space.tabs.model(source.tabID) != nil
+        return space.shownTab(source.tabID) != nil
     }
 
     func otherSpaces(from source: BrowserTabRuntimeAssignment) -> [SpaceModel] {

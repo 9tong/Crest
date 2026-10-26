@@ -168,9 +168,13 @@ struct BrowserExtensionCopySheet: View {
     @Environment(\.dismiss) private var dismiss
     @State private var selectedSpaces: Set<UUID> = []
     @State private var loading = true
+    /// The Spaces a copy may go to, one per profile, which a group's primary
+    /// stands for: never the source's own group, which already has it.
     private var destinations: [BrowserSpaceIdentity] {
-        store.spaces.filter {
-            $0.id != space.id && !(store.installed[$0.profileID] ?? []).contains { $0.id == item.id }
+        var profiles: Set<UUID> = [space.profileID]
+        return store.spaces.filter {
+            profiles.insert($0.profileID).inserted
+                && !(store.installed[$0.profileID] ?? []).contains { $0.id == item.id }
         }
     }
     var body: some View {

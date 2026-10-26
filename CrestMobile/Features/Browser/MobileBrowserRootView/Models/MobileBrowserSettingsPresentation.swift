@@ -45,7 +45,7 @@ final class MobileBrowserSettingsPresentation {
             let space = browser.selectedUnlockedSpace(
                 matching: BrowserSpaceRuntimeAssignment(spaceID: assignment.spaceID, profileID: assignment.profileID),
                 accessController: spaceAccess),
-            let tab = space.tabs.model(assignment.tabID), tab.nativeTabContent == .settings
+            let tab = space.shownTab(assignment.tabID), tab.nativeTabContent == .settings
         else { return false }
         return style.present(tab, in: space, on: self)
     }
@@ -79,7 +79,7 @@ final class MobileBrowserSettingsPresentation {
         guard showsSheet else { return }
         guard let sheetAssignment,
             let space = browser.selectedUnlockedSpace(matching: sheetAssignment, accessController: spaceAccess),
-            sheetTabID == nil || sheetTabID.flatMap({ space.tabs.model($0) })?.nativeTabContent == .settings
+            sheetTabID == nil || sheetTabID.flatMap({ space.shownTab($0) })?.nativeTabContent == .settings
         else {
             dismissSheet()
             return

@@ -58,6 +58,16 @@ final class SpaceModel: ObservedModel, Identifiable {
             profileID: profileID, pinOwnerID: pinOwnerID, sidebar: sidebar.outline(folders: folders.models))
     }
 
+    /// The Spaces of the workspace that holds this one, which the workspace
+    /// links so a Sub-Space can read the pinned tabs its group shares.
+    @ObservationIgnored weak var siblings: ObservedList<SpaceModel>?
+
+    /// The Space whose pinned tabs this Space's sidebar shows: its primary
+    /// while its group shares them, otherwise itself.
+    var pinSource: SpaceModel {
+        pinOwnerID.flatMap { siblings?.model($0) } ?? self
+    }
+
     /// Every tab the Space holds, open or archived.
     var tabIDs: [UUID] {
         tabs.models.map(\.id) + archive.entries.map(\.tab.id)
@@ -101,6 +111,40 @@ final class SpaceModel: ObservedModel, Identifiable {
     /// Whether the Space holds the tab, open or archived.
     func holds(tabID: UUID) -> Bool {
         tabs.contains(tabID) || archive.contains(tabID: tabID)
+    }
+
+    /// A tab the Space's sidebar shows: one the Space holds, or a pinned tab
+    /// its group shares, which its primary holds.
+    func shownTab(_ tabID: UUID) -> TabStateModel? {
+        if let tab = tabs.model(tabID) { return tab }
+        let source = pinSource
+        guard source !== self, let tab = source.tabs.model(tabID), tab.placement == .pinned else { return nil }
+        return tab
+    }
+
+    /// The Spaces of this Space's group as its workspace lists them, the
+    /// primary first: a primary and the Sub-Spaces that joined its session,
+    /// or this Space alone.
+    var groupMembers: [SpaceModel] {
+        let primaryID = membership?.primaryID ?? id
+        let members = siblings?.models.filter { $0.id == primaryID || $0.membership?.primaryID == primaryID } ?? []
+        return members.isEmpty ? [self] : members
+    }
+
+    /// The history of this Space's group, newest visit first: what its
+    /// primary keeps for the group and what each member kept before it
+    /// joined.
+    var groupHistory: [HistoryEntryState] {
+        let members = groupMembers
+        guard members.count > 1 else { return history.entries }
+        return members.flatMap(\.history.entries).sorted { $0.lastVisitedAt > $1.lastVisitedAt }
+    }
+
+    /// The pinned tabs the Space's sidebar shows, in order: the ones its
+    /// group shares, or its own.
+    var shownPins: [TabStateModel] {
+        let source = pinSource
+        return source.sidebar.section(.pinned).rows.compactMap { source.tabs.model($0.id) }
     }
 
     // MARK: - Actions - Changes

@@ -34,7 +34,7 @@ struct MobileHistoryContent: View {
     @ToolbarContentBuilder
     private var historyToolbar: some ToolbarContent {
         ToolbarItem(placement: .cancellationAction) {
-            if space?.history.entries.isEmpty == false {
+            if space?.groupHistory.isEmpty == false {
                 Button("Clear", role: .destructive) { confirmsClear = true }
             }
         }
