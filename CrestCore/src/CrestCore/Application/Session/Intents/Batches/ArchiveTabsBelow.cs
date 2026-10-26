@@ -12,6 +12,9 @@ namespace CrestCore.Contracts;
 public sealed record ArchiveTabsBelow(Guid WorkspaceId, Guid WindowId, Guid SpaceId, Guid TabId) : SessionIntent(WorkspaceId) {
     #region Actions - Session
 
+    /// Archives the open tabs the Space's sidebar lists below the tab. A
+    /// window that showed one of them shows the tab instead; one that showed
+    /// none keeps what it showed.
     internal override SessionEdit? Edit(NativeSessionAuthority workspace, SessionTurn turn) {
         var space = workspace.Editable(turn.Basis, SpaceId);
         var edited = BrowserTabCollection.Restore(space);

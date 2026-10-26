@@ -11,6 +11,8 @@ public sealed record TabsBelowPreview(Guid WorkspaceId, Guid SpaceId, Guid TabId
 
     internal override TabsBelow Answer(CrestApp app) => Answer(app.Device.Workspace(WorkspaceId));
 
+    /// The open tabs the Space's sidebar lists below the tab, in sidebar
+    /// order. A locked Space is read as a person sees it.
     private TabsBelow Answer(NativeSessionAuthority workspace) {
         SpaceState space;
         lock (NativeSessionAuthority.Gate) space = workspace.AcceptedSession.KnownSpace(SpaceId);

@@ -117,6 +117,8 @@ extension BrowserStore {
             from: self) != nil
     }
 
+    /// Asks the core to archive the open tabs below `tabID`, and answers
+    /// whether it did. Their pages must already have agreed to go.
     func archiveSessionTabs(below tabID: UUID, in spaceID: UUID) -> Bool {
         family.perform(
             ArchiveTabsBelow(workspaceID: family.workspaceID, windowID: windowID, spaceID: spaceID, tabID: tabID),

@@ -56,6 +56,8 @@ struct BrowserTabOrganizationAction {
         return !browser.sessionTabs(below: assignment.tabID, in: assignment.spaceID).isEmpty
     }
 
+    /// Archives the open tabs below this open tab, while its Space is still
+    /// the window's selected, unlocked one with the profile the menu saw.
     @discardableResult
     func archiveTabs(below assignment: BrowserTabRuntimeAssignment) -> Bool {
         guard let spaceAssignment = liveSpaceAssignment(for: assignment, expectedPlacement: .current) else {
