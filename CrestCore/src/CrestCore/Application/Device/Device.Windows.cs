@@ -19,8 +19,9 @@ internal sealed partial class Device {
 
     /// The palette of a window at `now`: over the Space it shows, unless that
     /// Space is locked or being deleted, leaving out the tab it shows there,
-    /// under the device's app-wide preferences and with what the Space's
-    /// palette remembers, offering the workspace's other Spaces to switch to.
+    /// under the device's app-wide preferences and with what the palette of
+    /// the Space's group remembers, offering the workspace's other Spaces to
+    /// switch to. It searches the whole group's history.
     public Palette Palette(Guid windowId, bool allowsInternalPages, DateTimeOffset now) {
         var window = Opened(windowId);
         var authority = Workspace(window.WorkspaceId);
@@ -35,7 +36,9 @@ internal sealed partial class Device {
         if (space is not null && authority.IsLocked(space)) space = null;
         var others = session.Spaces.Where(other => other.Id != spaceId && Available(session, other.Id) is not null).ToList();
         var preferences = PersistentPreferences() ?? session.AppPreferences ?? AppPreferences.Default;
-        return new(space, shown, authority.Kind.IsPrivate, allowsInternalPages, preferences, SearchCatalog, MemoryOf(spaceId), others, now);
+        var memory = MemoryOf(space is null ? spaceId : session.RecordsOwner(space).Id);
+        return new(space is null ? null : session.Searched(space), shown, authority.Kind.IsPrivate, allowsInternalPages, preferences,
+            SearchCatalog, memory, others, now);
     }
 
     /// The rule that would refuse `intent` in `authority` now, or null when it
@@ -119,7 +122,7 @@ internal sealed partial class Device {
     /// member of the tab's split.
     internal bool Shows(Guid workspaceId, Guid spaceId, Guid tabId) {
         lock (gate) {
-            if (workspaces.GetValueOrDefault(workspaceId)?.Current.Space(spaceId) is not { } space)
+            if (workspaces.GetValueOrDefault(workspaceId)?.Current.ViewedSpace(spaceId) is not { } space)
                 return false;
             var split = space.Tabs.FirstOrDefault(tab => tab.Id == tabId)?.SplitGroupId;
             return open.Values.Any(window => window.WorkspaceId == workspaceId && window.ShownSpaceId == spaceId
@@ -147,6 +150,17 @@ internal sealed partial class Device {
         var showable = owners.Select(other => other.Space)
             .Where(space => !owner.Value.IsDeleting(space.Id) && !owner.Value.IsLocked(space)).ToList();
         return showable.Count == 0 ? null : (owner.Key, showable.MaxBy(space => space.LastShownAt)!.Id);
+    }
+
+    /// The Spaces of the group that holds `spaceId`, in every attached
+    /// workspace, `spaceId` among them.
+    internal IReadOnlySet<Guid> GroupMembersOf(Guid spaceId) {
+        KeyValuePair<Guid, NativeSessionAuthority>[] attached;
+        lock (gate) attached = [.. workspaces];
+        var members = new HashSet<Guid> { spaceId };
+        foreach (var (_, workspace) in attached)
+            if (workspace.Current.GroupOf(spaceId) is { } group) members.UnionWith(group.Members.Select(member => member.Id));
+        return members;
     }
 
     /// Refused with `SpaceLocked` when a locked Space holds profile
@@ -199,7 +213,7 @@ internal sealed partial class Device {
 
     /// The Space a window may show: one the session holds that is not being deleted.
     internal static SpaceState? Available(SessionState session, Guid spaceId) =>
-        session.PendingDeletion(spaceId) is not null ? null : session.Space(spaceId);
+        session.PendingDeletion(spaceId) is not null ? null : session.ViewedSpace(spaceId);
 
     #endregion
 }

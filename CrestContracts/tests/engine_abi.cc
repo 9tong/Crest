@@ -120,12 +120,16 @@ void Write(engine::WireWriter& writer, SessionSeed) {
   for (int member = 0; member < 5; member++) writer.WriteVarint(0);
   // Offers to save passwords and sync them, not to the system's; open; saved
   // tabs expanded and never collapsed; nobody chose whether it uses Crest
-  // Passwords, or its lock.
+  // Passwords, or its lock; its group shares pinned tabs and nobody chose;
+  // nobody changed how it blocks content or keeps what it browses.
   Write(writer, true);
   Write(writer, true);
   Write(writer, false);
   writer.WriteVarint(0);
   Write(writer, true);
+  Write(writer, false);
+  Write(writer, false);
+  Write(writer, false);
   Write(writer, false);
   Write(writer, false);
   Write(writer, false);

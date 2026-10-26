@@ -37,6 +37,13 @@ final class SpaceModel: ObservedModel, Identifiable {
         set { publish(newValue, into: \.membershipStorage, as: \.membership) }
     }
     @ObservationIgnored private var membershipStorage: SpaceMembership?
+    /// The Space whose pinned tabs this Space's sidebar shows in place of its
+    /// own, as the core resolved it: its primary while its group shares pins.
+    private(set) var pinOwnerID: UUID? {
+        get { observed(\.pinOwnerIDStorage, as: \.pinOwnerID) }
+        set { publish(newValue, into: \.pinOwnerIDStorage, as: \.pinOwnerID) }
+    }
+    @ObservationIgnored private var pinOwnerIDStorage: UUID?
     /// What a person chose for each split. Membership stays on the tabs.
     private(set) var splitGroups: [SplitGroupState] {
         get { observed(\.splitGroupsStorage, as: \.splitGroups) }
@@ -48,7 +55,7 @@ final class SpaceModel: ObservedModel, Identifiable {
         SpaceState(
             id: id, ownProfileID: ownProfileID, settings: settings.value, folders: folders.values, tabs: tabs.values,
             splitGroups: splitGroups, archivedTabs: archive.entries, history: history.entries, membership: membership,
-            profileID: profileID, sidebar: sidebar.outline(folders: folders.models))
+            profileID: profileID, pinOwnerID: pinOwnerID, sidebar: sidebar.outline(folders: folders.models))
     }
 
     /// Every tab the Space holds, open or archived.
@@ -63,6 +70,7 @@ final class SpaceModel: ObservedModel, Identifiable {
         ownProfileID = value.ownProfileID
         profileIDStorage = value.profileID
         membershipStorage = value.membership
+        pinOwnerIDStorage = value.pinOwnerID
         settings = SpaceSettingsModel(value.settings)
         tabs = ObservedList(value.tabs)
         folders = ObservedList(value.folders)
@@ -78,6 +86,7 @@ final class SpaceModel: ObservedModel, Identifiable {
         precondition(value.id == id, "A SpaceModel takes only its own Space's values.")
         profileID = value.profileID
         membership = value.membership
+        pinOwnerID = value.pinOwnerID
         settings.update(value.settings)
         tabs.replace(with: value.tabs)
         folders.replace(with: value.folders)

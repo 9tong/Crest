@@ -37,7 +37,7 @@ extension BrowserStore {
         try family.commit(
             BeginDeletingSpace(
                 workspaceID: family.workspaceID, windowID: windowID, spaceID: id,
-                operationID: operationID),
+                operationID: operationID, newPrimaryID: nil),
             from: self)
 
         try await dataDeleter.deleteData(for: space)

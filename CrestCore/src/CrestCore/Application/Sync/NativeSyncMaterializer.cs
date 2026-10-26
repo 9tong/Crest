@@ -43,9 +43,12 @@ public static class NativeSyncMaterializer {
                 null, null, null, TabPlacement.Current, null, null, now, null, null, null, false));
             var (credentials, credentialsModifiedAt) = CredentialPreferences(local, remote);
             var (accessPolicy, accessModifiedAt) = AccessPolicy(local, remote, access);
+            var (separatesPins, separatesPinsModifiedAt) = remote is { SeparatesPinnedTabsModifiedAt: { } pinsChosenAt }
+                ? (remote.SeparatesPinnedTabs ?? false, pinsChosenAt.Moment)
+                : (local?.Settings.SeparatesPinnedTabs ?? false, local?.Settings.SeparatesPinnedTabsModifiedAt);
             var settings = new SpaceSettings(remote.Name, remote.Symbol, remote.Accent, brandingIds.Contains(remote.Id) ? remote.Branding : null, remote.BrowsingPreferences,
                 credentials, accessPolicy, remote.IsSavedTabsExpanded, remote.SavedTabsExpansionModifiedAt?.Moment,
-                credentialsModifiedAt, accessModifiedAt);
+                credentialsModifiedAt, accessModifiedAt, separatesPins, separatesPinsModifiedAt, ProtectionModifiedAt(local, remote, now));
             spaces.Add(new(remote.Id, remote.ProfileId, settings, folders, tabs, groups, archive, history, Membership(local, remote)));
         }
         foreach (var id in pending.Where(id => spaces.All(space => space.Id != id))) {
@@ -84,6 +87,19 @@ public static class NativeSyncMaterializer {
     private static SpaceMembership? Membership(SpaceState? local, SpacePayload remote) =>
         remote.MembershipModifiedAt is { } modifiedAt
             ? new(remote.PrimarySpaceId, remote.SharedProfileId, modifiedAt.Moment) : local?.Membership;
+
+    /// When someone last chose how the Space blocks content and how long it
+    /// keeps what it browses: the record's time, or now when the record's
+    /// choice differs from this device's under the same time, since a build
+    /// that predates the time changed the choice without it. The Space's group
+    /// then takes the later choice.
+    private static DateTimeOffset? ProtectionModifiedAt(SpaceState? local, SpacePayload remote, DateTimeOffset now) {
+        var chosen = remote.ProtectionModifiedAt?.Moment;
+        if (local is null) return chosen;
+        var (kept, arrived) = (local.Settings.BrowsingPreferences, remote.BrowsingPreferences);
+        var changed = kept.ContentBlocking != arrived.ContentBlocking || kept.DataRetention != arrived.DataRetention;
+        return changed && chosen == local.Settings.ProtectionModifiedAt ? now : chosen;
+    }
 
     /// Who may open the Space, and when someone chose. The later choice wins on
     /// every device, since the device that made it authenticated for it, and

@@ -72,6 +72,73 @@ internal sealed record SpaceGroup(SpaceState Primary, IReadOnlyList<SpaceState> 
 
     #endregion
 
+    #region Actions - Succession
+
+    /// The group's members once `successor`, one of its Sub-Spaces, takes the
+    /// group over at `now` from its primary, whose deletion begins: the
+    /// successor leads the group with its session, every other Sub-Space joins
+    /// it, and what the primary kept for the group moves to it. The primary's
+    /// history is made again there, since a history record never changes
+    /// Space, merged with the successor's own, newest first and up to the most
+    /// a history keeps; each entry made again takes an identity drawn from the
+    /// successor's and its own, so every device that hands the group over
+    /// makes the same records. While the group shares pinned tabs, the
+    /// primary's pins move there ahead of the successor's own, up to the most a
+    /// Space pins, and the rest become its saved tabs.
+    internal IReadOnlyList<SpaceState> HandedTo(SpaceState successor, DateTimeOffset now) {
+        var primary = Primary;
+        var leading = successor with {
+            Membership = SpaceMembership.Leading(ProfileId, now),
+            History = Merged(primary.History, successor.History, entry => Derived(successor.Id, entry.Id))
+        };
+        if (!primary.Settings.SeparatesPinnedTabs) {
+            List<TabState> pins = [.. primary.Tabs.Where(tab => tab.IsPinned), .. successor.Tabs.Where(tab => tab.IsPinned)];
+            leading = leading with {
+                Tabs = [.. pins.Take(TabPlacement.PinnedCapacity),
+                    .. pins.Skip(TabPlacement.PinnedCapacity).Select(tab => tab with { Placement = TabPlacement.Pinned.OverflowsTo! }),
+                    .. successor.Tabs.Where(tab => !tab.IsPinned)]
+            };
+            primary = primary with { Tabs = [.. primary.Tabs.Where(tab => !tab.IsPinned)] };
+        }
+        return [primary, leading, .. SubSpaces.Where(member => member.Id != successor.Id)
+            .Select(member => member with { Membership = SpaceMembership.Joining(leading, now) })];
+    }
+
+    /// `kept` with the entries of `moved` made again in it, one entry per
+    /// address, newest first and up to the most a history keeps: an address
+    /// both hold keeps `kept`'s identity with the visits of both.
+    private static IReadOnlyList<HistoryEntryState> Merged(IReadOnlyList<HistoryEntryState> moved, IReadOnlyList<HistoryEntryState> kept,
+        Func<HistoryEntryState, Guid> identity) {
+        var byUrl = kept.DistinctBy(entry => entry.Url).ToDictionary(entry => entry.Url);
+        foreach (var entry in moved) {
+            byUrl[entry.Url] = byUrl.TryGetValue(entry.Url, out var existing)
+                ? existing with {
+                    Title = entry.LastVisitedAt > existing.LastVisitedAt ? entry.Title : existing.Title,
+                    FirstVisitedAt = entry.FirstVisitedAt < existing.FirstVisitedAt ? entry.FirstVisitedAt : existing.FirstVisitedAt,
+                    LastVisitedAt = entry.LastVisitedAt > existing.LastVisitedAt ? entry.LastVisitedAt : existing.LastVisitedAt,
+                    VisitCount = existing.VisitCount + entry.VisitCount
+                }
+                : entry with { Id = identity(entry) };
+        }
+        return [.. byUrl.Values.OrderByDescending(entry => entry.LastVisitedAt).Take(HistoryEntryState.MaximumEntries)];
+    }
+
+    /// The identity `space` gives what it makes again of `source`: the same
+    /// on every device, and unlike any other.
+    private static Guid Derived(Guid space, Guid source) {
+        Span<byte> input = stackalloc byte[32];
+        space.TryWriteBytes(input[..16]);
+        source.TryWriteBytes(input[16..]);
+        Span<byte> hash = stackalloc byte[32];
+        System.Security.Cryptography.SHA256.HashData(input, hash);
+        // A version 8 identity, of the RFC 4122 variant.
+        hash[7] = (byte)((hash[7] & 0x0F) | 0x80);
+        hash[8] = (byte)((hash[8] & 0x3F) | 0x80);
+        return new Guid(hash[..16]);
+    }
+
+    #endregion
+
     #region Actions - Repair
 
     /// `spaces` with every group mended, where `pending` names the Spaces
@@ -81,12 +148,23 @@ internal sealed record SpaceGroup(SpaceState Primary, IReadOnlyList<SpaceState> 
     /// them, which keeps their profile. A Sub-Space browses with its primary's
     /// profile. A group that took over a profile another group browses with
     /// gives it up and browses with its primary's own. Each group sits where
-    /// its primary does. A Space that needs no mending is the same object.
+    /// its primary does, and its members' shared settings are settled; see
+    /// `GroupSetting`. A Space that needs no mending is the same object.
     internal static IReadOnlyList<SpaceState> Regrouped(IReadOnlyList<SpaceState> spaces, IReadOnlySet<Guid> pending) {
         var mended = Mended(spaces, pending);
         mended = Distinct(mended, pending);
         mended = Aligned(mended, pending);
-        return Gathered(mended, pending);
+        return Settled(Gathered(mended, pending), pending);
+    }
+
+    /// Every group's members that stay share its settings.
+    private static IReadOnlyList<SpaceState> Settled(IReadOnlyList<SpaceState> spaces, IReadOnlySet<Guid> pending) {
+        var settled = Of(spaces, pending).Where(group => group.SubSpaces.Count > 0)
+            .SelectMany(group => GroupSetting.Settled([.. group.Members.Where(member => !pending.Contains(member.Id))]))
+            .ToDictionary(member => member.Id);
+        if (settled.Count == 0) return spaces;
+        List<SpaceState> result = [.. spaces.Select(space => settled.GetValueOrDefault(space.Id) ?? space)];
+        return result.Select((space, index) => ReferenceEquals(space, spaces[index])).All(same => same) ? spaces : result;
     }
 
     /// Every Sub-Space that stays names a primary the session holds, once:

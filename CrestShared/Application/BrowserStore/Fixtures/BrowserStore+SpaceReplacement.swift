@@ -15,7 +15,7 @@
                 try family.commit(
                     BeginDeletingSpace(
                         workspaceID: family.workspaceID, windowID: window, spaceID: spaceID,
-                        operationID: operation), from: self)
+                        operationID: operation, newPrimaryID: nil), from: self)
                 eraseProfileForTesting(profileID)
                 try family.commit(
                     FinishDeletingSpace(

@@ -36,7 +36,10 @@ internal static partial class StoredSessionCodec {
                 Flag(value[Key.IsSavedTabsExpanded]) ?? true,
                 OptionalDate(value[Key.SavedTabsExpansionModifiedAt]),
                 OptionalDate(value[Key.CredentialsEnabledModifiedAt]),
-                OptionalDate(value[Key.AccessPolicyModifiedAt])),
+                OptionalDate(value[Key.AccessPolicyModifiedAt]),
+                Flag(value[Key.SeparatesPinnedTabs]) ?? false,
+                OptionalDate(value[Key.SeparatesPinnedTabsModifiedAt]),
+                OptionalDate(value[Key.ProtectionModifiedAt])),
             [.. Items(value[Key.Folders]).Select(DecodeFolder)],
             [.. Items(value[Key.Tabs]).Select(DecodeTab)],
             [.. Items(value[Key.SplitGroups]).Select(DecodeSplitGroup)],
@@ -72,6 +75,9 @@ internal static partial class StoredSessionCodec {
         Put(value, Key.SavedTabsExpansionModifiedAt, settings.SavedTabsExpansionModifiedAt);
         Put(value, Key.CredentialsEnabledModifiedAt, settings.CredentialsEnabledModifiedAt);
         Put(value, Key.AccessPolicyModifiedAt, settings.AccessPolicyModifiedAt);
+        if (settings.SeparatesPinnedTabs) value[Key.SeparatesPinnedTabs] = true;
+        Put(value, Key.SeparatesPinnedTabsModifiedAt, settings.SeparatesPinnedTabsModifiedAt);
+        Put(value, Key.ProtectionModifiedAt, settings.ProtectionModifiedAt);
         if (space.Membership is { } membership) {
             if (membership.PrimaryId is { } primary) value[Key.PrimarySpaceId] = WrappedIdentity(primary);
             if (membership.SharedProfileId is { } profile) value[Key.SharedProfileId] = BareIdentity(profile);
@@ -121,7 +127,8 @@ internal static partial class StoredSessionCodec {
         null => null,
         JsonArray intents => [.. intents.Select(intent => intent is JsonObject value
             ? new SpaceDeletionState(Identity(value[Key.OperationId]), Identity(value[Key.SpaceId]), Identity(value[Key.ProfileId]),
-                value[Key.ErasedProfileIds] is JsonArray erased ? [.. erased.Select(Identity)] : null)
+                value[Key.ErasedProfileIds] is JsonArray erased ? [.. erased.Select(Identity)] : null,
+                value[Key.SuccessorSpaceId] is { } successor ? Identity(successor) : null)
             : throw new BrowserRuleException(BrowserRule.InvalidDeletionIntent))],
         _ => throw new BrowserRuleException(BrowserRule.InvalidDeletionIntent)
     };
@@ -134,6 +141,7 @@ internal static partial class StoredSessionCodec {
         };
         if (deletion.ErasedProfileIds is { } erased)
             value[Key.ErasedProfileIds] = new JsonArray([.. erased.Select(profile => (JsonNode?)BareIdentity(profile))]);
+        if (deletion.SuccessorId is { } successor) value[Key.SuccessorSpaceId] = BareIdentity(successor);
         return value;
     }
 

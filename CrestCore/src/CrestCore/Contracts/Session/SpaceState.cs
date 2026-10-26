@@ -65,9 +65,20 @@ public sealed record SpaceState(
     [Resolved]
     public Guid ProfileId => Membership?.SharedProfileId ?? OwnProfileId;
 
+    /// <summary>The Space whose pinned tabs the Space's sidebar shows in place of its
+    /// own, which it keeps hidden meanwhile: its primary, while it is a Sub-Space whose
+    /// group shares pinned tabs; null while it shows its own.</summary>
+    [Resolved]
+    public Guid? PinOwnerId => Membership?.PrimaryId is { } primary && !Settings.SeparatesPinnedTabs ? primary : null;
+
     /// The primary whose session the Space joined, or null for a primary or a
     /// Space on its own.
     internal Guid? PrimaryId => Membership?.PrimaryId;
+
+    /// For the Space as its sidebar shows it, the Space whose pinned tabs it
+    /// holds in place of its own; null for the Space as it is stored. See
+    /// `SessionState.Viewed`.
+    internal Guid? ViewsPinsOf { get; init; }
 
     /// When a tab of the Space was last shown, or the earliest time when it
     /// holds none.

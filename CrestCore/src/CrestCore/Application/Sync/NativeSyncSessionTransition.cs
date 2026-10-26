@@ -83,6 +83,15 @@ public sealed record NativeSyncSessionTransition {
                 else spaces[index] = original;
             }
             repaired = repaired with { Spaces = spaces, SpaceDeletions = pending };
+            // A primary another device deleted hands its group to the first of its Sub-Spaces.
+            foreach (var space in deleted) {
+                if (repaired.GroupOf(space.Id) is not { SubSpaces: [var first, ..] } group) continue;
+                repaired = repaired.HandingOver(group, first, now);
+                repaired = repaired with {
+                    SpaceDeletions = [.. repaired.SpaceDeletions.Select(deletion => deletion.SpaceId == space.Id
+                        ? deletion with { SuccessorId = first.Id } : deletion)]
+                };
+            }
         }
         repaired = repaired with { AppPreferences = local.AppPreferences };
         if (!replacing || removed)

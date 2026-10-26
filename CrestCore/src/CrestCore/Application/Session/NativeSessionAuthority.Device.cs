@@ -98,7 +98,7 @@ public sealed partial class NativeSessionAuthority {
         SessionState previous, next;
         lock (Gate) {
             if (!TakesEdits() || session.PendingDeletion(spaceId) is not null
-                || session.Space(spaceId) is not { } space
+                || session.ViewedSpace(spaceId) is not { } space
                 || space.Tabs.All(tab => tab.Id != tabId)) return null;
             if (IsLockedUnderGate(space)) throw new Rejected(new SpaceLocked(spaceId));
             // The stored spelling of the time, so the next load reads the same value.
