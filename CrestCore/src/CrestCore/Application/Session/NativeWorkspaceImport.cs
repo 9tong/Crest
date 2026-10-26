@@ -104,7 +104,9 @@ internal sealed class NativeWorkspaceImport {
         foreach (var space in this.spaces) Track(space.State, source: null);
         originalFolderIds = this.spaces.ToDictionary(space => space, space => space.State.Folders.Select(f => f.Id).ToHashSet());
         originalHistoryIds = this.spaces.ToDictionary(space => space, space => space.State.History.Select(h => h.Id).ToHashSet());
-        inputs = [.. spaces.Select(space => new Draft(space, isOriginal: false))];
+        // An imported Space arrives on its own: the group it had where it was
+        // exported never joins it to one here.
+        inputs = [.. spaces.Select(space => new Draft(space with { Membership = null }, isOriginal: false))];
         for (int index = 0; index < inputs.Count; index++) Track(inputs[index].State, index);
         foreach (var input in inputs)
             SplitMember.RequireWellFormed(

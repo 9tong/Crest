@@ -140,6 +140,40 @@ public sealed partial class BrowserContractsTests {
 
     #endregion
 
+    #region Actions - Privacy
+
+    /// The lock guards a session, so a Space is locked while any Space that
+    /// browses with its profile is, whatever its own policy says.
+    [Fact]
+    public void ASpaceIsLockedWhileAnotherSpaceOfItsSessionIs() {
+        var (primary, subSpace, tab) = (Fixed(2_400), Fixed(2_401), Fixed(2_410));
+        var locked = SpaceOf(primary, Fixed(2_490), "Work");
+        locked["accessPolicy"] = "deviceOwnerAuthentication";
+        using var device = new TestDevice(SessionOf(locked,
+            Joined(SpaceOf(subSpace, Fixed(2_491), "Client", tabs: [TabOf(tab)]), primary, Fixed(2_490), at: 100)));
+
+        Assert.IsType<SpaceLocked>(Assert.Throws<Rejected>(() =>
+            device.Send(new RenameTab(device.Workspace, subSpace, tab, "Leaked"))).Rejection);
+    }
+
+    /// An imported Space arrives on its own: the group it had where it was
+    /// exported never joins it to a Space here.
+    [Fact]
+    public void AnImportedSpaceJoinsNoGroup() {
+        var (existing, imported) = (Fixed(2_500), Fixed(2_501));
+        using var device = new TestDevice(SessionOf(SpaceOf(existing, Fixed(2_590), "Work", tabs: [TabOf(Fixed(2_510))])));
+        var window = device.Open(existing, (existing, Fixed(2_510)));
+
+        device.Send(new ImportSpaces(device.Workspace, window, ReadSpaces(
+            Joined(SpaceOf(imported, Fixed(2_591), "Client", tabs: [TabOf(Fixed(2_511))]), existing, Fixed(2_590), at: 100))));
+
+        var arrived = Assert.Single(device.Authority.Current.Spaces, space => space.Settings.Name == "Client");
+        Assert.Null(arrived.Membership);
+        Assert.Equal(arrived.OwnProfileId, arrived.ProfileId);
+    }
+
+    #endregion
+
     #region Actions - Fixtures
 
     /// `space`, a Space in the stored format, as a Sub-Space of `primary`, which
