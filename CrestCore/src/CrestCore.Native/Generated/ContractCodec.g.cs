@@ -14,7 +14,7 @@ namespace CrestCore.Native;
 public static class ContractCodec {
     /// <summary>SHA-256 of the canonical contract schema.</summary>
     public static ReadOnlySpan<byte> Fingerprint => [
-        0x5b, 0x9c, 0x16, 0x48, 0xcc, 0xdb, 0xab, 0xaf, 0x97, 0x8f, 0x51, 0x85, 0x18, 0x4e, 0x4d, 0xd0, 0x25, 0xb4, 0x2b, 0x47, 0xdd, 0xb9, 0x36, 0x22, 0xf7, 0xb1, 0xf5, 0x8a, 0x6e, 0xeb, 0x6a, 0xa6
+        0x2d, 0x8c, 0x9b, 0xa2, 0x84, 0x66, 0x18, 0x75, 0x20, 0x4f, 0x87, 0x97, 0xfb, 0xd3, 0xf1, 0x4f, 0xa0, 0xa8, 0xa9, 0x85, 0xb9, 0xed, 0x87, 0x2b, 0xaf, 0x5f, 0x80, 0x0e, 0x27, 0xa8, 0xad, 0x1a
     ];
 
     /// <summary>SHA-256 of the engine contract alone, which an engine binding registers with.</summary>
@@ -10460,6 +10460,7 @@ public static class ContractCodec {
             reader.ReadBool(),
             reader.ReadBool(),
             reader.ReadBool(),
+            reader.ReadBool(),
             reader.ReadBool());
     }
 
@@ -10473,6 +10474,7 @@ public static class ContractCodec {
         writer.WriteBool(value.RequestsIsolatedCloudSync);
         writer.WriteBool(value.ResetsSession);
         writer.WriteBool(value.PresentsShowcase);
+        writer.WriteBool(value.PresentsSubSpaces);
         writer.WriteBool(value.UsesInMemoryCredentials);
         writer.WriteBool(value.ForcesOnboardingWelcome);
         writer.WriteBool(value.ForcesDesktopSetup);
