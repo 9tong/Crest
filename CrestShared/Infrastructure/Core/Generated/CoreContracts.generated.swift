@@ -3486,6 +3486,7 @@ struct LaunchEnvironment: Equatable, Sendable {
         requestsIsolatedCloudSync: false,
         resetsSession: false,
         presentsShowcase: false,
+        presentsSubSpaces: false,
         usesInMemoryCredentials: false,
         forcesOnboardingWelcome: false,
         forcesDesktopSetup: false,
@@ -3500,6 +3501,7 @@ struct LaunchEnvironment: Equatable, Sendable {
     var requestsIsolatedCloudSync: Bool
     var resetsSession: Bool
     var presentsShowcase: Bool
+    var presentsSubSpaces: Bool
     var usesInMemoryCredentials: Bool
     var forcesOnboardingWelcome: Bool
     var forcesDesktopSetup: Bool

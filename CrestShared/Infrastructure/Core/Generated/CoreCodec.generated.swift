@@ -7,7 +7,7 @@ import Foundation
 enum CoreCodec {
     /// SHA-256 of the canonical contract schema. The core refuses any other.
     static let fingerprint: [UInt8] = [
-        0x82, 0x41, 0x1d, 0xa7, 0xe1, 0xae, 0x73, 0xdf, 0x0d, 0x53, 0x81, 0xb7, 0x7b, 0x77, 0x09, 0xb4, 0xbc, 0x17, 0xf0, 0x78, 0xb6, 0x14, 0xa3, 0xb7, 0x68, 0x73, 0x1d, 0x79, 0x40, 0xf8, 0x94, 0x89
+        0x0f, 0xcf, 0xd0, 0x83, 0x72, 0xa0, 0x5f, 0x2a, 0xd7, 0x42, 0xfd, 0xd8, 0x2b, 0x70, 0xbb, 0x2b, 0x28, 0x30, 0x6e, 0xa7, 0xfb, 0x87, 0x4a, 0x04, 0x46, 0xc7, 0xa4, 0x95, 0xde, 0xb6, 0x9a, 0xfa
     ]
     /// SHA-256 of the engine contract alone, which an engine binding registers with.
     static let engineFingerprint: [UInt8] = [
@@ -11565,12 +11565,13 @@ extension LaunchEnvironment {
         let requestsIsolatedCloudSync = try reader.readBool()
         let resetsSession = try reader.readBool()
         let presentsShowcase = try reader.readBool()
+        let presentsSubSpaces = try reader.readBool()
         let usesInMemoryCredentials = try reader.readBool()
         let forcesOnboardingWelcome = try reader.readBool()
         let forcesDesktopSetup = try reader.readBool()
         let forcesMobileSetup = try reader.readBool()
         let usesUpdateTestFeed = try reader.readBool()
-        self.init(isTestRuntime: isTestRuntime, isPreviewRuntime: isPreviewRuntime, requestsIsolatedSession: requestsIsolatedSession, hasNamedProfile: hasNamedProfile, requestsIsolatedCloudSync: requestsIsolatedCloudSync, resetsSession: resetsSession, presentsShowcase: presentsShowcase, usesInMemoryCredentials: usesInMemoryCredentials, forcesOnboardingWelcome: forcesOnboardingWelcome, forcesDesktopSetup: forcesDesktopSetup, forcesMobileSetup: forcesMobileSetup, usesUpdateTestFeed: usesUpdateTestFeed)
+        self.init(isTestRuntime: isTestRuntime, isPreviewRuntime: isPreviewRuntime, requestsIsolatedSession: requestsIsolatedSession, hasNamedProfile: hasNamedProfile, requestsIsolatedCloudSync: requestsIsolatedCloudSync, resetsSession: resetsSession, presentsShowcase: presentsShowcase, presentsSubSpaces: presentsSubSpaces, usesInMemoryCredentials: usesInMemoryCredentials, forcesOnboardingWelcome: forcesOnboardingWelcome, forcesDesktopSetup: forcesDesktopSetup, forcesMobileSetup: forcesMobileSetup, usesUpdateTestFeed: usesUpdateTestFeed)
     }
 
     func encode(into writer: inout WireWriter) {
@@ -11581,6 +11582,7 @@ extension LaunchEnvironment {
         writer.writeBool(requestsIsolatedCloudSync)
         writer.writeBool(resetsSession)
         writer.writeBool(presentsShowcase)
+        writer.writeBool(presentsSubSpaces)
         writer.writeBool(usesInMemoryCredentials)
         writer.writeBool(forcesOnboardingWelcome)
         writer.writeBool(forcesDesktopSetup)
